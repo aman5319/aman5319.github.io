@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.30">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aman Pandey">
+<meta name="dcterms.date" content="2025-10-20">
+<meta name="description" content="Every type of learning which exists in ML a small try to keep them listed together.">
+
+<title>Different Type of Learning in ML – Aman Pandey</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3a01e2046221230fdceeea94b1ec5d67.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-2d7b555c8139e1218026ae7dd17bce4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Different Type of Learning in ML – Aman Pandey">
+<meta property="og:description" content="Every type of learning which exists in ML a small try to keep them listed together.">
+<meta property="og:site_name" content="Aman Pandey">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Aman Pandey</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../tech_blogs"> 
+<span class="menu-text">Tech Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../non_tech_blogs"> 
+<span class="menu-text">Non Tech Blogs</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Different Type of Learning in ML</h1>
+                  <div>
+        <div class="description">
+          Every type of learning which exists in ML a small try to keep them listed together.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">deep-learning</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aman Pandey </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 20, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#taxonomy-of-learning-types-in-aiml" id="toc-taxonomy-of-learning-types-in-aiml" class="nav-link active" data-scroll-target="#taxonomy-of-learning-types-in-aiml">Taxonomy of Learning Types in AI/ML</a>
+  <ul class="collapse">
+  <li><a href="#core-supervision-paradigms" id="toc-core-supervision-paradigms" class="nav-link" data-scroll-target="#core-supervision-paradigms">Core Supervision Paradigms</a>
+  <ul class="collapse">
+  <li><a href="#supervised-learning-predicts-outputs-from-labeled-data." id="toc-supervised-learning-predicts-outputs-from-labeled-data." class="nav-link" data-scroll-target="#supervised-learning-predicts-outputs-from-labeled-data.">Supervised Learning: Predicts outputs from labeled data.</a></li>
+  <li><a href="#unsupervised-learning-finds-structure-without-labels." id="toc-unsupervised-learning-finds-structure-without-labels." class="nav-link" data-scroll-target="#unsupervised-learning-finds-structure-without-labels.">Unsupervised Learning: Finds structure without labels.</a></li>
+  <li><a href="#semi-supervised-learning-combines-labeled-and-unlabeled-data." id="toc-semi-supervised-learning-combines-labeled-and-unlabeled-data." class="nav-link" data-scroll-target="#semi-supervised-learning-combines-labeled-and-unlabeled-data.">Semi-Supervised Learning: Combines labeled and unlabeled data.</a></li>
+  <li><a href="#self-supervised-learning-learns-representations-via-pretext-tasks." id="toc-self-supervised-learning-learns-representations-via-pretext-tasks." class="nav-link" data-scroll-target="#self-supervised-learning-learns-representations-via-pretext-tasks.">Self-Supervised Learning: Learns representations via pretext tasks.</a></li>
+  <li><a href="#weakly-supervised-learning-uses-noisy-or-incomplete-labels." id="toc-weakly-supervised-learning-uses-noisy-or-incomplete-labels." class="nav-link" data-scroll-target="#weakly-supervised-learning-uses-noisy-or-incomplete-labels.">Weakly Supervised Learning: Uses noisy or incomplete labels.</a></li>
+  <li><a href="#reinforcement-learning-rl-learns-via-environment-rewards." id="toc-reinforcement-learning-rl-learns-via-environment-rewards." class="nav-link" data-scroll-target="#reinforcement-learning-rl-learns-via-environment-rewards.">Reinforcement Learning (RL): Learns via environment rewards.</a></li>
+  </ul></li>
+  <li><a href="#geometric-and-structural-learning" id="toc-geometric-and-structural-learning" class="nav-link" data-scroll-target="#geometric-and-structural-learning">Geometric and Structural Learning</a>
+  <ul class="collapse">
+  <li><a href="#graph-based-learning-operates-on-graph-structures." id="toc-graph-based-learning-operates-on-graph-structures." class="nav-link" data-scroll-target="#graph-based-learning-operates-on-graph-structures.">Graph-Based Learning: Operates on graph structures.</a></li>
+  <li><a href="#manifold-learning-captures-data-on-continuous-manifolds." id="toc-manifold-learning-captures-data-on-continuous-manifolds." class="nav-link" data-scroll-target="#manifold-learning-captures-data-on-continuous-manifolds.">Manifold Learning: Captures data on continuous manifolds.</a></li>
+  <li><a href="#groupequivariant-networks-preserves-symmetries-e.g.-rotations." id="toc-groupequivariant-networks-preserves-symmetries-e.g.-rotations." class="nav-link" data-scroll-target="#groupequivariant-networks-preserves-symmetries-e.g.-rotations.">Group/Equivariant Networks: Preserves symmetries (e.g., rotations).</a></li>
+  <li><a href="#graph-signal-processing-analyzes-signals-on-graphs." id="toc-graph-signal-processing-analyzes-signals-on-graphs." class="nav-link" data-scroll-target="#graph-signal-processing-analyzes-signals-on-graphs.">Graph Signal Processing: Analyzes signals on graphs.</a></li>
+  <li><a href="#structured-prediction" id="toc-structured-prediction" class="nav-link" data-scroll-target="#structured-prediction">Structured Prediction:</a></li>
+  </ul></li>
+  <li><a href="#probabilistic-and-bayesian-approaches" id="toc-probabilistic-and-bayesian-approaches" class="nav-link" data-scroll-target="#probabilistic-and-bayesian-approaches">Probabilistic and Bayesian Approaches</a>
+  <ul class="collapse">
+  <li><a href="#probabilistic-graphical-models-pgms" id="toc-probabilistic-graphical-models-pgms" class="nav-link" data-scroll-target="#probabilistic-graphical-models-pgms">Probabilistic Graphical Models (PGMs):</a></li>
+  <li><a href="#bayesian-learning" id="toc-bayesian-learning" class="nav-link" data-scroll-target="#bayesian-learning">Bayesian Learning:</a></li>
+  <li><a href="#probabilistic-programming-automates-inference-workflows." id="toc-probabilistic-programming-automates-inference-workflows." class="nav-link" data-scroll-target="#probabilistic-programming-automates-inference-workflows.">Probabilistic Programming: Automates inference workflows.</a></li>
+  <li><a href="#latent-variable-models" id="toc-latent-variable-models" class="nav-link" data-scroll-target="#latent-variable-models">Latent Variable Models:</a></li>
+  </ul></li>
+  <li><a href="#generative-and-energy-based-models" id="toc-generative-and-energy-based-models" class="nav-link" data-scroll-target="#generative-and-energy-based-models">Generative and Energy-Based Models</a>
+  <ul class="collapse">
+  <li><a href="#generative-models" id="toc-generative-models" class="nav-link" data-scroll-target="#generative-models">Generative Models:</a></li>
+  <li><a href="#energy-based-models-ebms" id="toc-energy-based-models-ebms" class="nav-link" data-scroll-target="#energy-based-models-ebms">Energy-Based Models (EBMs):</a></li>
+  </ul></li>
+  <li><a href="#transfer-adaptation-and-data-efficient-learning" id="toc-transfer-adaptation-and-data-efficient-learning" class="nav-link" data-scroll-target="#transfer-adaptation-and-data-efficient-learning">Transfer, Adaptation, and Data-Efficient Learning</a>
+  <ul class="collapse">
+  <li><a href="#transfer-learning-pretrain-finetune." id="toc-transfer-learning-pretrain-finetune." class="nav-link" data-scroll-target="#transfer-learning-pretrain-finetune.">Transfer Learning: Pretrain → finetune.</a></li>
+  <li><a href="#multi-task-learning-shares-representations-across-tasks." id="toc-multi-task-learning-shares-representations-across-tasks." class="nav-link" data-scroll-target="#multi-task-learning-shares-representations-across-tasks.">Multi-Task Learning: Shares representations across tasks.</a></li>
+  <li><a href="#continuallifelongincremental-learning-adapts-without-forgetting." id="toc-continuallifelongincremental-learning-adapts-without-forgetting." class="nav-link" data-scroll-target="#continuallifelongincremental-learning-adapts-without-forgetting.">Continual/Lifelong/Incremental Learning: Adapts without forgetting.</a></li>
+  <li><a href="#transductive-learning-infers-specific-unlabeled-instances." id="toc-transductive-learning-infers-specific-unlabeled-instances." class="nav-link" data-scroll-target="#transductive-learning-infers-specific-unlabeled-instances.">Transductive Learning: Infers specific unlabeled instances.</a></li>
+  </ul></li>
+  <li><a href="#multi-modal-and-cross-domain-learning" id="toc-multi-modal-and-cross-domain-learning" class="nav-link" data-scroll-target="#multi-modal-and-cross-domain-learning">Multi-Modal and Cross-Domain Learning</a>
+  <ul class="collapse">
+  <li><a href="#multi-modal-learning-combines-data-types-e.g.-text-images." id="toc-multi-modal-learning-combines-data-types-e.g.-text-images." class="nav-link" data-scroll-target="#multi-modal-learning-combines-data-types-e.g.-text-images.">Multi-Modal Learning: Combines data types (e.g., text, images).</a></li>
+  <li><a href="#cross-domain-learning-adapts-across-different-data-distributions." id="toc-cross-domain-learning-adapts-across-different-data-distributions." class="nav-link" data-scroll-target="#cross-domain-learning-adapts-across-different-data-distributions.">Cross-Domain Learning: Adapts across different data distributions.</a></li>
+  </ul></li>
+  <li><a href="#representation-metric-and-contrastive-learning" id="toc-representation-metric-and-contrastive-learning" class="nav-link" data-scroll-target="#representation-metric-and-contrastive-learning">Representation, Metric, and Contrastive Learning</a>
+  <ul class="collapse">
+  <li><a href="#representation-learning-extracts-general-purpose-features." id="toc-representation-learning-extracts-general-purpose-features." class="nav-link" data-scroll-target="#representation-learning-extracts-general-purpose-features.">Representation Learning: Extracts general-purpose features.</a></li>
+  <li><a href="#contrastive-learning-optimizes-similarity-based-objectives." id="toc-contrastive-learning-optimizes-similarity-based-objectives." class="nav-link" data-scroll-target="#contrastive-learning-optimizes-similarity-based-objectives.">Contrastive Learning: Optimizes similarity-based objectives.</a></li>
+  <li><a href="#metric-learning-learns-distance-metrics." id="toc-metric-learning-learns-distance-metrics." class="nav-link" data-scroll-target="#metric-learning-learns-distance-metrics.">Metric Learning: Learns distance metrics.</a></li>
+  <li><a href="#information-theoretic-methods-maximizes-mutual-information." id="toc-information-theoretic-methods-maximizes-mutual-information." class="nav-link" data-scroll-target="#information-theoretic-methods-maximizes-mutual-information.">Information-Theoretic Methods: Maximizes mutual information.</a></li>
+  </ul></li>
+  <li><a href="#kernel-and-classical-statistical-learning" id="toc-kernel-and-classical-statistical-learning" class="nav-link" data-scroll-target="#kernel-and-classical-statistical-learning">Kernel and Classical Statistical Learning</a>
+  <ul class="collapse">
+  <li><a href="#kernel-methods-maps-data-to-high-dimensional-spaces." id="toc-kernel-methods-maps-data-to-high-dimensional-spaces." class="nav-link" data-scroll-target="#kernel-methods-maps-data-to-high-dimensional-spaces.">Kernel Methods: Maps data to high-dimensional spaces.</a></li>
+  <li><a href="#statistical-learning-theory-analyzes-generalization." id="toc-statistical-learning-theory-analyzes-generalization." class="nav-link" data-scroll-target="#statistical-learning-theory-analyzes-generalization.">Statistical Learning Theory: Analyzes generalization.</a></li>
+  <li><a href="#regularization-frameworks" id="toc-regularization-frameworks" class="nav-link" data-scroll-target="#regularization-frameworks">Regularization Frameworks:</a></li>
+  </ul></li>
+  <li><a href="#optimization-and-algorithmic-variants" id="toc-optimization-and-algorithmic-variants" class="nav-link" data-scroll-target="#optimization-and-algorithmic-variants">Optimization and Algorithmic Variants</a>
+  <ul class="collapse">
+  <li><a href="#gradient-based-optimization" id="toc-gradient-based-optimization" class="nav-link" data-scroll-target="#gradient-based-optimization">Gradient-Based Optimization:</a></li>
+  <li><a href="#convex-vs-non-convex-optimization" id="toc-convex-vs-non-convex-optimization" class="nav-link" data-scroll-target="#convex-vs-non-convex-optimization">Convex vs Non-Convex Optimization:</a></li>
+  <li><a href="#meta-optimization-optimizes-hyperparameters." id="toc-meta-optimization-optimizes-hyperparameters." class="nav-link" data-scroll-target="#meta-optimization-optimizes-hyperparameters.">Meta-Optimization: Optimizes hyperparameters.</a></li>
+  <li><a href="#evolutionaryneuroevolution" id="toc-evolutionaryneuroevolution" class="nav-link" data-scroll-target="#evolutionaryneuroevolution">Evolutionary/Neuroevolution:</a></li>
+  <li><a href="#swarm-intelligence" id="toc-swarm-intelligence" class="nav-link" data-scroll-target="#swarm-intelligence">Swarm Intelligence:</a></li>
+  </ul></li>
+  <li><a href="#robustness-safety-privacy-and-fairness" id="toc-robustness-safety-privacy-and-fairness" class="nav-link" data-scroll-target="#robustness-safety-privacy-and-fairness">Robustness, Safety, Privacy, and Fairness</a>
+  <ul class="collapse">
+  <li><a href="#adversarial-trainingrobustness" id="toc-adversarial-trainingrobustness" class="nav-link" data-scroll-target="#adversarial-trainingrobustness">Adversarial Training/Robustness:</a></li>
+  <li><a href="#causal-learning-and-inference" id="toc-causal-learning-and-inference" class="nav-link" data-scroll-target="#causal-learning-and-inference">Causal Learning and Inference:</a></li>
+  <li><a href="#federateddistributed-learning" id="toc-federateddistributed-learning" class="nav-link" data-scroll-target="#federateddistributed-learning">Federated/Distributed Learning:</a></li>
+  <li><a href="#privacy-preserving-ml" id="toc-privacy-preserving-ml" class="nav-link" data-scroll-target="#privacy-preserving-ml">Privacy-Preserving ML:</a></li>
+  <li><a href="#fairness-aware-learning" id="toc-fairness-aware-learning" class="nav-link" data-scroll-target="#fairness-aware-learning">Fairness-Aware Learning:</a></li>
+  <li><a href="#interpretabilityexplainable-ai-xai" id="toc-interpretabilityexplainable-ai-xai" class="nav-link" data-scroll-target="#interpretabilityexplainable-ai-xai">Interpretability/Explainable AI (XAI):</a></li>
+  </ul></li>
+  <li><a href="#sparse-low-rank-and-signal-processing" id="toc-sparse-low-rank-and-signal-processing" class="nav-link" data-scroll-target="#sparse-low-rank-and-signal-processing">Sparse, Low-Rank, and Signal Processing</a>
+  <ul class="collapse">
+  <li><a href="#sparse-learning" id="toc-sparse-learning" class="nav-link" data-scroll-target="#sparse-learning">Sparse Learning:</a></li>
+  <li><a href="#dictionary-learningsparse-coding" id="toc-dictionary-learningsparse-coding" class="nav-link" data-scroll-target="#dictionary-learningsparse-coding">Dictionary Learning/Sparse Coding:</a></li>
+  </ul></li>
+  <li><a href="#hardware-inspired-and-edge-learning" id="toc-hardware-inspired-and-edge-learning" class="nav-link" data-scroll-target="#hardware-inspired-and-edge-learning">Hardware-Inspired and Edge Learning</a>
+  <ul class="collapse">
+  <li><a href="#edge-ml-learning-on-resource-constrained-devices." id="toc-edge-ml-learning-on-resource-constrained-devices." class="nav-link" data-scroll-target="#edge-ml-learning-on-resource-constrained-devices.">Edge ML: Learning on resource-constrained devices.</a></li>
+  <li><a href="#neuromorphic-learning-mimics-brain-like-computation." id="toc-neuromorphic-learning-mimics-brain-like-computation." class="nav-link" data-scroll-target="#neuromorphic-learning-mimics-brain-like-computation.">Neuromorphic Learning: Mimics brain-like computation.</a></li>
+  <li><a href="#quantum-ml-leverages-quantum-computing." id="toc-quantum-ml-leverages-quantum-computing." class="nav-link" data-scroll-target="#quantum-ml-leverages-quantum-computing.">Quantum ML: Leverages quantum computing.</a></li>
+  </ul></li>
+  <li><a href="#topological-and-symbolic-learning" id="toc-topological-and-symbolic-learning" class="nav-link" data-scroll-target="#topological-and-symbolic-learning">Topological and Symbolic Learning</a>
+  <ul class="collapse">
+  <li><a href="#topological-data-analysis-tda" id="toc-topological-data-analysis-tda" class="nav-link" data-scroll-target="#topological-data-analysis-tda">Topological Data Analysis (TDA):</a></li>
+  <li><a href="#causal-representation-learning" id="toc-causal-representation-learning" class="nav-link" data-scroll-target="#causal-representation-learning">Causal Representation Learning:</a></li>
+  <li><a href="#neuro-symbolic-learning" id="toc-neuro-symbolic-learning" class="nav-link" data-scroll-target="#neuro-symbolic-learning">Neuro-Symbolic Learning:</a></li>
+  <li><a href="#symbolic-regression" id="toc-symbolic-regression" class="nav-link" data-scroll-target="#symbolic-regression">Symbolic Regression:</a></li>
+  </ul></li>
+  <li><a href="#societal-and-application-specific-paradigms" id="toc-societal-and-application-specific-paradigms" class="nav-link" data-scroll-target="#societal-and-application-specific-paradigms">Societal and Application-Specific Paradigms</a>
+  <ul class="collapse">
+  <li><a href="#ai-for-scientific-discovery" id="toc-ai-for-scientific-discovery" class="nav-link" data-scroll-target="#ai-for-scientific-discovery">AI for Scientific Discovery:</a></li>
+  <li><a href="#value-alignmentmoral-learning" id="toc-value-alignmentmoral-learning" class="nav-link" data-scroll-target="#value-alignmentmoral-learning">Value Alignment/Moral Learning:</a></li>
+  <li><a href="#human-in-the-loop-learning" id="toc-human-in-the-loop-learning" class="nav-link" data-scroll-target="#human-in-the-loop-learning">Human-in-the-Loop Learning:</a></li>
+  </ul></li>
+  <li><a href="#special-settings-and-practical-modes" id="toc-special-settings-and-practical-modes" class="nav-link" data-scroll-target="#special-settings-and-practical-modes">Special Settings and Practical Modes</a>
+  <ul class="collapse">
+  <li><a href="#onlinestreaming-learning" id="toc-onlinestreaming-learning" class="nav-link" data-scroll-target="#onlinestreaming-learning">Online/Streaming Learning:</a></li>
+  <li><a href="#batchmini-batch-learning" id="toc-batchmini-batch-learning" class="nav-link" data-scroll-target="#batchmini-batch-learning">Batch/Mini-Batch Learning:</a></li>
+  <li><a href="#active-learning" id="toc-active-learning" class="nav-link" data-scroll-target="#active-learning">Active Learning:</a></li>
+  <li><a href="#curriculumself-paced-learning" id="toc-curriculumself-paced-learning" class="nav-link" data-scroll-target="#curriculumself-paced-learning">Curriculum/Self-Paced Learning:</a></li>
+  <li><a href="#ensemble-methods" id="toc-ensemble-methods" class="nav-link" data-scroll-target="#ensemble-methods">Ensemble Methods:</a></li>
+  </ul></li>
+  <li><a href="#aliases-and-overlaps" id="toc-aliases-and-overlaps" class="nav-link" data-scroll-target="#aliases-and-overlaps">Aliases and Overlaps</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/tech_blogs/Machine Learning/different_types_learning.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="taxonomy-of-learning-types-in-aiml" class="level1">
+<h1>Taxonomy of Learning Types in AI/ML</h1>
+<p>A structured, near-exhaustive classification of AI and ML paradigms, covering supervision, structure, uncertainty, optimization, and emerging trends. Includes aliases, overlaps, and representative methods.</p>
+<section id="core-supervision-paradigms" class="level2">
+<h2 class="anchored" data-anchor-id="core-supervision-paradigms">Core Supervision Paradigms</h2>
+<p><strong>Methods defined by feedback and label availability.</strong></p>
+<section id="supervised-learning-predicts-outputs-from-labeled-data." class="level3">
+<h3 class="anchored" data-anchor-id="supervised-learning-predicts-outputs-from-labeled-data.">Supervised Learning: Predicts outputs from labeled data.</h3>
+<p>Classification, regression<br>
+Algorithms: SVM, Random Forests, DNNs, Transformers</p>
+</section>
+<section id="unsupervised-learning-finds-structure-without-labels." class="level3">
+<h3 class="anchored" data-anchor-id="unsupervised-learning-finds-structure-without-labels.">Unsupervised Learning: Finds structure without labels.</h3>
+<p>Clustering (K-means, DBSCAN), density estimation<br>
+Dimensionality reduction (PCA, t-SNE, UMAP)</p>
+</section>
+<section id="semi-supervised-learning-combines-labeled-and-unlabeled-data." class="level3">
+<h3 class="anchored" data-anchor-id="semi-supervised-learning-combines-labeled-and-unlabeled-data.">Semi-Supervised Learning: Combines labeled and unlabeled data.</h3>
+<p>Label propagation, pseudo-labeling, co-training</p>
+</section>
+<section id="self-supervised-learning-learns-representations-via-pretext-tasks." class="level3">
+<h3 class="anchored" data-anchor-id="self-supervised-learning-learns-representations-via-pretext-tasks.">Self-Supervised Learning: Learns representations via pretext tasks.</h3>
+<p>Masked prediction (BERT), contrastive pretraining (SimCLR, MoCo)</p>
+</section>
+<section id="weakly-supervised-learning-uses-noisy-or-incomplete-labels." class="level3">
+<h3 class="anchored" data-anchor-id="weakly-supervised-learning-uses-noisy-or-incomplete-labels.">Weakly Supervised Learning: Uses noisy or incomplete labels.</h3>
+<p>Multi-label learning (MLL), one-class classification (OCC), positive-unlabeled learning (PUL)<br>
+Algorithms: Snorkel, anomaly detection, PU-SVM</p>
+</section>
+<section id="reinforcement-learning-rl-learns-via-environment-rewards." class="level3">
+<h3 class="anchored" data-anchor-id="reinforcement-learning-rl-learns-via-environment-rewards.">Reinforcement Learning (RL): Learns via environment rewards.</h3>
+<p>Model-free (Q-learning, PPO, SAC), model-based<br>
+Hierarchical RL, multi-agent RL, inverse RL, imitation learning</p>
+<hr>
+</section>
+</section>
+<section id="geometric-and-structural-learning" class="level2">
+<h2 class="anchored" data-anchor-id="geometric-and-structural-learning">Geometric and Structural Learning</h2>
+<p><strong>Methods for non-Euclidean or structured data (umbrella: Geometric Deep Learning).</strong></p>
+<section id="graph-based-learning-operates-on-graph-structures." class="level3">
+<h3 class="anchored" data-anchor-id="graph-based-learning-operates-on-graph-structures.">Graph-Based Learning: Operates on graph structures.</h3>
+<ul>
+<li>Graph Neural Networks (GNNs): GCN, GAT, GraphSAGE, GIN, Graph Transformer<br>
+</li>
+<li>Message Passing Neural Networks (MPNNs)<br>
+</li>
+<li>Graph embedding, node classification, link prediction<br>
+</li>
+<li>Graph Representation Learning: Node2Vec, DeepWalk, GNN-based embeddings</li>
+</ul>
+</section>
+<section id="manifold-learning-captures-data-on-continuous-manifolds." class="level3">
+<h3 class="anchored" data-anchor-id="manifold-learning-captures-data-on-continuous-manifolds.">Manifold Learning: Captures data on continuous manifolds.</h3>
+<p>Isomap, Locally Linear Embedding (LLE), Laplacian Eigenmaps, Diffusion Maps<br>
+UMAP for Dimensionality reduction.</p>
+</section>
+<section id="groupequivariant-networks-preserves-symmetries-e.g.-rotations." class="level3">
+<h3 class="anchored" data-anchor-id="groupequivariant-networks-preserves-symmetries-e.g.-rotations.">Group/Equivariant Networks: Preserves symmetries (e.g., rotations).</h3>
+<p>G-CNNs, SE(3)/E(3)-equivariant networks, steerable CNNs</p>
+</section>
+<section id="graph-signal-processing-analyzes-signals-on-graphs." class="level3">
+<h3 class="anchored" data-anchor-id="graph-signal-processing-analyzes-signals-on-graphs.">Graph Signal Processing: Analyzes signals on graphs.</h3>
+<p>Spectral methods, wavelet transforms on graphs</p>
+</section>
+<section id="structured-prediction" class="level3">
+<h3 class="anchored" data-anchor-id="structured-prediction">Structured Prediction:</h3>
+<p>Conditional Random Fields (CRFs), Structured SVM, Sequence labeling, parsing</p>
+<hr>
+</section>
+</section>
+<section id="probabilistic-and-bayesian-approaches" class="level2">
+<h2 class="anchored" data-anchor-id="probabilistic-and-bayesian-approaches">Probabilistic and Bayesian Approaches</h2>
+<p><strong>Methods modeling uncertainty and probability distributions.</strong></p>
+<section id="probabilistic-graphical-models-pgms" class="level3">
+<h3 class="anchored" data-anchor-id="probabilistic-graphical-models-pgms">Probabilistic Graphical Models (PGMs):</h3>
+<p>Bayesian Networks (directed), Markov Random Fields (undirected), CRFs, HMMs</p>
+</section>
+<section id="bayesian-learning" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-learning">Bayesian Learning:</h3>
+<p>Bayesian Neural Networks (BNNs), Gaussian Processes (GPs)<br>
+Approximate inference: Variational Inference (VI), MCMC, Expectation-Maximization (EM)</p>
+</section>
+<section id="probabilistic-programming-automates-inference-workflows." class="level3">
+<h3 class="anchored" data-anchor-id="probabilistic-programming-automates-inference-workflows.">Probabilistic Programming: Automates inference workflows.</h3>
+<p>Tools: Stan, Pyro, Edward</p>
+</section>
+<section id="latent-variable-models" class="level3">
+<h3 class="anchored" data-anchor-id="latent-variable-models">Latent Variable Models:</h3>
+<p>Probabilistic Matrix Factorization, Factor Analysis</p>
+</section>
+</section>
+<section id="generative-and-energy-based-models" class="level2">
+<h2 class="anchored" data-anchor-id="generative-and-energy-based-models">Generative and Energy-Based Models</h2>
+<p><strong>Methods for data generation and likelihood modeling.</strong></p>
+<section id="generative-models" class="level3">
+<h3 class="anchored" data-anchor-id="generative-models">Generative Models:</h3>
+<ul>
+<li>Autoregressive (PixelRNN, Transformer decoders)<br>
+</li>
+<li>Variational Autoencoders (VAEs)</li>
+<li>Generative Adversarial Networks (GANs)</li>
+<li>Normalizing Flows, Diffusion/Score-Based Models</li>
+</ul>
+</section>
+<section id="energy-based-models-ebms" class="level3">
+<h3 class="anchored" data-anchor-id="energy-based-models-ebms">Energy-Based Models (EBMs):</h3>
+<p>Boltzmann Machines, Deep Belief Networks Score matching, energy-guided sampling</p>
+<hr>
+</section>
+</section>
+<section id="transfer-adaptation-and-data-efficient-learning" class="level2">
+<h2 class="anchored" data-anchor-id="transfer-adaptation-and-data-efficient-learning">Transfer, Adaptation, and Data-Efficient Learning</h2>
+<p><strong>Methods for reusing or adapting knowledge across tasks or domains.</strong></p>
+<section id="transfer-learning-pretrain-finetune." class="level3">
+<h3 class="anchored" data-anchor-id="transfer-learning-pretrain-finetune.">Transfer Learning: Pretrain → finetune.</h3>
+<p><strong>Domain adaptation (supervised/unsupervised)</strong></p>
+</section>
+<section id="multi-task-learning-shares-representations-across-tasks." class="level3">
+<h3 class="anchored" data-anchor-id="multi-task-learning-shares-representations-across-tasks.">Multi-Task Learning: Shares representations across tasks.</h3>
+<ul>
+<li>Meta-Learning: Learns how to learn new tasks.</li>
+<li>Few-shot, one-shot, zero-shot learning<br>
+Algorithms: MAML, Reptile</li>
+</ul>
+</section>
+<section id="continuallifelongincremental-learning-adapts-without-forgetting." class="level3">
+<h3 class="anchored" data-anchor-id="continuallifelongincremental-learning-adapts-without-forgetting.">Continual/Lifelong/Incremental Learning: Adapts without forgetting.</h3>
+<p>Regularization-based (EWC), rehearsal-based</p>
+</section>
+<section id="transductive-learning-infers-specific-unlabeled-instances." class="level3">
+<h3 class="anchored" data-anchor-id="transductive-learning-infers-specific-unlabeled-instances.">Transductive Learning: Infers specific unlabeled instances.</h3>
+<p>Graph-based transductive methods</p>
+<hr>
+</section>
+</section>
+<section id="multi-modal-and-cross-domain-learning" class="level2">
+<h2 class="anchored" data-anchor-id="multi-modal-and-cross-domain-learning">Multi-Modal and Cross-Domain Learning</h2>
+<p><strong>Methods integrating diverse data types or domains.</strong></p>
+<section id="multi-modal-learning-combines-data-types-e.g.-text-images." class="level3">
+<h3 class="anchored" data-anchor-id="multi-modal-learning-combines-data-types-e.g.-text-images.">Multi-Modal Learning: Combines data types (e.g., text, images).</h3>
+<p>Models: CLIP, DALL-E, multimodal Transformers</p>
+</section>
+<section id="cross-domain-learning-adapts-across-different-data-distributions." class="level3">
+<h3 class="anchored" data-anchor-id="cross-domain-learning-adapts-across-different-data-distributions.">Cross-Domain Learning: Adapts across different data distributions.</h3>
+<p>Domain generalization, cross-modal alignment</p>
+<hr>
+</section>
+</section>
+<section id="representation-metric-and-contrastive-learning" class="level2">
+<h2 class="anchored" data-anchor-id="representation-metric-and-contrastive-learning">Representation, Metric, and Contrastive Learning</h2>
+<p><strong>Methods for learning data embeddings or distances.</strong></p>
+<section id="representation-learning-extracts-general-purpose-features." class="level3">
+<h3 class="anchored" data-anchor-id="representation-learning-extracts-general-purpose-features.">Representation Learning: Extracts general-purpose features.</h3>
+<p>Autoencoders, word2vec, BERT-style models, Collaborative filtering in recommendation system</p>
+</section>
+<section id="contrastive-learning-optimizes-similarity-based-objectives." class="level3">
+<h3 class="anchored" data-anchor-id="contrastive-learning-optimizes-similarity-based-objectives.">Contrastive Learning: Optimizes similarity-based objectives.</h3>
+<p>InfoNCE, SimCLR, MoCo</p>
+</section>
+<section id="metric-learning-learns-distance-metrics." class="level3">
+<h3 class="anchored" data-anchor-id="metric-learning-learns-distance-metrics.">Metric Learning: Learns distance metrics.</h3>
+<p>Triplet loss, Siamese Networks, N-pair loss</p>
+</section>
+<section id="information-theoretic-methods-maximizes-mutual-information." class="level3">
+<h3 class="anchored" data-anchor-id="information-theoretic-methods-maximizes-mutual-information.">Information-Theoretic Methods: Maximizes mutual information.</h3>
+<p>InfoMax, Barlow Twins</p>
+<hr>
+</section>
+</section>
+<section id="kernel-and-classical-statistical-learning" class="level2">
+<h2 class="anchored" data-anchor-id="kernel-and-classical-statistical-learning">Kernel and Classical Statistical Learning</h2>
+<p><strong>Traditional methods rooted in statistical theory.</strong></p>
+<section id="kernel-methods-maps-data-to-high-dimensional-spaces." class="level3">
+<h3 class="anchored" data-anchor-id="kernel-methods-maps-data-to-high-dimensional-spaces.">Kernel Methods: Maps data to high-dimensional spaces.</h3>
+<p>SVM, Kernel PCA, Kernel Ridge Regression, RKHS theory</p>
+</section>
+<section id="statistical-learning-theory-analyzes-generalization." class="level3">
+<h3 class="anchored" data-anchor-id="statistical-learning-theory-analyzes-generalization.">Statistical Learning Theory: Analyzes generalization.</h3>
+<p>PAC learning, VC dimension, empirical risk minimization (ERM)</p>
+</section>
+<section id="regularization-frameworks" class="level3">
+<h3 class="anchored" data-anchor-id="regularization-frameworks">Regularization Frameworks:</h3>
+<p>L1/L2 regularization, dropout</p>
+<hr>
+</section>
+</section>
+<section id="optimization-and-algorithmic-variants" class="level2">
+<h2 class="anchored" data-anchor-id="optimization-and-algorithmic-variants">Optimization and Algorithmic Variants</h2>
+<p><strong>Techniques for training models efficiently.</strong></p>
+<section id="gradient-based-optimization" class="level3">
+<h3 class="anchored" data-anchor-id="gradient-based-optimization">Gradient-Based Optimization:</h3>
+<p>SGD, Adam, RMSprop, second-order methods (L-BFGS)</p>
+</section>
+<section id="convex-vs-non-convex-optimization" class="level3">
+<h3 class="anchored" data-anchor-id="convex-vs-non-convex-optimization">Convex vs Non-Convex Optimization:</h3>
+<p>Proximal methods, ADMM</p>
+</section>
+<section id="meta-optimization-optimizes-hyperparameters." class="level3">
+<h3 class="anchored" data-anchor-id="meta-optimization-optimizes-hyperparameters.">Meta-Optimization: Optimizes hyperparameters.</h3>
+<p>Bayesian Optimization, grid search</p>
+</section>
+<section id="evolutionaryneuroevolution" class="level3">
+<h3 class="anchored" data-anchor-id="evolutionaryneuroevolution">Evolutionary/Neuroevolution:</h3>
+<p>Genetic algorithms, NEAT</p>
+</section>
+<section id="swarm-intelligence" class="level3">
+<h3 class="anchored" data-anchor-id="swarm-intelligence">Swarm Intelligence:</h3>
+<p>Particle Swarm Optimization (PSO), Ant Colony Optimization</p>
+<hr>
+</section>
+</section>
+<section id="robustness-safety-privacy-and-fairness" class="level2">
+<h2 class="anchored" data-anchor-id="robustness-safety-privacy-and-fairness">Robustness, Safety, Privacy, and Fairness</h2>
+<p><strong>Methods addressing ethical and operational reliability.</strong></p>
+<section id="adversarial-trainingrobustness" class="level3">
+<h3 class="anchored" data-anchor-id="adversarial-trainingrobustness">Adversarial Training/Robustness:</h3>
+<p>Adversarial examples, certified defenses</p>
+</section>
+<section id="causal-learning-and-inference" class="level3">
+<h3 class="anchored" data-anchor-id="causal-learning-and-inference">Causal Learning and Inference:</h3>
+<p>Structural Causal Models (SCMs), do-calculus, causal discovery</p>
+</section>
+<section id="federateddistributed-learning" class="level3">
+<h3 class="anchored" data-anchor-id="federateddistributed-learning">Federated/Distributed Learning:</h3>
+<p>FedAvg, decentralized training</p>
+</section>
+<section id="privacy-preserving-ml" class="level3">
+<h3 class="anchored" data-anchor-id="privacy-preserving-ml">Privacy-Preserving ML:</h3>
+<p>Differential privacy, secure multi-party computation</p>
+</section>
+<section id="fairness-aware-learning" class="level3">
+<h3 class="anchored" data-anchor-id="fairness-aware-learning">Fairness-Aware Learning:</h3>
+<p>Bias mitigation, demographic parity</p>
+</section>
+<section id="interpretabilityexplainable-ai-xai" class="level3">
+<h3 class="anchored" data-anchor-id="interpretabilityexplainable-ai-xai">Interpretability/Explainable AI (XAI):</h3>
+<p>SHAP, LIME, attention visualization</p>
+<hr>
+</section>
+</section>
+<section id="sparse-low-rank-and-signal-processing" class="level2">
+<h2 class="anchored" data-anchor-id="sparse-low-rank-and-signal-processing">Sparse, Low-Rank, and Signal Processing</h2>
+<p><strong>Methods for efficient data representation.</strong></p>
+<section id="sparse-learning" class="level3">
+<h3 class="anchored" data-anchor-id="sparse-learning">Sparse Learning:</h3>
+<p>LASSO, compressed sensing, LORA, Q-LORA</p>
+</section>
+<section id="dictionary-learningsparse-coding" class="level3">
+<h3 class="anchored" data-anchor-id="dictionary-learningsparse-coding">Dictionary Learning/Sparse Coding:</h3>
+<p>K-SVD, sparse autoencoders</p>
+<hr>
+</section>
+</section>
+<section id="hardware-inspired-and-edge-learning" class="level2">
+<h2 class="anchored" data-anchor-id="hardware-inspired-and-edge-learning">Hardware-Inspired and Edge Learning</h2>
+<p><strong>Methods leveraging specialized hardware or constraints.</strong></p>
+<section id="edge-ml-learning-on-resource-constrained-devices." class="level3">
+<h3 class="anchored" data-anchor-id="edge-ml-learning-on-resource-constrained-devices.">Edge ML: Learning on resource-constrained devices.</h3>
+<p>Edge inference, edge training, model compression (pruning, quantization)</p>
+</section>
+<section id="neuromorphic-learning-mimics-brain-like-computation." class="level3">
+<h3 class="anchored" data-anchor-id="neuromorphic-learning-mimics-brain-like-computation.">Neuromorphic Learning: Mimics brain-like computation.</h3>
+<p>Spiking Neural Networks (SNNs), event-driven processing</p>
+</section>
+<section id="quantum-ml-leverages-quantum-computing." class="level3">
+<h3 class="anchored" data-anchor-id="quantum-ml-leverages-quantum-computing.">Quantum ML: Leverages quantum computing.</h3>
+<p>Quantum kernel methods, variational quantum circuits</p>
+<hr>
+</section>
+</section>
+<section id="topological-and-symbolic-learning" class="level2">
+<h2 class="anchored" data-anchor-id="topological-and-symbolic-learning">Topological and Symbolic Learning</h2>
+<p><strong>Advanced methods for complex data or reasoning.</strong></p>
+<section id="topological-data-analysis-tda" class="level3">
+<h3 class="anchored" data-anchor-id="topological-data-analysis-tda">Topological Data Analysis (TDA):</h3>
+<p>Persistent homology, Mapper algorithm</p>
+</section>
+<section id="causal-representation-learning" class="level3">
+<h3 class="anchored" data-anchor-id="causal-representation-learning">Causal Representation Learning:</h3>
+<p>Disentangled representations with causal structure</p>
+</section>
+<section id="neuro-symbolic-learning" class="level3">
+<h3 class="anchored" data-anchor-id="neuro-symbolic-learning">Neuro-Symbolic Learning:</h3>
+<p>Inductive Logic Programming (ILP), hybrid neural-symbolic models</p>
+</section>
+<section id="symbolic-regression" class="level3">
+<h3 class="anchored" data-anchor-id="symbolic-regression">Symbolic Regression:</h3>
+<p>Genetic programming for equation discovery</p>
+<hr>
+</section>
+</section>
+<section id="societal-and-application-specific-paradigms" class="level2">
+<h2 class="anchored" data-anchor-id="societal-and-application-specific-paradigms">Societal and Application-Specific Paradigms</h2>
+<p><strong>Methods driven by societal impact or domain needs.</strong></p>
+<section id="ai-for-scientific-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="ai-for-scientific-discovery">AI for Scientific Discovery:</h3>
+<p>Hypothesis generation (e.g., AlphaFold, materials discovery)</p>
+</section>
+<section id="value-alignmentmoral-learning" class="level3">
+<h3 class="anchored" data-anchor-id="value-alignmentmoral-learning">Value Alignment/Moral Learning:</h3>
+<p>RLHF, constitutional AI</p>
+</section>
+<section id="human-in-the-loop-learning" class="level3">
+<h3 class="anchored" data-anchor-id="human-in-the-loop-learning">Human-in-the-Loop Learning:</h3>
+<p>Interactive ML, human-AI collaboration</p>
+<hr>
+</section>
+</section>
+<section id="special-settings-and-practical-modes" class="level2">
+<h2 class="anchored" data-anchor-id="special-settings-and-practical-modes">Special Settings and Practical Modes</h2>
+<p><strong>Operational modes for learning systems.</strong></p>
+<section id="onlinestreaming-learning" class="level3">
+<h3 class="anchored" data-anchor-id="onlinestreaming-learning">Online/Streaming Learning:</h3>
+<p>Real-time updates, concept drift handling</p>
+</section>
+<section id="batchmini-batch-learning" class="level3">
+<h3 class="anchored" data-anchor-id="batchmini-batch-learning">Batch/Mini-Batch Learning:</h3>
+<p>Standard training on fixed datasets</p>
+</section>
+<section id="active-learning" class="level3">
+<h3 class="anchored" data-anchor-id="active-learning">Active Learning:</h3>
+<p>Uncertainty sampling, how much model is uncertain in its prediction</p>
+</section>
+<section id="curriculumself-paced-learning" class="level3">
+<h3 class="anchored" data-anchor-id="curriculumself-paced-learning">Curriculum/Self-Paced Learning:</h3>
+<p>Gradual task complexity</p>
+</section>
+<section id="ensemble-methods" class="level3">
+<h3 class="anchored" data-anchor-id="ensemble-methods">Ensemble Methods:</h3>
+<p>Bagging (Random Forests), boosting (XGBoost), stacking</p>
+<hr>
+</section>
+</section>
+<section id="aliases-and-overlaps" class="level2">
+<h2 class="anchored" data-anchor-id="aliases-and-overlaps">Aliases and Overlaps</h2>
+<p>Geometric Deep Learning ≈ Graph/M Manifold/Equivariant Learning<br>
+Graph Neural Networks ≈ Message Passing Neural Networks<br>
+Contrastive Learning ≈ Metric/Representation Learning (similar objectives)<br>
+Domain Adaptation ⊂ Transfer Learning<br>
+Continual Learning ≈ Lifelong/Incremental Learning<br>
+Probabilistic Modeling ≈ Generative Modeling (likelihood focus)<br>
+Weak Supervision ≈ Noisy-Label Learning</p>
+<hr>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/aman5319\.github\.io\/portfolio\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="aman5319/portfolio" data-repo-id="R_kgDOJ44pkw" data-category="Q&amp;A" data-category-id="DIC_kwDOJ44pk84CXwVt" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Blog made with 💜 and <a href="https://quarto.org/">Quarto</a>, by Aman Pandey. License: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/tech_blogs/Machine Learning/different_types_learning.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:amanpandey@mailfence.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

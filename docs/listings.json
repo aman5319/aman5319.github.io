@@ -2,6 +2,7 @@
   {
     "listing": "/tech_blogs/index.html",
     "items": [
+      "/tech_blogs/Machine Learning/different_types_learning.html",
       "/tech_blogs/Recommendation System/recommendation.html",
       "/tech_blogs/Machine Learning/entropy.html",
       "/tech_blogs/Python/parallel_processing.html",
@@ -25,7 +26,6 @@
   {
     "listing": "/non_tech_blogs/index.html",
     "items": [
-      "/non_tech_blogs/strength_technique_bjj.html",
       "/non_tech_blogs/panthera.html",
       "/non_tech_blogs/sea_turtles.html"
     ]
