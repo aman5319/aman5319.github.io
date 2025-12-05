@@ -1,0 +1,17 @@
+---
+title: About Nutrition
+author: Aman Pandey
+date: "12/5/2025"
+description: Custom interactive nutrition tool.
+categories: ["health", "nutrition"]
+page-layout: full
+image: "images/nutrition.png"
+toc: false
+---
+
+::: {.html}
+<iframe 
+  src="nutrition/nutrition.html"
+  style="position:fixed; top:0; left:0; width:100%; height:100%; border:none; margin:0; padding:0; z-index:1;">
+</iframe>
+:::

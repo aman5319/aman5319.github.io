@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Nutrition Guide </title>
+<style>
+  /* Base Styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eef2f7; 
+    color: #333;
+    padding: 20px;
+    margin: 0;
+  }
+
+  h2 {
+    text-align: center;
+    color: #1a4f78; 
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    border-bottom: 3px solid #3498db;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+
+  /* Table Styles (Main Nutrition Table) */
+  table {
+    border-collapse: collapse;
+    width: 95%;
+    max-width: 1400px;
+    margin: 40px auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px 10px;
+    text-align: center;
+    position: relative;
+    font-size: 0.95em;
+  }
+  
+  /* REMOVED: Blue highlight for the last column, as it now contains only food data */
+
+  th {
+    background-color: #1a4f78; 
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  /* Tooltips are not needed in this Food-Only table, but keeping the class for safety in case data changes */
+  td.tooltip {
+    cursor: default;
+    background-color: white; 
+  }
+
+  td.tooltip:hover {
+    background-color: white; 
+  }
+
+  .tooltiptext {
+    display: none; /* Hide tooltips completely in this table */
+  }
+
+  /* NEW STYLES FOR UX (Second Section) */
+  .food-list-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    max-width: 1000px; 
+    margin: 40px auto;
+  }
+
+  /* Checkbox Grid Layout */
+  .nutrient-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  /* Color Coding */
+  .nutrient-group {
+    border: 1px solid #c9dff7;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .nutrient-group:nth-child(1) { /* Minerals */
+    background: #e6f9ff;
+    border-color: #b3e7ff;
+  }
+  .nutrient-group:nth-child(2) { /* Macro */
+    background: #fff7e6;
+    border-color: #ffe0b3;
+  }
+  .nutrient-group:nth-child(3) { /* Fat-soluble */
+    background: #e6ffe6;
+    border-color: #b3ffb3;
+  }
+  .nutrient-group:nth-child(4) { /* Water-soluble */
+    background: #f7e6ff;
+    border-color: #e0b3ff;
+  }
+  .nutrient-group:nth-child(5) { /* Essential Fatty Acids */
+    background: #f0f0ff;
+    border-color: #c9c9ff;
+  }
+
+
+  .nutrient-group h4 {
+    margin-top: 0;
+    color: #3498db;
+    font-size: 1.1em;
+    border-bottom: 1px solid #c9dff7;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  .nutrient-group label {
+    display: block;
+    cursor: pointer;
+    padding: 5px 0;
+    font-size: 0.95em;
+    transition: background-color 0.15s;
+    border-radius: 3px;
+  }
+
+  .nutrient-group label:hover {
+    background-color: rgba(0,0,0,0.05); 
+  }
+  
+  /* Button Row */
+  .button-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .button-row button {
+    padding: 12px 20px;
+    color: white;
+    border: none;
+    border-radius: 25px; 
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .button-row button:first-child {
+    background: #27ae60; 
+    order: 3; 
+  }
+  .button-row button:first-child:hover {
+    background: #1e8449;
+  }
+
+  .button-row button:nth-child(2),
+  .button-row button:nth-child(3) {
+    background: #3498db; 
+  }
+  .button-row button:nth-child(2):hover,
+  .button-row button:nth-child(3):hover {
+    background: #2980b9;
+  }
+
+  /* Results List Styling */
+  ul {
+    list-style: none; 
+    padding-left: 0;
+  }
+
+  /* Food List Specific Styling (Consolidated View) */
+  #foodList li {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    padding: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  .food-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #e8f8f1;
+    font-weight: bold;
+  }
+  
+  .food-details {
+    padding: 10px 15px;
+    font-weight: normal;
+    color: #555;
+    font-size: 0.9em;
+  }
+
+  /* Horizontal Multi-Color Indicator Bar */
+  .color-indicator {
+    height: 6px;
+    width: 100%;
+  }
+
+  .short-hand-nutrients {
+    font-size: 0.85em;
+    color: #555;
+    margin-left: 10px;
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: normal;
+  }
+  
+  .recommended-items {
+    margin-top: 5px;
+    font-weight: normal;
+    font-size: 0.9em;
+    color: #333;
+    border-top: 1px dashed #ccc;
+    padding-top: 5px;
+  }
+
+
+  /* Deficiency List Styling */
+  #deficiencyList li {
+    border-left: 5px solid #e74c3c; 
+    background: #fef0f0;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  #deficiencyList strong {
+    color: #3498db;
+    font-style: normal;
+    font-weight: bold;
+  }
+  /* Supplementation Guide Styling */
+  #supplementation-guide {
+      background: #fdf6e9;
+      border: 1px solid #f39c12;
+      padding: 20px;
+      margin: 40px auto;
+      max-width: 1000px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  #supplementation-guide h3 {
+      color: #e67e22;
+      border-bottom: 2px solid #f39c12;
+      padding-bottom: 5px;
+      margin-top: 0;
+  }
+  .supplement-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: space-around;
+      list-style: none;
+      padding: 0;
+  }
+  .supplement-grid li {
+      background: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      flex: 1 1 200px; 
+      text-align: center;
+      font-weight: 500;
+  }
+  .supplement-grid li strong {
+      color: #2c3e50;
+      font-weight: bold;
+      display: block;
+      font-size: 1.1em;
+      margin-bottom: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div style="text-align: center;">
+  <h2>🇮🇳 Indian Nutrition Table</h2>
+</div>
+
+<table>
+  <tr>
+    <th>Grains/Pulses</th>
+    <th>Dairy/Non-Veg/Fats</th>
+    <th>Nuts/Seeds/Oils</th>
+    <th>Fruits</th>
+    <th>Vegetables</th>
+  </tr>
+
+  <tr>
+    <td>Rice</td>
+    <td>Milk</td>
+    <td>Flax Seeds</td>
+    <td>Apple</td>
+    <td>Spinach</td>
+  </tr>
+
+  <tr>
+    <td>Wheat</td>
+    <td>Curd</td>
+    <td>Sesame Seeds</td>
+    <td>Mango</td>
+    <td>Carrot</td>
+  </tr>
+
+  <tr>
+    <td>Millets</td>
+    <td>Paneer</td>
+    <td>Pumpkin Seeds</td>
+    <td>Guava</td>
+    <td>Beans</td>
+  </tr>
+
+  <tr>
+    <td>Oats</td>
+    <td>Ghee</td>
+    <td>Chia Seeds</td>
+    <td>Oranges</td>
+    <td>Capsicum</td>
+  </tr>
+
+  <tr>
+    <td>Bread</td>
+    <td>Whey Protein</td>
+    <td>Sunflower Seeds</td>
+    <td>Sweet Lime (Musambi)</td>
+    <td>Peas</td>
+  </tr>
+
+  <tr>
+    <td>Corn</td>
+    <td>Eggs</td>
+    <td>Nuts</td>
+    <td>Coconut</td>
+    <td>Beetroot</td>
+  </tr>
+
+  <tr>
+    <td>Pulses</td>
+    <td>Chicken</td>
+    <td>Almonds</td>
+    <td>Pomegranate</td>
+    <td>Cucumber</td>
+  </tr>
+
+  <tr>
+    <td>Chickpeas</td>
+    <td>Fish</td>
+    <td>Walnuts</td>
+    <td>Grapes</td>
+    <td>Tomato</td>
+  </tr>
+
+  <tr>
+    <td>Moong (Green Gram)</td>
+    <td>Indian Mackerel</td>
+    <td>Cashew</td>
+    <td>Plums & Prunes</td>
+    <td>Broccoli</td>
+  </tr>
+
+  <tr>
+    <td>Chana (Chickpeas/Bengal Gram)</td>
+    <td>Mutton</td>
+    <td>Pista</td>
+    <td>Banana</td>
+    <td>Cabbage</td>
+  </tr>
+
+  <tr>
+    <td>Mixed Lentils</td>
+    <td>Dates</td>
+    <td>Peanuts</td>
+    <td>Pineapple</td>
+    <td>Cauliflower</td>
+  </tr>
+
+  <tr>
+    <td>Soy Chunks</td>
+    <td>Peanut Oil</td>
+    <td>Mustard Oil</td>
+    <td>Watermelon</td>
+    <td>Pumpkin/Squash</td>
+  </tr>
+
+  <tr>
+    <td>Soy Seeds</td>
+    <td>Buttermilk</td>
+    <td>Soy</td>
+    <td></td>
+    <td>Eggplant/Brinjal</td>
+  </tr>
+
+  <tr>
+    <td>Sattu</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Okra/Lady's Finger</td>
+  </tr>
+
+  <tr>
+    <td>Pasta/Noodles</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Pointed Gourd (Parwal)</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Ridged Gourd (Turai)</td>
+  </tr>
+</table>
+<hr>
+<div class="food-list-container">
+    <h3 style="text-align: center;">🥦 Select Nutrients for a Suggested Food List</h3>
+  
+    <div class="nutrient-selection-grid">
+      
+      <div class="nutrient-group">
+        <h4>💧 Minerals</h4>
+        <label><input type="checkbox" class="nutrient" value="Calcium"> Calcium</label>
+        <label><input type="checkbox" class="nutrient" value="Iron"> Iron</label>
+        <label><input type="checkbox" class="nutrient" value="Magnesium"> Magnesium</label>
+        <label><input type="checkbox" class="nutrient" value="Potassium"> Potassium</label>
+        <label><input type="checkbox" class="nutrient" value="Sodium"> Sodium</label>
+        <label><input type="checkbox" class="nutrient" value="Zinc"> Zinc</label>
+        <label><input type="checkbox" class="nutrient" value="Copper"> Copper</label>
+        <label><input type="checkbox" value="Iodine" class="nutrient"> Iodine</label>
+        <label><input type="checkbox" class="nutrient" value="Phosphorus"> Phosphorus</label>
+        <label><input type="checkbox" class="nutrient" value="Manganese"> Manganese</label>
+        <label><input type="checkbox" class="nutrient" value="Selenium"> Selenium</label>
+        <label><input type="checkbox" class="nutrient" value="Chromium"> Chromium</label>
+        <label><input type="checkbox" class="nutrient" value="Molybdenum"> Molybdenum</label>
+        <label><input type="checkbox" class="nutrient" value="Chloride"> Chloride</label>
+        <label><input type="checkbox" class="nutrient" value="Sulfur"> Sulfur</label>
+        <label><input type="checkbox" class="nutrient" value="Fluoride"> Fluoride</label>
+      </div>
+
+      <div class="nutrient-group">
+        <h4>💪 Macro Nutrients</h4>
+        <label><input type="checkbox" class="nutrient" value="Protein"> Protein</label>
+        <label><input type="checkbox" class="nutrient" value="Carbohydrates"> Carbohydrates</label>
+        <label><input type="checkbox" class="nutrient" value="Fat"> Fat</label>
+        <label><input type="checkbox" class="nutrient" value="Fibre"> Fibre</label>
+      </div>
+
+      <div class="nutrient-group">
+        <h4>☀️ Fat-soluble Vitamins (A, D, E, K)</h4>
+        <label><input type="checkbox" class="nutrient" value="Vitamin A"> Vitamin A</label>
+        <label><input type="checkbox" class="nutrient" value="Vitamin D"> Vitamin D</label>
+        <label><input type="checkbox" class="nutrient" value="Vitamin E"> Vitamin E</label>
+        <label><input type="checkbox" class="nutrient" value="Vitamin K"> Vitamin K</label>
+      </div>
+
+      <div class="nutrient-group">
+        <h4>🍋 Water-soluble Vitamins & Choline</h4>
+        <label><input type="checkbox" class="nutrient" value="Vitamin C"> Vitamin C</label>
+        <label><input type="checkbox" class="nutrient" value="Thiamin"> Thiamin (B1)</label>
+        <label><input type="checkbox" class="nutrient" value="Riboflavin"> Riboflavin (B2)</label>
+        <label><input type="checkbox" value="Niacin" class="nutrient"> Niacin (B3)</label>
+        <label><input type="checkbox" class="nutrient" value="Pantothenic Acid"> Pantothenic Acid (B5)</label>
+        <label><input type="checkbox" class="nutrient" value="Vitamin B6"> Vitamin B6</label>
+        <label><input type="checkbox" class="nutrient" value="Biotin"> Biotin (B7)</label>
+        <label><input type="checkbox" class="nutrient" value="Folate"> Folate (B9)</label>
+        <label><input type="checkbox" class="nutrient" value="Vitamin B12"> Vitamin B12</label>
+        <label><input type="checkbox" class="nutrient" value="Choline"> Choline</label>
+      </div>
+      
+      <div class="nutrient-group">
+        <h4>🐟 Essential Fatty Acids</h4>
+        <label><input type="checkbox" class="nutrient" value="Omega-3"> Omega-3</label>
+      </div>
+
+    </div>
+    
+    <div class="button-row">
+      <button onclick="generateFoods()">✨ Generate Suggested Foods & Deficiencies</button>
+      <button onclick="selectAll()">✅ Select All</button>
+      <button onclick="clearAll()">🚫 Clear All</button>
+    </div>
+  
+    <div class="results-section">
+      <h3>🍽️ Suggested Food Categories:</h3>
+      <ul id="foodList"></ul>
+    
+      <h3>⚠️ Deficiency Problems & Supplement Tips:</h3>
+      <ul id="deficiencyList"></ul>
+    </div>
+</div>
+<hr>
+💊 Suggested Supplementation Guide
+<div id="supplementation-guide">
+    <h3>Simple Supplementation Recommendations</h3>
+    <ul class="supplement-grid">
+        <li><strong>Vitamin D</strong>: D3 drops/capsules</li>
+        <li><strong>Calcium</strong>: Calcium + Vitamin D3</li>
+        <li><strong>Iron</strong>: Ferrous Salts</li>
+        <li><strong>Vitamin B12</strong>: Methylcobalamin</li>
+        <li><strong>Omega-3</strong>: Fish Oil or Algal Oil</li>
+        <li><strong>Magnesium</strong>: Magnesium Glycinate/Citrate</li>
+        <li><strong>Zinc</strong>: Zinc Picolinate/Gluconate</li>
+        <li><strong>Protein</strong>: Whey/Casein/Plant Powder</li>
+        <li><strong>Fibre</strong>: Psyllium Husk</li>
+        <li><strong>B-Complex</strong>: Multivitamin/B-Complex</li>
+        <li><strong>Vitamin C</strong>: Ascorbic Acid</li>
+        <li><strong>Iodine</strong>: Kelp or Iodide</li>
+    </ul>
+</div>
+
+
+<script>
+// **Category Colors and Abbreviations**
+const categoryColors = {
+  Minerals: '#3498db', // Blue
+  Macro: '#f39c12',     // Orange
+  'Fat-soluble Vitamins': '#2ecc71', // Green
+  'Water-soluble Vitamins': '#9b59b6', // Purple
+  'Essential Fatty Acids': '#8e44ad', // Darker Purple for EFA
+  Other: '#7f8c8d' 
+};
+
+const categoryAbbreviations = {
+    'Minerals': 'Min',
+    'Macro': 'Mac',
+    'Fat-soluble Vitamins': 'Fat-Vit',
+    'Water-soluble Vitamins': 'Water-Vit',
+    'Essential Fatty Acids': 'EFA',
+    'Other': 'Other'
+};
+
+// **Food Categorization for Grouping (Consistent & Complete)**
+const foodCategoryMap = {
+    "Milk": "Dairy/Protein", "Curd": "Dairy/Protein", "Buttermilk": "Dairy/Protein", "Paneer": "Dairy/Protein", "Ghee": "Dairy/Fat", "Whey Protein": "Dairy/Protein",
+    "Eggs": "Non-Veg", "Chicken": "Non-Veg", "Fish": "Non-Veg", "Goat Meat": "Non-Veg", "Red Meat": "Non-Veg", "Shellfish": "Non-Veg", "Indian Mackerel": "Non-Veg", "Mutton": "Non-Veg", "Liver": "Non-Veg", "Egg Yolk": "Non-Veg",
+    "Spinach": "Vegetables", "Fenugreek Leaves": "Vegetables", "Tomatoes": "Vegetables", "Lettuce": "Vegetables", "Celery": "Vegetables", "Carrot": "Vegetables", "Beans": "Vegetables", "Capsicum": "Vegetables", "Peas": "Vegetables", "Beets": "Vegetables", "Cucumber": "Vegetables", "Tomato": "Vegetables", "Broccoli": "Vegetables", "Cabbage": "Vegetables", "Cauliflower": "Vegetables", "Pumpkin/Squash": "Vegetables", "Eggplant/Brinjal": "Vegetables", "Okra/Lady's Finger": "Vegetables", "Pointed Gourd (Parwal)": "Vegetables", "Ridged Gourd (Turai)": "Vegetables", "Cruciferous Vegetables": "Vegetables", "Onion": "Vegetables", "Garlic": "Vegetables", "Sweet Potato": "Vegetables", "Pumpkin": "Vegetables", "Mustard Greens": "Vegetables", "Potato": "Vegetables", "Mushrooms": "Vegetables",
+    "Guava": "Fruits", "Lemon": "Fruits", "Orange": "Fruits", "Papaya": "Fruits", "Banana": "Fruits", "Watermelon": "Fruits", "Coconut Water": "Fruits", "Grape Juice": "Fruits", "Sweet Lime (Musambi)": "Fruits", "Pomegranate": "Fruits", "Grapes": "Fruits", "Plums & Prunes": "Fruits", "Pineapple": "Fruits", "Apple": "Fruits", "Mango": "Fruits", "Coconut": "Nut/Seed/Oil",
+    "Flax Seeds": "Nut/Seed/Oil", "Sesame Seeds": "Nut/Seed/Oil", "Pumpkin Seeds": "Nut/Seed/Oil", "Chia Seeds": "Nut/Seed/Oil", "Sunflower Seeds": "Nut/Seed/Oil", "Nuts": "Nut/Seed/Oil", "Almonds": "Nut/Seed/Oil", "Walnuts": "Nut/Seed/Oil", "Cashew": "Nut/Seed/Oil", "Pista": "Nut/Seed/Oil", "Dates": "Nut/Seed/Oil", "Peanuts": "Nut/Seed/Oil", "Soy": "Nut/Seed/Oil", "Soy Seeds": "Nut/Seed/Oil", "Soy Chunks": "Nut/Seed/Oil", "Salted Nuts": "Nut/Seed/Oil", "Mustard Oil": "Nut/Seed/Oil", "Peanut Oil": "Nut/Seed/Oil",
+    "Rice": "Grains/Pulses", "Whole Wheat": "Grains/Pulses", "Roti": "Grains/Pulses", "Oats": "Grains/Pulses", "Millets": "Grains/Pulses", "Bread": "Grains/Pulses", "Pasta/Noodles": "Grains/Pulses", "Corn": "Grains/Pulses", "Pulses": "Grains/Pulses", "Chickpeas": "Grains/Pulses", "Moong (Green Gram)": "Grains/Pulses", "Chana (Chickpeas/Bengal Gram)": "Grains/Pulses", "Mixed Lentils": "Grains/Pulses", "Peas": "Grains/Pulses", "Sattu": "Grains/Pulses", "Whole Grains": "Grains/Pulses", "Lentils": "Grains/Pulses", "Legumes": "Grains/Pulses",
+    "Salt": "Spice/Other", "Tea": "Spice/Other", "Iodized Salt": "Spice/Other", "Water": "Spice/Other"
+};
+
+// --- (Nutrients Data Factually Corrected & Consistent) ---
+const nutrientsData = {
+  // Minerals
+  "Calcium": { category: 'Minerals', foods:["Milk","Curd","Buttermilk","Spinach","Fenugreek Leaves"], deficiency:"Weak bones, tooth decay, muscle cramps", supplements: "Calcium Citrate, Vitamin D3" },
+  "Chloride": { category: 'Minerals', foods:["Tomatoes","Lettuce","Celery","Salted Nuts"], deficiency:"Fluid imbalance, dehydration" },
+  "Magnesium": { category: 'Minerals', foods:["Pumpkin Seeds","Almonds","Spinach","Lentils","Soy"], deficiency:"Muscle cramps, fatigue, irregular heartbeat", supplements: "Magnesium Glycinate or Citrate" },
+  "Phosphorus": { category: 'Minerals', foods:["Milk","Eggs","Fish","Chicken","Lentils"], deficiency:"Weak bones, fatigue, loss of appetite" },
+  "Potassium": { category: 'Minerals', foods:["Banana","Spinach","Beans","Coconut Water","Sweet Potato"], deficiency:"Muscle weakness, irregular heartbeat, fatigue" },
+  "Sodium": { category: 'Minerals', foods:["Salt","Celery","Beets","Buttermilk"], deficiency:"Fatigue, dizziness, muscle cramps" },
+  "Sulfur": { category: 'Minerals', foods:["Onion","Garlic","Cruciferous Vegetables","Eggs"], deficiency:"Joint pain, weak nails, hair issues" },
+  "Iron": { category: 'Minerals', foods:["Spinach","Fenugreek","Lentils","Red Meat","Chickpeas"], deficiency:"Anemia, fatigue, pale skin", supplements: "Ferrous Ascorbate or Glycinate" },
+  "Manganese": { category: 'Minerals', foods:["Whole Grains","Nuts","Leafy Vegetables","Tea"], deficiency:"Bone problems, poor wound healing" },
+  "Copper": { category: 'Minerals', foods:["Nuts","Seeds","Lentils","Shellfish"], deficiency:"Anemia, bone abnormalities, fatigue" },
+  "Zinc": { category: 'Minerals', foods:["Meat","Chicken","Lentils","Seeds","Nuts"], deficiency:"Hair loss, weak immunity, delayed wound healing", supplements: "Zinc Picolinate or Gluconate" },
+  "Fluoride": { category: 'Minerals', foods:["Tea","Fish","Water"], deficiency:"Tooth decay, weak bones" },
+  "Selenium": { category: 'Minerals', foods:["Fish","Eggs","Meat","Whole Grains","Nuts"], deficiency:"Fatigue, muscle weakness, immune issues" },
+  "Chromium": { category: 'Minerals', foods:["Broccoli","Grape Juice","Whole Grains"], deficiency:"Impaired glucose metabolism" },
+  "Molybdenum": { category: 'Minerals', foods:["Legumes","Whole Grains","Nuts"], deficiency:"Rare, but can cause metabolic issues" },
+  "Iodine": { category: 'Minerals', foods:["Iodized Salt", "Fish", "Egg", "Milk"], deficiency:"Goiter, hypothyroidism, developmental issues", supplements: "Kelp or Potassium Iodide" }, 
+  
+  // Macro Nutrients
+  "Protein": { category: 'Macro', foods:["Eggs","Chicken","Fish","Paneer","Lentils","Soy"], deficiency:"Muscle wasting, fatigue, weak immunity", supplements: "Whey Protein, Casein, Pea/Soy Protein Isolate" },
+  "Carbohydrates": { category: 'Macro', foods:["Rice","Roti","Whole Wheat","Oats","Millets"], deficiency:"Low energy, fatigue, weight loss" },
+  "Fat": { category: 'Macro', foods:["Nuts","Seeds","Ghee","Coconut","Peanut"], deficiency:"Dry skin, poor hormone production, fatigue" },
+  "Fibre": { category: 'Macro', foods:["Whole Grains","Lentils","Vegetables","Fruits","Flax Seeds"], deficiency:"Constipation, digestive problems", supplements: "Psyllium Husk, Fructans" },
+  
+  // Essential Fatty Acids
+  "Omega-3": { category: 'Essential Fatty Acids', foods:["Flax Seeds","Walnuts","Chia Seeds","Indian Mackerel","Sardine"], deficiency:"Joint pain, poor cognition, dry skin", supplements: "Fish Oil, Algal Oil, Krill Oil" },
+  
+  // Fat-Soluble Vitamins
+  "Vitamin A": { category: 'Fat-soluble Vitamins', foods:["Carrot","Sweet Potato","Pumpkin","Spinach","Liver"], deficiency:"Night blindness, weak immunity" },
+  "Vitamin D": { category: 'Fat-soluble Vitamins', foods:["Indian Mackerel","Egg Yolk","Sunlight","Fortified Milk"], deficiency:"Rickets, weak bones, fatigue", supplements: "D3 drops/capsules (often required due to low sun exposure/diet)" },
+  "Vitamin E": { category: 'Fat-soluble Vitamins', foods:["Almonds","Sunflower Seeds","Spinach","Mustard Oil"], deficiency:"Nerve damage, weak immunity" },
+  "Vitamin K": { category: 'Fat-soluble Vitamins', foods:["Spinach","Fenugreek Leaves","Cabbage","Mustard Greens"], deficiency:"Poor blood clotting, easy bruising", supplements: "Vitamin K2 (MK-7)" },
+  
+  // Water-Soluble Vitamins & Choline
+  "Vitamin C": { category: 'Water-soluble Vitamins', foods:["Guava","Lemon","Orange","Capsicum","Papaya"], deficiency:"Scurvy, bleeding gums, weak immunity", supplements: "Ascorbic Acid" },
+  "Thiamin": { category: 'Water-soluble Vitamins', foods:["Whole Grains","Lentils","Sunflower Seeds","Peanuts"], deficiency:"Beriberi, fatigue, nerve damage" }, 
+  "Riboflavin": { category: 'Water-soluble Vitamins', foods:["Milk","Eggs","Mushrooms","Almonds","Paneer"], deficiency:"Skin disorders, sore throat, anemia" },
+  "Niacin": { category: 'Water-soluble Vitamins', foods:["Chicken","Fish","Peanuts","Whole Grains"], deficiency:"Pellagra: diarrhea, dermatitis, dementia" },
+  "Pantothenic Acid": { category: 'Water-soluble Vitamins', foods:["Mushrooms","Eggs","Chicken","Fish","Milk"], deficiency:"Fatigue, headaches, nausea" },
+  "Vitamin B6": { category: 'Water-soluble Vitamins', foods:["Banana","Potato","Spinach","Chicken","Fish"], deficiency:"Anemia, depression, confusion" },
+  "Biotin": { category: 'Water-soluble Vitamins', foods:["Egg Yolk", "Nuts", "Seeds", "Liver"], deficiency:"Hair loss, skin rash, brittle nails" },
+  "Folate": { category: 'Water-soluble Vitamins', foods:["Spinach","Lentils","Beans","Orange","Papaya"], deficiency:"Anemia, birth defects" },
+  "Vitamin B12": { category: 'Water-soluble Vitamins', foods:["Eggs","Chicken","Fish","Goat Meat","Paneer"], deficiency:"Anemia, nerve damage, fatigue", supplements: "Methylcobalamin or Cyanocobalamin (especially for vegetarians)" },
+  "Choline": { category: 'Water-soluble Vitamins', foods:["Eggs","Chicken","Fish","Milk"], deficiency:"Fatty liver, muscle damage", supplements: "Choline Bitartrate" }
+};
+
+// Create the reverse map (Food -> Nutrients)
+const foodToNutrientsMap = {};
+Object.keys(nutrientsData).forEach(nutrient => {
+    nutrientsData[nutrient].foods.forEach(food => {
+        if (!foodToNutrientsMap[food]) {
+            foodToNutrientsMap[food] = new Set();
+        }
+        foodToNutrientsMap[food].add(nutrient);
+    });
+});
+
+function selectAll() {
+  document.querySelectorAll('.nutrient').forEach(cb => cb.checked = true);
+}
+
+function clearAll() {
+  document.querySelectorAll('.nutrient').forEach(cb => cb.checked = false);
+}
+
+function generateFoods() {
+  const selectedNutrients = Array.from(document.querySelectorAll('.nutrient:checked')).map(cb => cb.value);
+  const deficiencySet = new Set();
+  const recommendedFoodCategories = {}; 
+
+  selectedNutrients.forEach(nutrient => {
+    if(nutrientsData[nutrient]){
+      // 1. Gather all unique foods and group by main category
+      nutrientsData[nutrient].foods.forEach(food => {
+        const category = getBaseCategory(foodCategoryMap[food]);
+        if (!recommendedFoodCategories[category]) {
+            recommendedFoodCategories[category] = { foods: new Set(), coveredNutrients: new Set() };
+        }
+        recommendedFoodCategories[category].foods.add(food);
+        recommendedFoodCategories[category].coveredNutrients.add(nutrient);
+      });
+      
+      // 2. Gather deficiency info and ADD SUPPLEMENT TIP BACK
+      if (nutrientsData[nutrient].deficiency) {
+        let deficiencyMessage = `**${nutrient}**: ${nutrientsData[nutrient].deficiency}`;
+        if (nutrientsData[nutrient].supplements) {
+            deficiencyMessage += ` <strong>[Supplement Tip: ${nutrientsData[nutrient].supplements}]</strong>`;
+        }
+        deficiencySet.add(deficiencyMessage);
+      }
+    }
+  });
+
+  const foodList = document.getElementById("foodList");
+  const deficiencyList = document.getElementById("deficiencyList");
+  foodList.innerHTML = '';
+  deficiencyList.innerHTML = '';
+
+  if (Object.keys(recommendedFoodCategories).length === 0) {
+      foodList.innerHTML = '<li>Please select at least one nutrient or mineral.</li>';
+      deficiencyList.innerHTML = '<li>No deficiencies or supplement tips to show as no nutrients were selected.</li>';
+      return;
+  }
+  
+  // **Process and Display Grouped Foods**
+  const sortedCategories = Object.keys(recommendedFoodCategories).sort((a, b) => getSortKey(a) - getSortKey(b));
+  
+  sortedCategories.forEach(category => {
+    const li = document.createElement("li");
+    const categoryData = recommendedFoodCategories[category];
+    
+    let uniqueCategories = new Set();
+    categoryData.coveredNutrients.forEach(nutrient => {
+        uniqueCategories.add(nutrientsData[nutrient].category);
+    });
+
+    // --- Indicator Bar Logic ---
+    let gradientColors = Array.from(uniqueCategories)
+                                .map(cat => categoryColors[cat] || categoryColors.Other);
+    let shortHand = Array.from(uniqueCategories)
+                                .map(cat => categoryAbbreviations[cat] || categoryAbbreviations.Other)
+                                .join(' / ');
+
+    let gradientString = '';
+    if (gradientColors.length > 0) {
+        const segmentSize = 100 / gradientColors.length;
+        gradientString = 'linear-gradient(to right'; 
+        let currentPercentage = 0;
+
+        gradientColors.forEach((color, index) => {
+            if (index > 0) {
+                gradientString += `, ${color} ${currentPercentage}%`;
+            }
+            currentPercentage += segmentSize;
+            gradientString += `, ${color} ${currentPercentage}%`;
+        });
+        gradientString += ')';
+    }
+    
+    const indicatorDiv = document.createElement("div");
+    indicatorDiv.className = 'color-indicator';
+    indicatorDiv.style.background = gradientString || categoryColors.Other;
+    li.appendChild(indicatorDiv);
+    
+    const headerDiv = document.createElement("div");
+    headerDiv.className = 'food-header';
+    headerDiv.innerHTML = `
+        ${category}
+        <span class="short-hand-nutrients" title="Nutrient Categories">${shortHand}</span>
+    `;
+    li.appendChild(headerDiv);
+
+    const detailsDiv = document.createElement("div");
+    detailsDiv.className = 'food-details';
+    
+    const recommendedItems = Array.from(categoryData.foods).sort().join(', ');
+    detailsDiv.innerHTML = `
+        <div class="recommended-items"><b>Suggested Foods</b>: ${recommendedItems}</div>
+        <div><b>Nutrients Covered</b>: ${Array.from(categoryData.coveredNutrients).sort().join(', ')}</div>
+    `;
+    li.appendChild(detailsDiv);
+
+    foodList.appendChild(li);
+  });
+  
+  // **Process and Display Deficiencies (With Supplement Tips Restored)**
+  const sortedDeficiencies = Array.from(deficiencySet).sort();
+  sortedDeficiencies.forEach(d => {
+    const li = document.createElement("li");
+    // Replace **Nutrient** with bold, and keep the <strong>[Supplement Tip]</strong>
+    li.innerHTML = d.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    deficiencyList.appendChild(li);
+  });
+}
+
+function getBaseCategory(fullCategory) {
+    return fullCategory ? fullCategory.split('/')[0] : 'Other';
+}
+function getSortKey(category) {
+    if (!category) return 99;
+    switch (category) {
+        case "Non-Veg": return 1;
+        case "Dairy": return 2;
+        case "Nut": return 3;
+        case "Grains": return 4;
+        case "Vegetables": return 5;
+        case "Fruits": return 6;
+        case "Spice": return 7;
+        default: return 99;
+    }
+}
+</script>
+</body>
+</html>

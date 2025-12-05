@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aman Pandey">
+<meta name="dcterms.date" content="2025-12-05">
+<meta name="description" content="Custom interactive nutrition tool.">
 
-<title>Beyond the Screen: Adventures in Reality – Aman Pandey</title>
+<title>About Nutrition – Aman Pandey</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,70 +71,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Beyond the Screen: Adventures in Reality – Aman Pandey">
+<meta property="og:title" content="About Nutrition – Aman Pandey">
+<meta property="og:description" content="Custom interactive nutrition tool.">
+<meta property="og:image" content="https://aman5319.github.io/portfolio/non_tech_blogs/images/nutrition.png">
 <meta property="og:site_name" content="Aman Pandey">
+<meta property="og:image:height" content="183">
+<meta property="og:image:width" content="275">
 </head>
 
 <body class="nav-fixed">
@@ -178,22 +125,41 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="health">health <span class="quarto-category-count">(1)</span></div><div class="category" data-category="marine">marine <span class="quarto-category-count">(1)</span></div><div class="category" data-category="nutrition">nutrition <span class="quarto-category-count">(1)</span></div><div class="category" data-category="wildlife">wildlife <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Beyond the Screen: Adventures in Reality</h1>
+<h1 class="title">About Nutrition</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">health</div>
+    <div class="quarto-category">nutrition</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Custom interactive nutrition tool.
+  </div>
 </div>
 
 
+<div class="quarto-title-meta column-page">
 
-<div class="quarto-title-meta column-page-left">
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Aman Pandey </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 5, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -203,163 +169,14 @@ window.Quarto = {
 </header>
 
 
-<!-- Oceangraphy
-Marine Biology
-Forest
-India's Physical features (Mountains, rivers, hiils)
-Learn Geography 
-Snow Leopard
-Wildlife
-Biking
-Giving stargazing sessions.
- -->
+<div class="html">
+<iframe src="nutrition/nutrition.html" style="position:fixed; top:0; left:0; width:100%; height:100%; border:none; margin:0; padding:0; z-index:1;">
+</iframe>
+</div>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="health,nutrition" data-listing-date-sort="1764873000000" data-listing-file-modified-sort="1764934666579" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="15">
-<div class="thumbnail">
-<p><a href="../non_tech_blogs/nutrition.html" class="no-external"></a></p><a href="../non_tech_blogs/nutrition.html" class="no-external">
-<p><img loading="lazy" src="../non_tech_blogs/images/nutrition.png" class="thumbnail-image"></p>
-</a><p><a href="../non_tech_blogs/nutrition.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../non_tech_blogs/nutrition.html" class="no-external">About Nutrition</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../non_tech_blogs/nutrition.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('health'); return false;">
-health
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('nutrition'); return false;">
-nutrition
-</div>
-</div>
-<div class="listing-description">
-<a href="../non_tech_blogs/nutrition.html" class="no-external">Custom interactive nutrition tool.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../non_tech_blogs/nutrition.html" class="no-external">
-<div class="listing-date">
-Dec 5, 2025
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-1 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="1" data-categories="wildlife" data-listing-date-sort="1759257000000" data-listing-file-modified-sort="1759260828734" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1300">
-<div class="thumbnail">
-<p><a href="../non_tech_blogs/panthera.html" class="no-external"></a></p><a href="../non_tech_blogs/panthera.html" class="no-external">
-<p><img loading="lazy" src="../non_tech_blogs/images/image-1.png" class="thumbnail-image"></p>
-</a><p><a href="../non_tech_blogs/panthera.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../non_tech_blogs/panthera.html" class="no-external">Panthera Genus in India</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../non_tech_blogs/panthera.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('wildlife'); return false;">
-wildlife
-</div>
-</div>
-<div class="listing-description">
-<a href="../non_tech_blogs/panthera.html" class="no-external">Talking about India Panthera species.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../non_tech_blogs/panthera.html" class="no-external">
-<div class="listing-date">
-Oct 1, 2025
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-7 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-left" data-index="2" data-categories="marine" data-listing-date-sort="1759257000000" data-listing-file-modified-sort="1759261714321" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2086">
-<div class="thumbnail">
-<p><a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a></p><a href="../non_tech_blogs/sea_turtles.html" class="no-external">
-<p><img loading="lazy" src="../non_tech_blogs/images/turtles_india.png" class="thumbnail-image"></p>
-</a><p><a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../non_tech_blogs/sea_turtles.html" class="no-external">Sea Turtles in India</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../non_tech_blogs/sea_turtles.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('marine'); return false;">
-marine
-</div>
-</div>
-<div class="listing-description">
-<a href="../non_tech_blogs/sea_turtles.html" class="no-external">Talking Sea Turtles in India.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../non_tech_blogs/sea_turtles.html" class="no-external">
-<div class="listing-date">
-Oct 1, 2025
-</div>
-<div class="listing-author">
-Aman Pandey
-</div>
-<div class="listing-reading-time">
-11 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -929,6 +746,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="aman5319/portfolio" data-repo-id="R_kgDOJ44pkw" data-category="Q&amp;A" data-category-id="DIC_kwDOJ44pk84CXwVt" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -937,7 +758,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/non_tech_blogs/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/non_tech_blogs/nutrition.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
