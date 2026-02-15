@@ -9,11 +9,11 @@ project:
   
 
 website:
-  site-url: https://aman5319.github.io/portfolio/
+  site-url: https://aman5319.github.io/
   title: "Aman Pandey"
   description: 'Sharing My Journey and Learning'
 
-  repo-url: https://github.com/aman5319/portfolio
+  repo-url: https://github.com/aman5319/aman5319.github.io
   repo-actions: [edit, issue]
 
   back-to-top-navigation: true
