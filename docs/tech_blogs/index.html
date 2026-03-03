@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.30">
+<meta name="generator" content="quarto-1.9.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Tech Blogs – Aman Pandey</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,17 +35,20 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-listing/list.min.js"></script>
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3a01e2046221230fdceeea94b1ec5d67.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-a4a11d514c7d463668e07712114998e6.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-60eb8141d3f50090c0f52d36a83ed331.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2d7b555c8139e1218026ae7dd17bce4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0fa6b00180960967ab5a151be3e01751.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-cc7ac1faa216ae0851bfb9d8e96df20a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0fa6b00180960967ab5a151be3e01751.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -115,7 +121,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -134,10 +140,175 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Tech Blogs – Aman Pandey">
 <meta property="og:description" content="Sharing My Learning in Math, Programming and AI">
+<meta property="og:image" content="https://aman5319.github.io/tech_blogs/Recommendation System/images/pycon_2025_logo.png">
 <meta property="og:site_name" content="Aman Pandey">
+<meta property="og:image:height" content="757">
+<meta property="og:image:width" content="784">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -181,9 +352,10 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(19)</span></div><div class="category" data-category="AWS">AWS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="attention">attention <span class="quarto-category-count">(2)</span></div><div class="category" data-category="big-data">big-data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="convolution">convolution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="deep-learning">deep-learning <span class="quarto-category-count">(14)</span></div><div class="category" data-category="machine-learning">machine-learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="math">math <span class="quarto-category-count">(1)</span></div><div class="category" data-category="metrics">metrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="nlp">nlp <span class="quarto-category-count">(4)</span></div><div class="category" data-category="optimization">optimization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(3)</span></div><div class="category" data-category="vision">vision <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(19)</span></div><div class="category" data-category="YXR0ZW50aW9u">attention <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QVdT">AWS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlnLWRhdGE=">big-data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29udm9sdXRpb24=">convolution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVlcC1sZWFybmluZw==">deep-learning <span class="quarto-category-count">(14)</span></div><div class="category" data-category="bWFjaGluZS1sZWFybmluZw==">machine-learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWF0aA==">math <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0cmljcw==">metrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmxw">nlp <span class="quarto-category-count">(4)</span></div><div class="category" data-category="b3B0aW1pemF0aW9u">optimization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dmlzaW9u">vision <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -212,23 +384,23 @@ window.Quarto = {
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+    </select>
   </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
@@ -236,27 +408,24 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="deep-learning" data-listing-date-sort="1760898600000" data-listing-file-modified-sort="1760944073397" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="835">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external"></a></p><a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external">
+<div class="quarto-post image-left" data-index="0" data-categories="ZGVlcC1sZWFybmluZw==" data-listing-date-sort="1760898600000" data-listing-file-modified-sort="1772532440705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="835">
+<div class="thumbnail"><a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external">
+
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external"></a></p>
-</div>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external">Different Type of Learning in ML</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
 </div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external">Every type of learning which exists in ML a small try to keep them listed together.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external">
+<p>Every type of learning which exists in ML a small try to keep them listed together.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Machine Learning/different_types_learning.html" class="no-external">
@@ -266,36 +435,30 @@ Oct 20, 2025
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-5 min
-</div>
+<div class="listing-reading-time">5 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="1" data-categories="deep-learning,attention" data-listing-date-sort="1757874600000" data-listing-file-modified-sort="1759260771959" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1037">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external"></a></p><a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external">
-<p><img loading="lazy" src="../tech_blogs/Recommendation System/images/pycon_2025_logo.png" class="thumbnail-image"></p>
-</a><p><a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="1" data-categories="ZGVlcC1sZWFybmluZyUyQ2F0dGVudGlvbg==" data-listing-date-sort="1757874600000" data-listing-file-modified-sort="1772532440833" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1037">
+<div class="thumbnail"><a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external">
+
+<img loading="lazy" src="../tech_blogs/Recommendation System/images/pycon_2025_logo.png" class="thumbnail-image">
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external">Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXR0ZW50aW9u'); return false;">attention</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('attention'); return false;">
-attention
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external">Overview of Recommendation system - Workshop for Pycon India 2025</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external">
+<p>Overview of Recommendation system - Workshop for Pycon India 2025</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Recommendation System/recommendation.html" class="no-external">
@@ -305,36 +468,30 @@ Sep 15, 2025
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-6 min
-</div>
+<div class="listing-reading-time">6 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="2" data-categories="deep-learning,math" data-listing-date-sort="1757615400000" data-listing-file-modified-sort="1759262644469" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="29" data-listing-word-count-sort="5702">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Machine Learning/entropy.html" class="no-external"></a></p><a href="../tech_blogs/Machine Learning/entropy.html" class="no-external">
-<p><img loading="lazy" src="../tech_blogs/Machine Learning/images/entropy_ven.png" class="thumbnail-image"></p>
-</a><p><a href="../tech_blogs/Machine Learning/entropy.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="2" data-categories="ZGVlcC1sZWFybmluZyUyQ21hdGg=" data-listing-date-sort="1757615400000" data-listing-file-modified-sort="1772532440705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="29" data-listing-word-count-sort="5702">
+<div class="thumbnail"><a href="../tech_blogs/Machine Learning/entropy.html" class="no-external">
+
+<img loading="lazy" src="../tech_blogs/Machine Learning/images/entropy_ven.png" class="thumbnail-image">
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Machine Learning/entropy.html" class="no-external">Entropy</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Machine Learning/entropy.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('math'); return false;">
-math
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Machine Learning/entropy.html" class="no-external">Universe’s most universal law.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Machine Learning/entropy.html" class="no-external">
+<p>Universe’s most universal law.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Machine Learning/entropy.html" class="no-external">
@@ -344,33 +501,28 @@ Sep 12, 2025
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-29 min
-</div>
+<div class="listing-reading-time">29 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="3" data-categories="python" data-listing-date-sort="1697308200000" data-listing-file-modified-sort="1729177302933" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2326">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Python/parallel_processing.html" class="no-external"></a></p><a href="../tech_blogs/Python/parallel_processing.html" class="no-external">
-<p class="card-img-top"><img src="Python/images/core_socket.gif"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Python/parallel_processing.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="3" data-categories="cHl0aG9u" data-listing-date-sort="1697308200000" data-listing-file-modified-sort="1772532440833" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2326">
+<div class="thumbnail"><a href="../tech_blogs/Python/parallel_processing.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Python/images/core_socket.gif"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Python/parallel_processing.html" class="no-external">Parallelism and Concurrency</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Python/parallel_processing.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
 </div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Python/parallel_processing.html" class="no-external">We discuss the Theoretical Foundation of Parallelism and Concurrency and some low level primitives. Discuss how it is done on Python and compare it with other programming language. </a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Python/parallel_processing.html" class="no-external">
+<p>We discuss the Theoretical Foundation of Parallelism and Concurrency and some low level primitives. Discuss how it is done on Python and compare it with other programming language.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Python/parallel_processing.html" class="no-external">
@@ -380,36 +532,30 @@ Oct 15, 2023
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-12 min
-</div>
+<div class="listing-reading-time">12 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="4" data-categories="big-data,AWS" data-listing-date-sort="1696530600000" data-listing-file-modified-sort="1729177302906" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2258">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Python/big_data_processing.html" class="no-external"></a></p><a href="../tech_blogs/Python/big_data_processing.html" class="no-external">
-<p class="card-img-top"><img src="Python/images/kafka_keyword_diagram.svg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Python/big_data_processing.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="4" data-categories="YmlnLWRhdGElMkNBV1M=" data-listing-date-sort="1696530600000" data-listing-file-modified-sort="1772532440813" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2258">
+<div class="thumbnail"><a href="../tech_blogs/Python/big_data_processing.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Python/images/kafka_keyword_diagram.svg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Python/big_data_processing.html" class="no-external">Big Data Processing</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Python/big_data_processing.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('big-data'); return false;">
-big-data
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmlnLWRhdGE='); return false;">big-data</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QVdT'); return false;">AWS</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('AWS'); return false;">
-AWS
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Python/big_data_processing.html" class="no-external">Exploring different tools and technologies to store, integrate, analyze, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Python/big_data_processing.html" class="no-external">
+<p>Exploring different tools and technologies to store, integrate, analyze, process, visualize data at large scale in a batch and stream fashion both with custom tools and AWS managed services</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Python/big_data_processing.html" class="no-external">
@@ -419,36 +565,30 @@ Oct 6, 2023
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-12 min
-</div>
+<div class="listing-reading-time">12 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="5" data-categories="machine-learning,deep-learning" data-listing-date-sort="1694802600000" data-listing-file-modified-sort="1729177302799" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1453">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external"></a></p><a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external">
-<p class="card-img-top"><img src="Machine Learning/images/data-registry.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="5" data-categories="bWFjaGluZS1sZWFybmluZyUyQ2RlZXAtbGVhcm5pbmc=" data-listing-date-sort="1694802600000" data-listing-file-modified-sort="1772532440705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1453">
+<div class="thumbnail"><a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Machine Learning/images/data-registry.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external">Data and Model Management | Model Monitoring and Logging.</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('machine-learning'); return false;">
-machine-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZS1sZWFybmluZw=='); return false;">machine-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external">In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external">
+<p>In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Machine Learning/data_model_manage_prod.html" class="no-external">
@@ -458,36 +598,30 @@ Sep 16, 2023
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-8 min
-</div>
+<div class="listing-reading-time">8 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="6" data-categories="deep-learning,attention" data-listing-date-sort="1687372200000" data-listing-file-modified-sort="1729177302790" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2040">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Machine Learning/Attention.html" class="no-external"></a></p><a href="../tech_blogs/Machine Learning/Attention.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../tech_blogs/Machine Learning/Attention.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="6" data-categories="ZGVlcC1sZWFybmluZyUyQ2F0dGVudGlvbg==" data-listing-date-sort="1687372200000" data-listing-file-modified-sort="1772532440701" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2040">
+<div class="thumbnail"><a href="../tech_blogs/Machine Learning/Attention.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Machine Learning/images/flashattention.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Machine Learning/Attention.html" class="no-external">Different types of Attentions</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Machine Learning/Attention.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXR0ZW50aW9u'); return false;">attention</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('attention'); return false;">
-attention
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Machine Learning/Attention.html" class="no-external">A dive into different types of attention from it start with Bahdanau to Flash Attention.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Machine Learning/Attention.html" class="no-external">
+<p>A dive into different types of attention from it start with Bahdanau to Flash Attention.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Machine Learning/Attention.html" class="no-external">
@@ -497,33 +631,28 @@ Jun 22, 2023
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-11 min
-</div>
+<div class="listing-reading-time">11 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="7" data-categories="deep-learning" data-listing-date-sort="1679250600000" data-listing-file-modified-sort="1729177302796" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3027">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external"></a></p><a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external">
-<p class="card-img-top"><img src="Machine Learning/images/dropout.gif"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="7" data-categories="ZGVlcC1sZWFybmluZw==" data-listing-date-sort="1679250600000" data-listing-file-modified-sort="1772532440705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3027">
+<div class="thumbnail"><a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Machine Learning/images/dropout.gif"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external">Improve Model’s Prediction power using Regularization</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
 </div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external">Different ways to increase the model’s prediction power using different regularization Techniques</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external">
+<p>Different ways to increase the model’s prediction power using different regularization Techniques</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Machine Learning/Regularization.html" class="no-external">
@@ -533,36 +662,30 @@ Mar 20, 2023
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-16 min
-</div>
+<div class="listing-reading-time">16 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="8" data-categories="deep-learning,convolution" data-listing-date-sort="1667845800000" data-listing-file-modified-sort="1729177302632" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3396">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Computer Vision/convolution.html" class="no-external"></a></p><a href="../tech_blogs/Computer Vision/convolution.html" class="no-external">
-<p class="card-img-top"><img src="Computer Vision/images/ffnvscnn.PNG"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Computer Vision/convolution.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="8" data-categories="ZGVlcC1sZWFybmluZyUyQ2NvbnZvbHV0aW9u" data-listing-date-sort="1667845800000" data-listing-file-modified-sort="1772532440541" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3396">
+<div class="thumbnail"><a href="../tech_blogs/Computer Vision/convolution.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Computer Vision/images/ffnvscnn.PNG"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Computer Vision/convolution.html" class="no-external">Convolution and Common architectures</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Computer Vision/convolution.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29udm9sdXRpb24='); return false;">convolution</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('convolution'); return false;">
-convolution
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Computer Vision/convolution.html" class="no-external">Understanding different types of CNN layers and some common architectures</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Computer Vision/convolution.html" class="no-external">
+<p>Understanding different types of CNN layers and some common architectures</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Computer Vision/convolution.html" class="no-external">
@@ -572,36 +695,30 @@ Nov 8, 2022
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-17 min
-</div>
+<div class="listing-reading-time">17 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="9" data-categories="deep-learning,optimization" data-listing-date-sort="1667500200000" data-listing-file-modified-sort="1729177302906" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1639">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external"></a></p><a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external">
-<p class="card-img-top"><img src="Optimization/optimisers_in_dl_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="9" data-categories="ZGVlcC1sZWFybmluZyUyQ29wdGltaXphdGlvbg==" data-listing-date-sort="1667500200000" data-listing-file-modified-sort="1772532440813" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1639">
+<div class="thumbnail"><a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Optimization/optimisers_in_dl_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external">Optimizers in - Deep Learning</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3B0aW1pemF0aW9u'); return false;">optimization</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('optimization'); return false;">
-optimization
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external">3D visualization of different optimizers.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external">
+<p>3D visualization of different optimizers.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Optimization/optimisers_in_dl.html" class="no-external">
@@ -611,39 +728,32 @@ Nov 4, 2022
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-9 min
-</div>
+<div class="listing-reading-time">9 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="10" data-categories="machine-learning,deep-learning,metrics" data-listing-date-sort="1653157800000" data-listing-file-modified-sort="1729177302876" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3219">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Machine Learning/metrics.html" class="no-external"></a></p><a href="../tech_blogs/Machine Learning/metrics.html" class="no-external">
-<p class="card-img-top"><img src="Machine Learning/images/confusionmatrix.png" title="confusion matrix" class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Machine Learning/metrics.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="10" data-categories="bWFjaGluZS1sZWFybmluZyUyQ2RlZXAtbGVhcm5pbmclMkNtZXRyaWNz" data-listing-date-sort="1653157800000" data-listing-file-modified-sort="1772532440781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3219">
+<div class="thumbnail"><a href="../tech_blogs/Machine Learning/metrics.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Machine Learning/images/confusionmatrix.png" title="confusion matrix" class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Machine Learning/metrics.html" class="no-external">Metrics for Machine Learning</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Machine Learning/metrics.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('machine-learning'); return false;">
-machine-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZS1sZWFybmluZw=='); return false;">machine-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWV0cmljcw=='); return false;">metrics</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('metrics'); return false;">
-metrics
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Machine Learning/metrics.html" class="no-external">A deep dive into different types of Metrics for evaluating Machine Learning Models.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Machine Learning/metrics.html" class="no-external">
+<p>A deep dive into different types of Metrics for evaluating Machine Learning Models.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Machine Learning/metrics.html" class="no-external">
@@ -653,36 +763,30 @@ May 22, 2022
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-17 min
-</div>
+<div class="listing-reading-time">17 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="11" data-categories="deep-learning,vision" data-listing-date-sort="1629052200000" data-listing-file-modified-sort="1729177302790" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3575">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external"></a></p><a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external">
-<p class="card-img-top"><img src="Computer Vision/images/intro.jpeg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="11" data-categories="ZGVlcC1sZWFybmluZyUyQ3Zpc2lvbg==" data-listing-date-sort="1629052200000" data-listing-file-modified-sort="1772532440701" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3575">
+<div class="thumbnail"><a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Computer Vision/images/intro.jpeg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external">Object Detection</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzaW9u'); return false;">vision</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('vision'); return false;">
-vision
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external">Object Detection - SSD | YOLO | R-CNN | Fast R-CNN | Faster R-CNN</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external">
+<p>Object Detection - SSD | YOLO | R-CNN | Fast R-CNN | Faster R-CNN</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Computer Vision/object_detection.html" class="no-external">
@@ -692,33 +796,28 @@ Aug 16, 2021
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-18 min
-</div>
+<div class="listing-reading-time">18 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="12" data-categories="nlp" data-listing-date-sort="1626373800000" data-listing-file-modified-sort="1729177302897" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2897">
-<div class="thumbnail">
-<p><a href="../tech_blogs/NLP/linguistics.html" class="no-external"></a></p><a href="../tech_blogs/NLP/linguistics.html" class="no-external">
-<p class="card-img-top"><img src="NLP/images/linguistics.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/NLP/linguistics.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="12" data-categories="bmxw" data-listing-date-sort="1626373800000" data-listing-file-modified-sort="1772532440801" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2897">
+<div class="thumbnail"><a href="../tech_blogs/NLP/linguistics.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="NLP/images/linguistics.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/NLP/linguistics.html" class="no-external">Linguistics</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/NLP/linguistics.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('nlp'); return false;">
-nlp
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+
 </div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/NLP/linguistics.html" class="no-external">Deep into linguistics, For the curious souls to know why sometime languages don’t make sense and we want computers to understand it better than us.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/NLP/linguistics.html" class="no-external">
+<p>Deep into linguistics, For the curious souls to know why sometime languages don’t make sense and we want computers to understand it better than us.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/NLP/linguistics.html" class="no-external">
@@ -728,33 +827,28 @@ Jul 16, 2021
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-15 min
-</div>
+<div class="listing-reading-time">15 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="13" data-categories="deep-learning" data-listing-date-sort="1624473000000" data-listing-file-modified-sort="1729177302799" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3011">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external"></a></p><a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external">
-<p class="card-img-top"><img src="Machine Learning/images/neuron_weights.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="13" data-categories="ZGVlcC1sZWFybmluZw==" data-listing-date-sort="1624473000000" data-listing-file-modified-sort="1772532440705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3011">
+<div class="thumbnail"><a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="Machine Learning/images/neuron_weights.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external">Weight Intialization</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
 </div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external">Learning different ways of weight Intialization their effects and common pitfalls.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external">
+<p>Learning different ways of weight Intialization their effects and common pitfalls.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Machine Learning/Weight_Initializer.html" class="no-external">
@@ -764,33 +858,28 @@ Jun 24, 2021
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-16 min
-</div>
+<div class="listing-reading-time">16 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="14" data-categories="python" data-listing-date-sort="1621621800000" data-listing-file-modified-sort="1729177302933" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1424">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Python/profiling.html" class="no-external"></a></p><a href="../tech_blogs/Python/profiling.html" class="no-external">
-<p><img loading="lazy" src="../tech_blogs/Python/images/profiler.png" class="thumbnail-image"></p>
-</a><p><a href="../tech_blogs/Python/profiling.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="14" data-categories="cHl0aG9u" data-listing-date-sort="1621621800000" data-listing-file-modified-sort="1772532440833" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1424">
+<div class="thumbnail"><a href="../tech_blogs/Python/profiling.html" class="no-external">
+
+<img loading="lazy" src="../tech_blogs/Python/images/profiler.png" class="thumbnail-image">
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Python/profiling.html" class="no-external">Memory and Time Profiling</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Python/profiling.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
 </div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Python/profiling.html" class="no-external">Let’s save some time and memory, coz both are expensive.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Python/profiling.html" class="no-external">
+<p>Let’s save some time and memory, coz both are expensive.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Python/profiling.html" class="no-external">
@@ -800,33 +889,28 @@ May 22, 2021
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-8 min
-</div>
+<div class="listing-reading-time">8 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="15" data-categories="python" data-listing-date-sort="1604428200000" data-listing-file-modified-sort="1729177302907" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1083">
-<div class="thumbnail">
-<p><a href="../tech_blogs/Python/functional_programming.html" class="no-external"></a></p><a href="../tech_blogs/Python/functional_programming.html" class="no-external">
-<p><img loading="lazy" src="../tech_blogs/Python/images/functional.png" class="thumbnail-image"></p>
-</a><p><a href="../tech_blogs/Python/functional_programming.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="15" data-categories="cHl0aG9u" data-listing-date-sort="1604428200000" data-listing-file-modified-sort="1772532440813" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1083">
+<div class="thumbnail"><a href="../tech_blogs/Python/functional_programming.html" class="no-external">
+
+<img loading="lazy" src="../tech_blogs/Python/images/functional.png" class="thumbnail-image">
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/Python/functional_programming.html" class="no-external">Functional Programming capabilites of python</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/Python/functional_programming.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
 </div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/Python/functional_programming.html" class="no-external">Lambda, Comphrensions, Decorators and Generators with some sweet python tips and tricks.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/Python/functional_programming.html" class="no-external">
+<p>Lambda, Comphrensions, Decorators and Generators with some sweet python tips and tricks.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/Python/functional_programming.html" class="no-external">
@@ -836,36 +920,30 @@ Nov 4, 2020
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-6 min
-</div>
+<div class="listing-reading-time">6 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="16" data-categories="deep-learning,nlp" data-listing-date-sort="1571941800000" data-listing-file-modified-sort="1729184722019" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3231">
-<div class="thumbnail">
-<p><a href="../tech_blogs/NLP/embeddings.html" class="no-external"></a></p><a href="../tech_blogs/NLP/embeddings.html" class="no-external">
-<p class="card-img-top"><img src="NLP/images/embedding.PNG"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/NLP/embeddings.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="16" data-categories="ZGVlcC1sZWFybmluZyUyQ25scA==" data-listing-date-sort="1571941800000" data-listing-file-modified-sort="1772532440781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3231">
+<div class="thumbnail"><a href="../tech_blogs/NLP/embeddings.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="NLP/images/embedding.PNG"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/NLP/embeddings.html" class="no-external">Word Embeddings</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/NLP/embeddings.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('nlp'); return false;">
-nlp
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/NLP/embeddings.html" class="no-external">Word2vec, Glove, Fastext, ELMO, Character-Aware Language Model</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/NLP/embeddings.html" class="no-external">
+<p>Word2vec, Glove, Fastext, ELMO, Character-Aware Language Model</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/NLP/embeddings.html" class="no-external">
@@ -875,36 +953,30 @@ Oct 25, 2019
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-17 min
-</div>
+<div class="listing-reading-time">17 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="17" data-categories="deep-learning,nlp" data-listing-date-sort="1571077800000" data-listing-file-modified-sort="1729177302897" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1819">
-<div class="thumbnail">
-<p><a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external"></a></p><a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external">
-<p class="card-img-top"><img src="NLP/images/rnn_arch.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="17" data-categories="ZGVlcC1sZWFybmluZyUyQ25scA==" data-listing-date-sort="1571077800000" data-listing-file-modified-sort="1772532440801" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1819">
+<div class="thumbnail"><a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="NLP/images/rnn_arch.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external">RNN Models</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('nlp'); return false;">
-nlp
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external">We go through RNN, LSTM, GRU building intution and coding from scratch to understand forward and backward pass.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external">
+<p>We go through RNN, LSTM, GRU building intution and coding from scratch to understand forward and backward pass.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/NLP/rnn_lstm_gru.html" class="no-external">
@@ -914,36 +986,30 @@ Oct 15, 2019
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-10 min
-</div>
+<div class="listing-reading-time">10 min</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="18" data-categories="deep-learning,nlp" data-listing-date-sort="1570473000000" data-listing-file-modified-sort="1729177302897" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3690">
-<div class="thumbnail">
-<p><a href="../tech_blogs/NLP/nlp_overview.html" class="no-external"></a></p><a href="../tech_blogs/NLP/nlp_overview.html" class="no-external">
-<p class="card-img-top"><img src="https://uc-r.github.io/public/images/analytics/feature-engineering/bow-image.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../tech_blogs/NLP/nlp_overview.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="18" data-categories="ZGVlcC1sZWFybmluZyUyQ25scA==" data-listing-date-sort="1570473000000" data-listing-file-modified-sort="1772532440801" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3690">
+<div class="thumbnail"><a href="../tech_blogs/NLP/nlp_overview.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="https://uc-r.github.io/public/images/analytics/feature-engineering/bow-image.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../tech_blogs/NLP/nlp_overview.html" class="no-external">NLP Overview</a>
 </h3>
-<div class="listing-subtitle">
-<a href="../tech_blogs/NLP/nlp_overview.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('deep-learning'); return false;">
-deep-learning
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGVlcC1sZWFybmluZw=='); return false;">deep-learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('nlp'); return false;">
-nlp
-</div>
-</div>
-<div class="listing-description">
-<a href="../tech_blogs/NLP/nlp_overview.html" class="no-external">What is NLP, what problems does it solve and components within it.</a>
-</div>
+<div class="delink listing-description"><a href="../tech_blogs/NLP/nlp_overview.html" class="no-external">
+<p>What is NLP, what problems does it solve and components within it.</p>
+</a></div>
 </div>
 <div class="metadata">
 <a href="../tech_blogs/NLP/nlp_overview.html" class="no-external">
@@ -953,400 +1019,269 @@ Oct 8, 2019
 <div class="listing-author">
 Aman Pandey
 </div>
-<div class="listing-reading-time">
-19 min
-</div>
+<div class="listing-reading-time">19 min</div>
 </a>
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
+<div class="listing-no-matching d-none">No matching items</div>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
       return false;
     }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/aman5319\.github\.io\/portfolio\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/aman5319\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1354,185 +1289,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1541,7 +1452,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/aman5319/portfolio/edit/main/tech_blogs/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

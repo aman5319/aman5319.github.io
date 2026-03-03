@@ -36,28 +36,19 @@ page-layout: full
 sidebar: false
 ---
 
-<!-- :::{#about-section} -->
-
-Data Scientist with expertise in **Natural Language Processing** and **Recommendation Engines**.
-
-*Enthusiastic about Math, Programming and Free Software.* <!-- ::: -->
 
 ::: panel-tabset
 # Bio
 
-I'm Aman Kumar Pandey, a Data Scientist with 6+ years of experience working at the intersection of applied AI, recommender systems, and multilingual NLP. My work blends research and engineering — from building large-scale retrieval + ranking pipelines to enabling NLP in low-resource settings. I believe in open research, free software, and using technology to empower communities.
+I'm I am a Data Scientist with 7 years of experience specializing in Recommendation Systems and Natural Language Processing (NLP). My career journey spans diverse domains, from high-scale industry platforms to conservation technology and the free software movement.
 
-Outside work, I contribute through teaching, community-led open-source AI initiatives, and occasionally dive into functional programming and math.
+I focus on bridging the gap between complex AI research and practical, real-world applications across three core pillars of expertise:
 
-Let’s connect and explore ideas in AI, recommender systems, or multilingual tech for real-world impact.
+   - **Indian Vernacular NLP**: Developing multilingual solutions and processing content for Indian Languages.
+   - **Recommendation Systems**: Designing end-to-end retrieval and ranking systems that balance personalization with platform-wide health and diversity.
+   - **Marine Conservation**: Leveraging AI and computer vision for wildlife monitoring and data management to support environmental protection efforts.
 
-# Skills
-
-**Computer Programming** \| Python \| Java \| C++ \| PyTorch \| GNU/Linux \| Distributed and Parallel Programming \| Large Scale Data Processing \| AWS \| Model Monitoring
-
-**Deep Learning** \| Machine Learning \| Bayesian Active Learning \| Metric Learning \| Multi-Task Learning \| Transfer Learning
-
-**AI Specalities** \| NLP \| NLG \| NLU \| Recommendation Systems \| Explainable AI
+I am deeply committed to open science and the free software philosophy, actively collaborating with researchers and NGOs to drive innovation that creates social and environmental impact.
 
 # Non Job Pursuits
 
@@ -71,9 +62,12 @@ Let’s connect and explore ideas in AI, recommender systems, or multilingual te
 
 **Haskell Study Group (2022)** \| Organized study group consisting of 50 members from world wide.\| Learned Haskell and FP together
 
-**Pycon** \| Poster presentation(2019) \| CFP Reviewer (2023) \| CFP Mentorship (2023)
 
 **100 Hour Certification Course in Astronomy and Astrophysics (2023)** \| M.P Birla Institute of Fundamental Research
+
+**Pycon** \| Poster presentation(2019) \| CFP Reviewer (2023) \| CFP Mentorship (2023) \| WorkShop (2024)
+
+# Conservation
 
 **Data Management Software for Marine Conservation(2024)** \| Reefwatch
 
@@ -82,8 +76,4 @@ Let’s connect and explore ideas in AI, recommender systems, or multilingual te
 **Animal Detection Camera Trap Images(2025-present)** \| Holématthi Nature Foundation
 
 **Data Management Software for Marine Conservation(2025) v2** \| Reefwatch
-
-**Pycon India 2025** \| Presented Workshop
-
-
 :::
