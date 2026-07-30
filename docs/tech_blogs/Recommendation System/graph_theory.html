@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aman Pandey">
-<meta name="dcterms.date" content="2023-09-16">
-<meta name="description" content="In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.">
+<meta name="dcterms.date" content="2026-06-28">
+<meta name="description" content="Geometric Deep Learning, foundation of graph neural nets">
 
-<title>Data and Model Management | Model Monitoring and Logging. – Aman Pandey</title>
+<title>Intro To Geometric Deep Learning and Theory of GNNs (part 1) – Aman Pandey</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -81,12 +81,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Data and Model Management | Model Monitoring and Logging. – Aman Pandey">
-<meta property="og:description" content="In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.">
-<meta property="og:image" content="https://aman5319.github.io/tech_blogs/Machine Learning/images/data-registry.png">
+<meta property="og:title" content="Intro To Geometric Deep Learning and Theory of GNNs (part 1) – Aman Pandey">
+<meta property="og:description" content="Geometric Deep Learning, foundation of graph neural nets">
+<meta property="og:image" content="https://aman5319.github.io/tech_blogs/Recommendation System/images/graphs.png">
 <meta property="og:site_name" content="Aman Pandey">
-<meta property="og:image:height" content="1122">
-<meta property="og:image:width" content="1381">
+<meta property="og:image:height" content="1000">
+<meta property="og:image:width" content="1658">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -293,15 +293,15 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Data and Model Management | Model Monitoring and Logging.</h1>
+      <h1 class="title">Intro To Geometric Deep Learning and Theory of GNNs (part 1)</h1>
                   <div>
         <div class="description">
-          In this post, we discuss ways of managing different versions of Data and Model artificats. Configuration Management and Data Validation. Monitoring the model using TIG stack. Logging and Alert.
+          Geometric Deep Learning, foundation of graph neural nets
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">machine-learning</div>
                 <div class="quarto-category">deep-learning</div>
+                <div class="quarto-category">recommendation</div>
               </div>
                   </div>
   </div>
@@ -319,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 16, 2023</p>
+        <p class="date">June 28, 2026</p>
       </div>
     </div>
     
@@ -335,14 +335,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#code" id="toc-code" class="nav-link active" data-scroll-target="#code">Code</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#configuration-management-and-validation" id="toc-configuration-management-and-validation" class="nav-link" data-scroll-target="#configuration-management-and-validation">Configuration Management and Validation</a></li>
-  <li><a href="#model-monitoring" id="toc-model-monitoring" class="nav-link" data-scroll-target="#model-monitoring">Model Monitoring</a></li>
-  <li><a href="#logging-and-alerts" id="toc-logging-and-alerts" class="nav-link" data-scroll-target="#logging-and-alerts">Logging and Alerts</a></li>
-  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you</a></li>
+  <li><a href="#intro-to-geometric-deep-learning-and-theory-of-gnns" id="toc-intro-to-geometric-deep-learning-and-theory-of-gnns" class="nav-link active" data-scroll-target="#intro-to-geometric-deep-learning-and-theory-of-gnns">Intro To Geometric Deep Learning and Theory of GNNs</a>
+  <ul class="collapse">
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Machine Learning/data_model_manage_prod.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Recommendation System/graph_theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -352,117 +350,15 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Whenever a ML model goes to production there are lot many things which has to be take care starting from,</p>
-<ol type="1">
-<li>Code</li>
-<li>Data</li>
-<li>ML models</li>
-<li>Config Management</li>
-<li>Model Monitoring</li>
-<li>Logging and Alert</li>
-</ol>
-<p>Here we assume that the model is already in production using some sort of deployment strategy, except how to deploy we talk about every other thing. For Deployment a seperate blog has to be written.</p>
-<section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<p>Without a single doubt every programmer knows why we should track our code and to be very precise , <code>Tracking</code> means having knowledge of what changed in the code at what time and by which person and how can we retrieve those changes. The hero of the code tracking is <code>git</code>. and various places where we can keep those changes on the cloud can be <code>Github</code>, <code>Gitlab</code> etc.</p>
-</section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>In the ML world we are dealing with lots and lots of data where the nature of the received data also sometime it is a streaming data sometimes new data is received in batches and other time may be like a single blob, In the context of ML experiements where with every new experiments we might be generating new data columns doing some different feature processing or with time in the same experiment adding new features.</p>
-<p>Also when were are putting our models to production we keep updating our models and corresponding Data and feature from one version to another.</p>
-<p>All of these different scenario asks for some way of tracking the changes in the data.</p>
-<p>Worst way of doing it is put it in git which is okay if data is of small size couple of MBs how about couple of GBs or TBs we need a sophisticated library for this.</p>
-<p>Let me introduce <a href="https://dvc.org/"><code>DVC (Data Version Control)</code></a> dvc integrates very nicely with git and works in tandem and will be used to track changes in the data and storing in some sort of file server it can Amazon s3, Azure storage, GCP, or any self hosted place.</p>
-<p>DVC makes Data Management simplified and helps us maintain a Data Registry.</p>
-<p><img src="images/data-registry.png" class="img-fluid"></p>
-<p>In general we see DVC can help us track any type of file or folder, it a generic tool for tracking everything apart from code, so using DVC we can not only track data but also our saved model and can maintain a Model Registry.</p>
-<p>Working of DVC is quite simple also.</p>
-<ol type="1">
-<li>It uses similar flow as git and is a completely command line tool like git.</li>
-<li>Whenever we ask dvc to track a particular file it tracks it and creates a .dvc metafile. For example 20gb_finance_data.csv when tracked using dvc it will generate 20gb_finance_data.dvc</li>
-<li>Now this .dvc file has to be tracked using git.</li>
-<li>When ever at any point of time we checkout a git commit, with code this metafile will also come out and then using dvc we checkout the corresponding data for the .dvc file.</li>
-</ol>
-<p><img src="images/project-versions.png" class="img-fluid"></p>
-<p>so if we see we have not only versioned and tracked our data but also our models, from tracking models I mean tracking weights of a particular model</p>
-</section>
-<section id="configuration-management-and-validation" class="level2">
-<h2 class="anchored" data-anchor-id="configuration-management-and-validation">Configuration Management and Validation</h2>
-<p>In a production environment lot of values to program comes from the run time and these key value pair has to be stored some where various ways people store it are</p>
-<ol type="1">
-<li>Put it in a regular file</li>
-<li>Store it in some database</li>
-<li>Store it in on cloud behind firewalls</li>
-<li>use tools like Consul, Apache Zookeeper etc</li>
-</ol>
-<p>and every choice comes with its on pros and cons.</p>
-<p>Usually JSON or YAML is used for storing config files, YAML being more feature rich.</p>
-<p>Python comes with <a href="https://docs.python.org/3/library/configparser.html">ConfigParser</a> class which implements a basic configuration language which provides a structure similar to what’s found in Microsoft Windows INI files. You can use this to write Python programs which can be customized by end users easily.</p>
-<p>One of the most feature rich config management though not much needed in production setting more useful when doing HyperParameter search or Experimenting with different configuration is <a href="https://github.com/omry/omegaconf">OmegaConf</a>. It is a hierarchical configuration system, with support for merging configurations from multiple sources (YAML config files, dataclasses/objects and CLI arguments) providing a consistent API regardless of how the configuration was created.</p>
-<p>An important need of config management is config value validation in run time and there is no better library than <a href="https://github.com/omry/omegaconf">Pydantic</a> that is the most widely used data validation library for Python.</p>
-</section>
-<section id="model-monitoring" class="level2">
-<h2 class="anchored" data-anchor-id="model-monitoring">Model Monitoring</h2>
-<p>In terms of Model monitoring there are three aspects which needs to be measured all the time, and special emphasis has to be given to create a Feedback loop to collect user feedback and use it for model improvement.</p>
-<ol type="1">
-<li>Measuring the Resource Cosumption.
-<ol type="1">
-<li>Amount of resource consumption (CPU, GPU, Storage)</li>
-<li>Spike in model usage that leads to increase in nodes a.k.a Auto Scaling</li>
-<li>Latency and Throughput</li>
-</ol></li>
-<li>Measuring the Models Prediction quality
-<ol type="1">
-<li>Data Drift</li>
-<li>Model Prediction Quality</li>
-</ol></li>
-<li>Measuring Model Meta Data
-<ol type="1">
-<li>Frequency of the training</li>
-<li>Model Versioning</li>
-</ol></li>
-</ol>
-<p>Data points described in 1 and 3 is of time series nature hence we need a mechanism to store the data in a DB and then show it in a dashboard.</p>
-<p>TIG (Telegraf-InfluxDb-Grafana) comes to the resuce.</p>
-<p><img src="images/tig.png" class="img-fluid"></p>
-<p>Telegraf -&gt; Mechanism to send data to influxdb on specific time intervals. In python we can use <a href="https://statsd.readthedocs.io/en/stable/index.html">Statsd</a> library to send data.</p>
-<p>Influx DB -&gt; Stores the data.</p>
-<p>Grafana -&gt; Helps to visualize data stored in Influx DB.</p>
-<p>The same can be done with Prometheus and Grafana</p>
-<p><img src="images/Prometheus.png" class="img-fluid"></p>
-<p>Prometheus Server has exporters which pull metrics from different sources and stores it locally which can be then queried using PromQL. Grafana uses PromQL to show the data.</p>
-<p>Telegraf with InfluxDB provides flexibility in data collection and storage, making it well-suited for scalable, long-term retention of metrics data.</p>
-<p>When it comes to measuring Data Drift and Model prediction Quality, it is bit different.</p>
-<p>Based on the nature of the problem, Data Drift models that can captures Outliers, Anomalies has to be placed. Model selection is highly dependent on the business, here TIG can be used to measure things.</p>
-<p>In terms Model predictive quality there is needs to be some ground truth against which we can measure those changes but it unlikely that there will be something like that present, given there is also problem of data drift. What we can do is measure the drop i.e drop in engagment, user count, purchase etc. These events can be measured by paid tools like Amplitude, Google Analytics, Firebase or with some custom solution.</p>
-</section>
-<section id="logging-and-alerts" class="level2">
-<h2 class="anchored" data-anchor-id="logging-and-alerts">Logging and Alerts</h2>
-<p>Logging is a necessity of production.</p>
-<p>Python comes with a feature rich way of generating logs in <a href="https://docs.python.org/3/library/logging.html">Logging Module</a> and only in depth tutorial to know everything <a href="https://docs.python.org/3/howto/logging.html#logging-howto">Logging How To</a> and <a href="https://docs.python.org/3/howto/logging-cookbook.html">Logging Cookbook</a>.</p>
-<p>When there are multiple services from where logs get generated, There needs to be way to efficiently collecting, aggregating and analyse that data.</p>
-<p>There are multiple ways of doing it. I am listing a few here</p>
-<ol type="1">
-<li>ELK stack with an extra Filebeat</li>
-<li>AWS Cloudwatch</li>
-<li>Apache Flume</li>
-<li>Fluentd</li>
-</ol>
-<p>ELK stack (Elastic Search , Log Stash, Kibana) -&gt; When the web servers generate logs those logs will get read by Log Stash and we can read those logs from Log Stash directly, but to take a step further we can filter and process those logs using Log Stash Grok and make the unstructed generate log into a structured Log which can be then stored in Elastic Search and visualize on Kibana.</p>
-<p>Filebeat uses a backpressure-sensitive protocol when sending data to Logstash or Elasticsearch to account for higher volumes of data. If Logstash is busy crunching data, it lets Filebeat know to slow down its read. Once the congestion is resolved, Filebeat will build back up to its original pace and keep on shippin’.</p>
-<p>It is very common to using Elastic search for this purpose apart from using search tool.</p>
-<p><img src="images/elk.webp" class="img-fluid"></p>
-<p><img src="images/kibana.png" class="img-fluid"></p>
-<p>Same can be done using AWS Cloudwatch, if you entire infrastructure is on AWS. Amazon CloudWatch collects and visualizes real-time logs, metrics, and event data in automated dashboards to streamline your infrastructure and application maintenance.</p>
-<p><img src="images/cloudwatch.png" class="img-fluid"></p>
-<p>Now whether to go with ELK stack or fluentd or Cloudwatch or any other tool depends completely on the scale the logs will be generated, infrastructure needs, affordability, value generated out of those logs.</p>
-<p>As an important measure it is not advised to delete old logs instantly rather archive it on Amazon S3 and then delete after certain amount of time pases.</p>
-<p>Whether we are logging or monitoring every other tools has a built in support for alerts and these alerts has to be generated based on certain criteria the frequency or time till the alerts has to be checked all of them can be customized. Grafana, Kibana, Cloudwatch, Fluentd all of them supports it. We can send alerts to email, slack, discord, sms there are tons of plugin which gives out of the box support for every other communication channel.</p>
-</section>
-<section id="thank-you" class="level2">
-<h2 class="anchored" data-anchor-id="thank-you">Thank you</h2>
+<section id="intro-to-geometric-deep-learning-and-theory-of-gnns" class="level1">
+<h1>Intro To Geometric Deep Learning and Theory of GNNs</h1>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRUHNC37Gq88BtOqrlmXZ2P3PKs53bggLNbExEunukaMIahrMGYStHRCS9hbqL69xs0UdVgmX8m-6kc/pubembed?start=false&amp;loop=false&amp;delayms=3000" width="100%" height="600" style="border:none;" allowfullscreen="">
+</iframe>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -924,7 +820,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Machine Learning/data_model_manage_prod.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Recommendation System/graph_theory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

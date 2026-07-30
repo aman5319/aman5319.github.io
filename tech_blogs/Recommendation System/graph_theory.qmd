@@ -1,0 +1,21 @@
+---
+title: "Intro To Geometric Deep Learning and Theory of GNNs (part 1)"
+author: "Aman Pandey"
+date: "06/28/2026"
+editor: visual
+categories: [deep-learning, recommendation]
+description: "Geometric Deep Learning, foundation of graph neural nets"
+image: "images/graphs.png"
+---
+
+# Intro To Geometric Deep Learning and Theory of GNNs
+
+## Slides
+
+<iframe
+  src="https://docs.google.com/presentation/d/e/2PACX-1vRUHNC37Gq88BtOqrlmXZ2P3PKs53bggLNbExEunukaMIahrMGYStHRCS9hbqL69xs0UdVgmX8m-6kc/pubembed?start=false&loop=false&delayms=3000"
+  width="100%"
+  height="600"
+  style="border:none;"
+  allowfullscreen>
+</iframe>

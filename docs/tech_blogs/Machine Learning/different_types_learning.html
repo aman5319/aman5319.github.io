@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.27">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-10-20">
 <meta name="description" content="Every type of learning which exists in ML a small try to keep them listed together.">
 
-<title>Different Type of Learning in ML – Aman Pandey</title>
+<title>Taxonomy of Learning Types in AI – Aman Pandey</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -42,14 +42,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-60eb8141d3f50090c0f52d36a83ed331.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0fa6b00180960967ab5a151be3e01751.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-cc7ac1faa216ae0851bfb9d8e96df20a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-0fa6b00180960967ab5a151be3e01751.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e4ec7b4cb2f8bfad278928edd38b8fe3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-35ccf83f4182f6d33c037eaf6dfa4147.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e4ec7b4cb2f8bfad278928edd38b8fe3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,10 +78,42 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Different Type of Learning in ML – Aman Pandey">
+<meta property="og:title" content="Taxonomy of Learning Types in AI – Aman Pandey">
 <meta property="og:description" content="Every type of learning which exists in ML a small try to keep them listed together.">
 <meta property="og:site_name" content="Aman Pandey">
 </head>
@@ -290,7 +322,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Different Type of Learning in ML</h1>
+      <h1 class="title">Taxonomy of Learning Types in AI</h1>
                   <div>
         <div class="description">
           Every type of learning which exists in ML a small try to keep them listed together.
@@ -331,115 +363,115 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#taxonomy-of-learning-types-in-aiml" id="toc-taxonomy-of-learning-types-in-aiml" class="nav-link active" data-scroll-target="#taxonomy-of-learning-types-in-aiml">Taxonomy of Learning Types in AI/ML</a>
+  <li><a href="#taxonomy-of-learning-types-in-ai" id="toc-taxonomy-of-learning-types-in-ai" class="nav-link active" data-scroll-target="#taxonomy-of-learning-types-in-ai">Taxonomy of Learning Types in AI</a>
   <ul class="collapse">
-  <li><a href="#core-supervision-paradigms" id="toc-core-supervision-paradigms" class="nav-link" data-scroll-target="#core-supervision-paradigms">Core Supervision Paradigms</a>
+  <li><a href="#core-supervision-paradigms" id="toc-core-supervision-paradigms" class="nav-link" data-scroll-target="#core-supervision-paradigms">1. Core Supervision Paradigms</a>
   <ul class="collapse">
-  <li><a href="#supervised-learning-predicts-outputs-from-labeled-data." id="toc-supervised-learning-predicts-outputs-from-labeled-data." class="nav-link" data-scroll-target="#supervised-learning-predicts-outputs-from-labeled-data.">Supervised Learning: Predicts outputs from labeled data.</a></li>
-  <li><a href="#unsupervised-learning-finds-structure-without-labels." id="toc-unsupervised-learning-finds-structure-without-labels." class="nav-link" data-scroll-target="#unsupervised-learning-finds-structure-without-labels.">Unsupervised Learning: Finds structure without labels.</a></li>
-  <li><a href="#semi-supervised-learning-combines-labeled-and-unlabeled-data." id="toc-semi-supervised-learning-combines-labeled-and-unlabeled-data." class="nav-link" data-scroll-target="#semi-supervised-learning-combines-labeled-and-unlabeled-data.">Semi-Supervised Learning: Combines labeled and unlabeled data.</a></li>
-  <li><a href="#self-supervised-learning-learns-representations-via-pretext-tasks." id="toc-self-supervised-learning-learns-representations-via-pretext-tasks." class="nav-link" data-scroll-target="#self-supervised-learning-learns-representations-via-pretext-tasks.">Self-Supervised Learning: Learns representations via pretext tasks.</a></li>
-  <li><a href="#weakly-supervised-learning-uses-noisy-or-incomplete-labels." id="toc-weakly-supervised-learning-uses-noisy-or-incomplete-labels." class="nav-link" data-scroll-target="#weakly-supervised-learning-uses-noisy-or-incomplete-labels.">Weakly Supervised Learning: Uses noisy or incomplete labels.</a></li>
-  <li><a href="#reinforcement-learning-rl-learns-via-environment-rewards." id="toc-reinforcement-learning-rl-learns-via-environment-rewards." class="nav-link" data-scroll-target="#reinforcement-learning-rl-learns-via-environment-rewards.">Reinforcement Learning (RL): Learns via environment rewards.</a></li>
+  <li><a href="#supervised-learning" id="toc-supervised-learning" class="nav-link" data-scroll-target="#supervised-learning">Supervised Learning</a></li>
+  <li><a href="#unsupervised-learning" id="toc-unsupervised-learning" class="nav-link" data-scroll-target="#unsupervised-learning">Unsupervised Learning</a></li>
+  <li><a href="#semi-supervised-learning" id="toc-semi-supervised-learning" class="nav-link" data-scroll-target="#semi-supervised-learning">Semi-Supervised Learning</a></li>
+  <li><a href="#self-supervised-learning-ssl" id="toc-self-supervised-learning-ssl" class="nav-link" data-scroll-target="#self-supervised-learning-ssl">Self-Supervised Learning (SSL)</a></li>
+  <li><a href="#weakly-supervised-learning" id="toc-weakly-supervised-learning" class="nav-link" data-scroll-target="#weakly-supervised-learning">Weakly Supervised Learning</a></li>
+  <li><a href="#multi-instance-learning-mil" id="toc-multi-instance-learning-mil" class="nav-link" data-scroll-target="#multi-instance-learning-mil">Multi-Instance Learning (MIL)</a></li>
+  <li><a href="#reinforcement-learning-rl" id="toc-reinforcement-learning-rl" class="nav-link" data-scroll-target="#reinforcement-learning-rl">Reinforcement Learning (RL)</a></li>
   </ul></li>
-  <li><a href="#geometric-and-structural-learning" id="toc-geometric-and-structural-learning" class="nav-link" data-scroll-target="#geometric-and-structural-learning">Geometric and Structural Learning</a>
+  <li><a href="#geometric-structural-relational-learning" id="toc-geometric-structural-relational-learning" class="nav-link" data-scroll-target="#geometric-structural-relational-learning">2. Geometric, Structural &amp; Relational Learning</a>
   <ul class="collapse">
-  <li><a href="#graph-based-learning-operates-on-graph-structures." id="toc-graph-based-learning-operates-on-graph-structures." class="nav-link" data-scroll-target="#graph-based-learning-operates-on-graph-structures.">Graph-Based Learning: Operates on graph structures.</a></li>
-  <li><a href="#manifold-learning-captures-data-on-continuous-manifolds." id="toc-manifold-learning-captures-data-on-continuous-manifolds." class="nav-link" data-scroll-target="#manifold-learning-captures-data-on-continuous-manifolds.">Manifold Learning: Captures data on continuous manifolds.</a></li>
-  <li><a href="#groupequivariant-networks-preserves-symmetries-e.g.-rotations." id="toc-groupequivariant-networks-preserves-symmetries-e.g.-rotations." class="nav-link" data-scroll-target="#groupequivariant-networks-preserves-symmetries-e.g.-rotations.">Group/Equivariant Networks: Preserves symmetries (e.g., rotations).</a></li>
-  <li><a href="#graph-signal-processing-analyzes-signals-on-graphs." id="toc-graph-signal-processing-analyzes-signals-on-graphs." class="nav-link" data-scroll-target="#graph-signal-processing-analyzes-signals-on-graphs.">Graph Signal Processing: Analyzes signals on graphs.</a></li>
-  <li><a href="#structured-prediction" id="toc-structured-prediction" class="nav-link" data-scroll-target="#structured-prediction">Structured Prediction:</a></li>
+  <li><a href="#graph-based-learning-gnns" id="toc-graph-based-learning-gnns" class="nav-link" data-scroll-target="#graph-based-learning-gnns">Graph-Based Learning &amp; GNNs</a></li>
+  <li><a href="#knowledge-graphs-relational-learning" id="toc-knowledge-graphs-relational-learning" class="nav-link" data-scroll-target="#knowledge-graphs-relational-learning">Knowledge Graphs &amp; Relational Learning</a></li>
+  <li><a href="#manifold-learning" id="toc-manifold-learning" class="nav-link" data-scroll-target="#manifold-learning">Manifold Learning</a></li>
+  <li><a href="#group-equivariant-networks" id="toc-group-equivariant-networks" class="nav-link" data-scroll-target="#group-equivariant-networks">Group &amp; Equivariant Networks</a></li>
+  <li><a href="#graph-signal-processing-gsp" id="toc-graph-signal-processing-gsp" class="nav-link" data-scroll-target="#graph-signal-processing-gsp">Graph Signal Processing (GSP)</a></li>
+  <li><a href="#structured-prediction" id="toc-structured-prediction" class="nav-link" data-scroll-target="#structured-prediction">Structured Prediction</a></li>
   </ul></li>
-  <li><a href="#probabilistic-and-bayesian-approaches" id="toc-probabilistic-and-bayesian-approaches" class="nav-link" data-scroll-target="#probabilistic-and-bayesian-approaches">Probabilistic and Bayesian Approaches</a>
+  <li><a href="#probabilistic-and-bayesian-approaches" id="toc-probabilistic-and-bayesian-approaches" class="nav-link" data-scroll-target="#probabilistic-and-bayesian-approaches">3. Probabilistic and Bayesian Approaches</a>
   <ul class="collapse">
-  <li><a href="#probabilistic-graphical-models-pgms" id="toc-probabilistic-graphical-models-pgms" class="nav-link" data-scroll-target="#probabilistic-graphical-models-pgms">Probabilistic Graphical Models (PGMs):</a></li>
-  <li><a href="#bayesian-learning" id="toc-bayesian-learning" class="nav-link" data-scroll-target="#bayesian-learning">Bayesian Learning:</a></li>
-  <li><a href="#probabilistic-programming-automates-inference-workflows." id="toc-probabilistic-programming-automates-inference-workflows." class="nav-link" data-scroll-target="#probabilistic-programming-automates-inference-workflows.">Probabilistic Programming: Automates inference workflows.</a></li>
-  <li><a href="#latent-variable-models" id="toc-latent-variable-models" class="nav-link" data-scroll-target="#latent-variable-models">Latent Variable Models:</a></li>
+  <li><a href="#probabilistic-graphical-models-pgms" id="toc-probabilistic-graphical-models-pgms" class="nav-link" data-scroll-target="#probabilistic-graphical-models-pgms">Probabilistic Graphical Models (PGMs)</a></li>
+  <li><a href="#bayesian-learning-neural-networks" id="toc-bayesian-learning-neural-networks" class="nav-link" data-scroll-target="#bayesian-learning-neural-networks">Bayesian Learning &amp; Neural Networks</a></li>
+  <li><a href="#probabilistic-programming" id="toc-probabilistic-programming" class="nav-link" data-scroll-target="#probabilistic-programming">Probabilistic Programming</a></li>
+  <li><a href="#latent-variable-models-lvms" id="toc-latent-variable-models-lvms" class="nav-link" data-scroll-target="#latent-variable-models-lvms">Latent Variable Models (LVMs)</a></li>
   </ul></li>
-  <li><a href="#generative-and-energy-based-models" id="toc-generative-and-energy-based-models" class="nav-link" data-scroll-target="#generative-and-energy-based-models">Generative and Energy-Based Models</a>
+  <li><a href="#generative-and-energy-based-models" id="toc-generative-and-energy-based-models" class="nav-link" data-scroll-target="#generative-and-energy-based-models">4. Generative and Energy-Based Models</a>
   <ul class="collapse">
-  <li><a href="#generative-models" id="toc-generative-models" class="nav-link" data-scroll-target="#generative-models">Generative Models:</a></li>
-  <li><a href="#energy-based-models-ebms" id="toc-energy-based-models-ebms" class="nav-link" data-scroll-target="#energy-based-models-ebms">Energy-Based Models (EBMs):</a></li>
+  <li><a href="#generative-models-diffusion-vaes-gans-autoregressive" id="toc-generative-models-diffusion-vaes-gans-autoregressive" class="nav-link" data-scroll-target="#generative-models-diffusion-vaes-gans-autoregressive">Generative Models (Diffusion, VAEs, GANs, Autoregressive)</a></li>
+  <li><a href="#energy-based-models-ebms" id="toc-energy-based-models-ebms" class="nav-link" data-scroll-target="#energy-based-models-ebms">Energy-Based Models (EBMs)</a></li>
   </ul></li>
-  <li><a href="#transfer-adaptation-and-data-efficient-learning" id="toc-transfer-adaptation-and-data-efficient-learning" class="nav-link" data-scroll-target="#transfer-adaptation-and-data-efficient-learning">Transfer, Adaptation, and Data-Efficient Learning</a>
+  <li><a href="#transfer-adaptation-and-parameter-efficient-learning" id="toc-transfer-adaptation-and-parameter-efficient-learning" class="nav-link" data-scroll-target="#transfer-adaptation-and-parameter-efficient-learning">5. Transfer, Adaptation, and Parameter-Efficient Learning</a>
   <ul class="collapse">
-  <li><a href="#transfer-learning-pretrain-finetune." id="toc-transfer-learning-pretrain-finetune." class="nav-link" data-scroll-target="#transfer-learning-pretrain-finetune.">Transfer Learning: Pretrain → finetune.</a></li>
-  <li><a href="#multi-task-learning-shares-representations-across-tasks." id="toc-multi-task-learning-shares-representations-across-tasks." class="nav-link" data-scroll-target="#multi-task-learning-shares-representations-across-tasks.">Multi-Task Learning: Shares representations across tasks.</a></li>
-  <li><a href="#continuallifelongincremental-learning-adapts-without-forgetting." id="toc-continuallifelongincremental-learning-adapts-without-forgetting." class="nav-link" data-scroll-target="#continuallifelongincremental-learning-adapts-without-forgetting.">Continual/Lifelong/Incremental Learning: Adapts without forgetting.</a></li>
-  <li><a href="#transductive-learning-infers-specific-unlabeled-instances." id="toc-transductive-learning-infers-specific-unlabeled-instances." class="nav-link" data-scroll-target="#transductive-learning-infers-specific-unlabeled-instances.">Transductive Learning: Infers specific unlabeled instances.</a></li>
+  <li><a href="#transfer-learning-domain-adaptation" id="toc-transfer-learning-domain-adaptation" class="nav-link" data-scroll-target="#transfer-learning-domain-adaptation">Transfer Learning &amp; Domain Adaptation</a></li>
+  <li><a href="#meta-learning-few-shot-learning" id="toc-meta-learning-few-shot-learning" class="nav-link" data-scroll-target="#meta-learning-few-shot-learning">Meta-Learning &amp; Few-Shot Learning</a></li>
+  <li><a href="#parameter-efficient-fine-tuning-peft" id="toc-parameter-efficient-fine-tuning-peft" class="nav-link" data-scroll-target="#parameter-efficient-fine-tuning-peft">Parameter-Efficient Fine-Tuning (PEFT)</a></li>
+  <li><a href="#continual-lifelong-learning" id="toc-continual-lifelong-learning" class="nav-link" data-scroll-target="#continual-lifelong-learning">Continual / Lifelong Learning</a></li>
+  <li><a href="#transductive-learning" id="toc-transductive-learning" class="nav-link" data-scroll-target="#transductive-learning">Transductive Learning</a></li>
   </ul></li>
-  <li><a href="#multi-modal-and-cross-domain-learning" id="toc-multi-modal-and-cross-domain-learning" class="nav-link" data-scroll-target="#multi-modal-and-cross-domain-learning">Multi-Modal and Cross-Domain Learning</a>
+  <li><a href="#multi-modal-and-cross-domain-learning" id="toc-multi-modal-and-cross-domain-learning" class="nav-link" data-scroll-target="#multi-modal-and-cross-domain-learning">6. Multi-Modal and Cross-Domain Learning</a>
   <ul class="collapse">
-  <li><a href="#multi-modal-learning-combines-data-types-e.g.-text-images." id="toc-multi-modal-learning-combines-data-types-e.g.-text-images." class="nav-link" data-scroll-target="#multi-modal-learning-combines-data-types-e.g.-text-images.">Multi-Modal Learning: Combines data types (e.g., text, images).</a></li>
-  <li><a href="#cross-domain-learning-adapts-across-different-data-distributions." id="toc-cross-domain-learning-adapts-across-different-data-distributions." class="nav-link" data-scroll-target="#cross-domain-learning-adapts-across-different-data-distributions.">Cross-Domain Learning: Adapts across different data distributions.</a></li>
+  <li><a href="#multi-modal-learning" id="toc-multi-modal-learning" class="nav-link" data-scroll-target="#multi-modal-learning">Multi-Modal Learning</a></li>
+  <li><a href="#cross-domain-learning" id="toc-cross-domain-learning" class="nav-link" data-scroll-target="#cross-domain-learning">Cross-Domain Learning</a></li>
   </ul></li>
-  <li><a href="#representation-metric-and-contrastive-learning" id="toc-representation-metric-and-contrastive-learning" class="nav-link" data-scroll-target="#representation-metric-and-contrastive-learning">Representation, Metric, and Contrastive Learning</a>
+  <li><a href="#representation-metric-and-contrastive-learning" id="toc-representation-metric-and-contrastive-learning" class="nav-link" data-scroll-target="#representation-metric-and-contrastive-learning">7. Representation, Metric, and Contrastive Learning</a>
   <ul class="collapse">
-  <li><a href="#representation-learning-extracts-general-purpose-features." id="toc-representation-learning-extracts-general-purpose-features." class="nav-link" data-scroll-target="#representation-learning-extracts-general-purpose-features.">Representation Learning: Extracts general-purpose features.</a></li>
-  <li><a href="#contrastive-learning-optimizes-similarity-based-objectives." id="toc-contrastive-learning-optimizes-similarity-based-objectives." class="nav-link" data-scroll-target="#contrastive-learning-optimizes-similarity-based-objectives.">Contrastive Learning: Optimizes similarity-based objectives.</a></li>
-  <li><a href="#metric-learning-learns-distance-metrics." id="toc-metric-learning-learns-distance-metrics." class="nav-link" data-scroll-target="#metric-learning-learns-distance-metrics.">Metric Learning: Learns distance metrics.</a></li>
-  <li><a href="#information-theoretic-methods-maximizes-mutual-information." id="toc-information-theoretic-methods-maximizes-mutual-information." class="nav-link" data-scroll-target="#information-theoretic-methods-maximizes-mutual-information.">Information-Theoretic Methods: Maximizes mutual information.</a></li>
+  <li><a href="#representation-learning" id="toc-representation-learning" class="nav-link" data-scroll-target="#representation-learning">Representation Learning</a></li>
+  <li><a href="#contrastive-learning" id="toc-contrastive-learning" class="nav-link" data-scroll-target="#contrastive-learning">Contrastive Learning</a></li>
+  <li><a href="#metric-learning" id="toc-metric-learning" class="nav-link" data-scroll-target="#metric-learning">Metric Learning</a></li>
+  <li><a href="#information-theoretic-methods" id="toc-information-theoretic-methods" class="nav-link" data-scroll-target="#information-theoretic-methods">Information-Theoretic Methods</a></li>
   </ul></li>
-  <li><a href="#kernel-and-classical-statistical-learning" id="toc-kernel-and-classical-statistical-learning" class="nav-link" data-scroll-target="#kernel-and-classical-statistical-learning">Kernel and Classical Statistical Learning</a>
+  <li><a href="#kernel-and-classical-statistical-learning" id="toc-kernel-and-classical-statistical-learning" class="nav-link" data-scroll-target="#kernel-and-classical-statistical-learning">8. Kernel and Classical Statistical Learning</a>
   <ul class="collapse">
-  <li><a href="#kernel-methods-maps-data-to-high-dimensional-spaces." id="toc-kernel-methods-maps-data-to-high-dimensional-spaces." class="nav-link" data-scroll-target="#kernel-methods-maps-data-to-high-dimensional-spaces.">Kernel Methods: Maps data to high-dimensional spaces.</a></li>
-  <li><a href="#statistical-learning-theory-analyzes-generalization." id="toc-statistical-learning-theory-analyzes-generalization." class="nav-link" data-scroll-target="#statistical-learning-theory-analyzes-generalization.">Statistical Learning Theory: Analyzes generalization.</a></li>
-  <li><a href="#regularization-frameworks" id="toc-regularization-frameworks" class="nav-link" data-scroll-target="#regularization-frameworks">Regularization Frameworks:</a></li>
+  <li><a href="#kernel-methods" id="toc-kernel-methods" class="nav-link" data-scroll-target="#kernel-methods">Kernel Methods</a></li>
+  <li><a href="#statistical-learning-theory" id="toc-statistical-learning-theory" class="nav-link" data-scroll-target="#statistical-learning-theory">Statistical Learning Theory</a></li>
+  <li><a href="#regularization-frameworks" id="toc-regularization-frameworks" class="nav-link" data-scroll-target="#regularization-frameworks">Regularization Frameworks</a></li>
   </ul></li>
-  <li><a href="#optimization-and-algorithmic-variants" id="toc-optimization-and-algorithmic-variants" class="nav-link" data-scroll-target="#optimization-and-algorithmic-variants">Optimization and Algorithmic Variants</a>
+  <li><a href="#optimization-and-algorithmic-variants" id="toc-optimization-and-algorithmic-variants" class="nav-link" data-scroll-target="#optimization-and-algorithmic-variants">9. Optimization and Algorithmic Variants</a>
   <ul class="collapse">
-  <li><a href="#gradient-based-optimization" id="toc-gradient-based-optimization" class="nav-link" data-scroll-target="#gradient-based-optimization">Gradient-Based Optimization:</a></li>
-  <li><a href="#convex-vs-non-convex-optimization" id="toc-convex-vs-non-convex-optimization" class="nav-link" data-scroll-target="#convex-vs-non-convex-optimization">Convex vs Non-Convex Optimization:</a></li>
-  <li><a href="#meta-optimization-optimizes-hyperparameters." id="toc-meta-optimization-optimizes-hyperparameters." class="nav-link" data-scroll-target="#meta-optimization-optimizes-hyperparameters.">Meta-Optimization: Optimizes hyperparameters.</a></li>
-  <li><a href="#evolutionaryneuroevolution" id="toc-evolutionaryneuroevolution" class="nav-link" data-scroll-target="#evolutionaryneuroevolution">Evolutionary/Neuroevolution:</a></li>
-  <li><a href="#swarm-intelligence" id="toc-swarm-intelligence" class="nav-link" data-scroll-target="#swarm-intelligence">Swarm Intelligence:</a></li>
+  <li><a href="#gradient-based-optimization" id="toc-gradient-based-optimization" class="nav-link" data-scroll-target="#gradient-based-optimization">Gradient-Based Optimization</a></li>
+  <li><a href="#convex-vs-non-convex-optimization" id="toc-convex-vs-non-convex-optimization" class="nav-link" data-scroll-target="#convex-vs-non-convex-optimization">Convex vs Non-Convex Optimization</a></li>
+  <li><a href="#meta-optimization-hyperparameter-tuning" id="toc-meta-optimization-hyperparameter-tuning" class="nav-link" data-scroll-target="#meta-optimization-hyperparameter-tuning">Meta-Optimization &amp; Hyperparameter Tuning</a></li>
+  <li><a href="#evolutionary-neuroevolution" id="toc-evolutionary-neuroevolution" class="nav-link" data-scroll-target="#evolutionary-neuroevolution">Evolutionary / Neuroevolution</a></li>
+  <li><a href="#swarm-intelligence" id="toc-swarm-intelligence" class="nav-link" data-scroll-target="#swarm-intelligence">Swarm Intelligence</a></li>
   </ul></li>
-  <li><a href="#robustness-safety-privacy-and-fairness" id="toc-robustness-safety-privacy-and-fairness" class="nav-link" data-scroll-target="#robustness-safety-privacy-and-fairness">Robustness, Safety, Privacy, and Fairness</a>
+  <li><a href="#robustness-safety-privacy-and-fairness" id="toc-robustness-safety-privacy-and-fairness" class="nav-link" data-scroll-target="#robustness-safety-privacy-and-fairness">10. Robustness, Safety, Privacy, and Fairness</a>
   <ul class="collapse">
-  <li><a href="#adversarial-trainingrobustness" id="toc-adversarial-trainingrobustness" class="nav-link" data-scroll-target="#adversarial-trainingrobustness">Adversarial Training/Robustness:</a></li>
-  <li><a href="#causal-learning-and-inference" id="toc-causal-learning-and-inference" class="nav-link" data-scroll-target="#causal-learning-and-inference">Causal Learning and Inference:</a></li>
-  <li><a href="#federateddistributed-learning" id="toc-federateddistributed-learning" class="nav-link" data-scroll-target="#federateddistributed-learning">Federated/Distributed Learning:</a></li>
-  <li><a href="#privacy-preserving-ml" id="toc-privacy-preserving-ml" class="nav-link" data-scroll-target="#privacy-preserving-ml">Privacy-Preserving ML:</a></li>
-  <li><a href="#fairness-aware-learning" id="toc-fairness-aware-learning" class="nav-link" data-scroll-target="#fairness-aware-learning">Fairness-Aware Learning:</a></li>
-  <li><a href="#interpretabilityexplainable-ai-xai" id="toc-interpretabilityexplainable-ai-xai" class="nav-link" data-scroll-target="#interpretabilityexplainable-ai-xai">Interpretability/Explainable AI (XAI):</a></li>
+  <li><a href="#adversarial-training-robustness" id="toc-adversarial-training-robustness" class="nav-link" data-scroll-target="#adversarial-training-robustness">Adversarial Training &amp; Robustness</a></li>
+  <li><a href="#causal-learning-and-inference" id="toc-causal-learning-and-inference" class="nav-link" data-scroll-target="#causal-learning-and-inference">Causal Learning and Inference</a></li>
+  <li><a href="#federated-distributed-learning" id="toc-federated-distributed-learning" class="nav-link" data-scroll-target="#federated-distributed-learning">Federated &amp; Distributed Learning</a></li>
+  <li><a href="#privacy-preserving-ml-differential-privacy-smpc" id="toc-privacy-preserving-ml-differential-privacy-smpc" class="nav-link" data-scroll-target="#privacy-preserving-ml-differential-privacy-smpc">Privacy-Preserving ML (Differential Privacy &amp; SMPC)</a></li>
+  <li><a href="#fairness-aware-learning" id="toc-fairness-aware-learning" class="nav-link" data-scroll-target="#fairness-aware-learning">Fairness-Aware Learning</a></li>
+  <li><a href="#explainable-ai-xai-mechanistic-interpretability" id="toc-explainable-ai-xai-mechanistic-interpretability" class="nav-link" data-scroll-target="#explainable-ai-xai-mechanistic-interpretability">Explainable AI (XAI) &amp; Mechanistic Interpretability</a></li>
   </ul></li>
-  <li><a href="#sparse-low-rank-and-signal-processing" id="toc-sparse-low-rank-and-signal-processing" class="nav-link" data-scroll-target="#sparse-low-rank-and-signal-processing">Sparse, Low-Rank, and Signal Processing</a>
+  <li><a href="#llms-agentic-frameworks-symbolic-ml" id="toc-llms-agentic-frameworks-symbolic-ml" class="nav-link" data-scroll-target="#llms-agentic-frameworks-symbolic-ml">11. LLMs, Agentic Frameworks &amp; Symbolic ML</a>
   <ul class="collapse">
-  <li><a href="#sparse-learning" id="toc-sparse-learning" class="nav-link" data-scroll-target="#sparse-learning">Sparse Learning:</a></li>
-  <li><a href="#dictionary-learningsparse-coding" id="toc-dictionary-learningsparse-coding" class="nav-link" data-scroll-target="#dictionary-learningsparse-coding">Dictionary Learning/Sparse Coding:</a></li>
+  <li><a href="#agentic-ai-tool-use" id="toc-agentic-ai-tool-use" class="nav-link" data-scroll-target="#agentic-ai-tool-use">Agentic AI &amp; Tool-Use</a></li>
+  <li><a href="#neuro-symbolic-learning" id="toc-neuro-symbolic-learning" class="nav-link" data-scroll-target="#neuro-symbolic-learning">Neuro-Symbolic Learning</a></li>
+  <li><a href="#symbolic-regression" id="toc-symbolic-regression" class="nav-link" data-scroll-target="#symbolic-regression">Symbolic Regression</a></li>
   </ul></li>
-  <li><a href="#hardware-inspired-and-edge-learning" id="toc-hardware-inspired-and-edge-learning" class="nav-link" data-scroll-target="#hardware-inspired-and-edge-learning">Hardware-Inspired and Edge Learning</a>
+  <li><a href="#sparse-low-rank-and-signal-processing" id="toc-sparse-low-rank-and-signal-processing" class="nav-link" data-scroll-target="#sparse-low-rank-and-signal-processing">12. Sparse, Low-Rank, and Signal Processing</a>
   <ul class="collapse">
-  <li><a href="#edge-ml-learning-on-resource-constrained-devices." id="toc-edge-ml-learning-on-resource-constrained-devices." class="nav-link" data-scroll-target="#edge-ml-learning-on-resource-constrained-devices.">Edge ML: Learning on resource-constrained devices.</a></li>
-  <li><a href="#neuromorphic-learning-mimics-brain-like-computation." id="toc-neuromorphic-learning-mimics-brain-like-computation." class="nav-link" data-scroll-target="#neuromorphic-learning-mimics-brain-like-computation.">Neuromorphic Learning: Mimics brain-like computation.</a></li>
-  <li><a href="#quantum-ml-leverages-quantum-computing." id="toc-quantum-ml-leverages-quantum-computing." class="nav-link" data-scroll-target="#quantum-ml-leverages-quantum-computing.">Quantum ML: Leverages quantum computing.</a></li>
+  <li><a href="#sparse-learning" id="toc-sparse-learning" class="nav-link" data-scroll-target="#sparse-learning">Sparse Learning</a></li>
+  <li><a href="#dictionary-learning-sparse-coding" id="toc-dictionary-learning-sparse-coding" class="nav-link" data-scroll-target="#dictionary-learning-sparse-coding">Dictionary Learning &amp; Sparse Coding</a></li>
   </ul></li>
-  <li><a href="#topological-and-symbolic-learning" id="toc-topological-and-symbolic-learning" class="nav-link" data-scroll-target="#topological-and-symbolic-learning">Topological and Symbolic Learning</a>
+  <li><a href="#hardware-inspired-and-edge-learning" id="toc-hardware-inspired-and-edge-learning" class="nav-link" data-scroll-target="#hardware-inspired-and-edge-learning">13. Hardware-Inspired and Edge Learning</a>
   <ul class="collapse">
-  <li><a href="#topological-data-analysis-tda" id="toc-topological-data-analysis-tda" class="nav-link" data-scroll-target="#topological-data-analysis-tda">Topological Data Analysis (TDA):</a></li>
-  <li><a href="#causal-representation-learning" id="toc-causal-representation-learning" class="nav-link" data-scroll-target="#causal-representation-learning">Causal Representation Learning:</a></li>
-  <li><a href="#neuro-symbolic-learning" id="toc-neuro-symbolic-learning" class="nav-link" data-scroll-target="#neuro-symbolic-learning">Neuro-Symbolic Learning:</a></li>
-  <li><a href="#symbolic-regression" id="toc-symbolic-regression" class="nav-link" data-scroll-target="#symbolic-regression">Symbolic Regression:</a></li>
+  <li><a href="#edge-ml-model-compression" id="toc-edge-ml-model-compression" class="nav-link" data-scroll-target="#edge-ml-model-compression">Edge ML &amp; Model Compression</a></li>
+  <li><a href="#neuromorphic-learning-spiking-neural-networks---snns" id="toc-neuromorphic-learning-spiking-neural-networks---snns" class="nav-link" data-scroll-target="#neuromorphic-learning-spiking-neural-networks---snns">Neuromorphic Learning (Spiking Neural Networks - SNNs)</a></li>
+  <li><a href="#quantum-machine-learning-qml" id="toc-quantum-machine-learning-qml" class="nav-link" data-scroll-target="#quantum-machine-learning-qml">Quantum Machine Learning (QML)</a></li>
   </ul></li>
-  <li><a href="#societal-and-application-specific-paradigms" id="toc-societal-and-application-specific-paradigms" class="nav-link" data-scroll-target="#societal-and-application-specific-paradigms">Societal and Application-Specific Paradigms</a>
+  <li><a href="#topological-physical-and-scientific-ml" id="toc-topological-physical-and-scientific-ml" class="nav-link" data-scroll-target="#topological-physical-and-scientific-ml">14. Topological, Physical, and Scientific ML</a>
   <ul class="collapse">
-  <li><a href="#ai-for-scientific-discovery" id="toc-ai-for-scientific-discovery" class="nav-link" data-scroll-target="#ai-for-scientific-discovery">AI for Scientific Discovery:</a></li>
-  <li><a href="#value-alignmentmoral-learning" id="toc-value-alignmentmoral-learning" class="nav-link" data-scroll-target="#value-alignmentmoral-learning">Value Alignment/Moral Learning:</a></li>
-  <li><a href="#human-in-the-loop-learning" id="toc-human-in-the-loop-learning" class="nav-link" data-scroll-target="#human-in-the-loop-learning">Human-in-the-Loop Learning:</a></li>
+  <li><a href="#topological-data-analysis-tda" id="toc-topological-data-analysis-tda" class="nav-link" data-scroll-target="#topological-data-analysis-tda">Topological Data Analysis (TDA)</a></li>
+  <li><a href="#physics-informed-ml-pinns-neural-operators" id="toc-physics-informed-ml-pinns-neural-operators" class="nav-link" data-scroll-target="#physics-informed-ml-pinns-neural-operators">Physics-Informed ML (PINNs) &amp; Neural Operators</a></li>
   </ul></li>
-  <li><a href="#special-settings-and-practical-modes" id="toc-special-settings-and-practical-modes" class="nav-link" data-scroll-target="#special-settings-and-practical-modes">Special Settings and Practical Modes</a>
+  <li><a href="#societal-operational-special-settings" id="toc-societal-operational-special-settings" class="nav-link" data-scroll-target="#societal-operational-special-settings">15. Societal, Operational &amp; Special Settings</a>
   <ul class="collapse">
-  <li><a href="#onlinestreaming-learning" id="toc-onlinestreaming-learning" class="nav-link" data-scroll-target="#onlinestreaming-learning">Online/Streaming Learning:</a></li>
-  <li><a href="#batchmini-batch-learning" id="toc-batchmini-batch-learning" class="nav-link" data-scroll-target="#batchmini-batch-learning">Batch/Mini-Batch Learning:</a></li>
-  <li><a href="#active-learning" id="toc-active-learning" class="nav-link" data-scroll-target="#active-learning">Active Learning:</a></li>
-  <li><a href="#curriculumself-paced-learning" id="toc-curriculumself-paced-learning" class="nav-link" data-scroll-target="#curriculumself-paced-learning">Curriculum/Self-Paced Learning:</a></li>
-  <li><a href="#ensemble-methods" id="toc-ensemble-methods" class="nav-link" data-scroll-target="#ensemble-methods">Ensemble Methods:</a></li>
+  <li><a href="#value-alignment-moral-learning-rlhf-dpo" id="toc-value-alignment-moral-learning-rlhf-dpo" class="nav-link" data-scroll-target="#value-alignment-moral-learning-rlhf-dpo">Value Alignment &amp; Moral Learning (RLHF / DPO)</a></li>
+  <li><a href="#human-in-the-loop-active-learning" id="toc-human-in-the-loop-active-learning" class="nav-link" data-scroll-target="#human-in-the-loop-active-learning">Human-in-the-Loop &amp; Active Learning</a></li>
+  <li><a href="#online-streaming-learning" id="toc-online-streaming-learning" class="nav-link" data-scroll-target="#online-streaming-learning">Online &amp; Streaming Learning</a></li>
+  <li><a href="#ensemble-methods" id="toc-ensemble-methods" class="nav-link" data-scroll-target="#ensemble-methods">Ensemble Methods</a></li>
   </ul></li>
-  <li><a href="#aliases-and-overlaps" id="toc-aliases-and-overlaps" class="nav-link" data-scroll-target="#aliases-and-overlaps">Aliases and Overlaps</a></li>
+  <li><a href="#cheat-sheet-core-paradigm-decision-matrix" id="toc-cheat-sheet-core-paradigm-decision-matrix" class="nav-link" data-scroll-target="#cheat-sheet-core-paradigm-decision-matrix">Cheat Sheet: Core Paradigm Decision Matrix</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Machine Learning/different_types_learning.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Machine Learning/different_types_learning.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -449,348 +481,825 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="taxonomy-of-learning-types-in-aiml" class="level1">
-<h1>Taxonomy of Learning Types in AI/ML</h1>
-<p>A structured, near-exhaustive classification of AI and ML paradigms, covering supervision, structure, uncertainty, optimization, and emerging trends. Includes aliases, overlaps, and representative methods.</p>
+<section id="taxonomy-of-learning-types-in-ai" class="level1">
+<h1>Taxonomy of Learning Types in AI</h1>
+<p>A near-exhaustive, structured classification of AI and Machine Learning paradigms. This updated master edition combines full geographic breadth (covering classical statistical theory to quantum computing) with actionable depth (Mental Models, Usage Rules, Failure Modes, and Go-To Tools).</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">mindmap
+  root((ML Paradigms))
+    Supervision &amp; Data
+      Supervised
+      Unsupervised
+      Semi-Supervised
+      Self-Supervised
+      Weakly Supervised
+      Multi-Instance
+      Reinforcement
+    Structure &amp; Geometry
+      Graph &amp; GNNs
+      Knowledge Graphs
+      Manifold
+      Equivariant / Group
+      Graph Signal Processing
+      Structured Prediction
+    Uncertainty &amp; Generative
+      PGMs &amp; Bayesian
+      Generative Models
+      Energy-Based Models
+    Adaptation &amp; Efficiency
+      Transfer &amp; Domain Adaptation
+      Meta &amp; Few-Shot
+      PEFT / Adapters
+      Continual Learning
+      Transductive
+    Representation &amp; Metric
+      Contrastive Learning
+      Metric Learning
+      Info-Theoretic
+    Reasoning &amp; Autonomy
+      Agentic AI &amp; Tool-Use
+      Neuro-Symbolic
+      Symbolic Regression
+    Robustness &amp; Safety
+      Adversarial
+      Causal Inference
+      Federated &amp; Privacy
+      XAI &amp; Mech. Interp
+    Hardware &amp; Frontiers
+      Edge ML
+      Neuromorphic
+      Quantum ML
+      Topological Data Analysis
+      Physics-Informed ML
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
 <section id="core-supervision-paradigms" class="level2">
-<h2 class="anchored" data-anchor-id="core-supervision-paradigms">Core Supervision Paradigms</h2>
-<p><strong>Methods defined by feedback and label availability.</strong></p>
-<section id="supervised-learning-predicts-outputs-from-labeled-data." class="level3">
-<h3 class="anchored" data-anchor-id="supervised-learning-predicts-outputs-from-labeled-data.">Supervised Learning: Predicts outputs from labeled data.</h3>
-<p>Classification, regression<br>
-Algorithms: SVM, Random Forests, DNNs, Transformers</p>
+<h2 class="anchored" data-anchor-id="core-supervision-paradigms">1. Core Supervision Paradigms</h2>
+<p><strong>Methods defined by feedback mechanism and label availability.</strong></p>
+<section id="supervised-learning" class="level3">
+<h3 class="anchored" data-anchor-id="supervised-learning">Supervised Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Train models using paired inputs and ground-truth labels to predict discrete classes or continuous values.</li>
+<li><strong>When to Use:</strong> You have abundant, high-quality labeled data <span class="math inline">\((X, Y)\)</span> and a clear target variable (e.g., spam detection, object detection).</li>
+<li><strong>When NOT to Use:</strong> Ground-truth labels are unavailable, too expensive, or you want to discover unknown patterns.</li>
+<li><strong>Primary Failure Mode:</strong> Overfitting to the training distribution; failure to generalize to out-of-distribution (OOD) data.</li>
+<li><strong>Go-To Tools:</strong> Scikit-learn, XGBoost, LightGBM, PyTorch, TensorFlow.</li>
+</ul>
 </section>
-<section id="unsupervised-learning-finds-structure-without-labels." class="level3">
-<h3 class="anchored" data-anchor-id="unsupervised-learning-finds-structure-without-labels.">Unsupervised Learning: Finds structure without labels.</h3>
-<p>Clustering (K-means, DBSCAN), density estimation<br>
-Dimensionality reduction (PCA, t-SNE, UMAP)</p>
+<section id="unsupervised-learning" class="level3">
+<h3 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Discovers inherent structure, clusters, or underlying probability distributions in data without any target labels.</li>
+<li><strong>When to Use:</strong> Exploratory data analysis, customer segmentation, anomaly detection, or initial representation learning.</li>
+<li><strong>When NOT to Use:</strong> You have a specific prediction objective and ground-truth target variables.</li>
+<li><strong>Primary Failure Mode:</strong> Constructing uninterpretable or arbitrary clusters due to sensitivity to distance metrics and scaling.</li>
+<li><strong>Go-To Tools:</strong> Scikit-learn (K-Means, DBSCAN, PCA, GMM), HDBSCAN, UMAP.</li>
+</ul>
 </section>
-<section id="semi-supervised-learning-combines-labeled-and-unlabeled-data." class="level3">
-<h3 class="anchored" data-anchor-id="semi-supervised-learning-combines-labeled-and-unlabeled-data.">Semi-Supervised Learning: Combines labeled and unlabeled data.</h3>
-<p>Label propagation, pseudo-labeling, co-training</p>
+<section id="semi-supervised-learning" class="level3">
+<h3 class="anchored" data-anchor-id="semi-supervised-learning">Semi-Supervised Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Leverages a small set of labeled data alongside a large volume of unlabeled data to improve decision boundaries.</li>
+<li><strong>When to Use:</strong> Labeling requires expensive human expertise (e.g., medical pathology), but raw unlabeled data is plentiful.</li>
+<li><strong>When NOT to Use:</strong> You already possess enough labeled data to hit model performance ceilings.</li>
+<li><strong>Primary Failure Mode:</strong> Confirmation bias / Error propagation (pseudo-labeling wrong instances and reinforcing errors).</li>
+<li><strong>Go-To Tools:</strong> Scikit-learn (Label Propagation/Spreading), PyTorch (FixMatch, FlexMatch).</li>
+</ul>
 </section>
-<section id="self-supervised-learning-learns-representations-via-pretext-tasks." class="level3">
-<h3 class="anchored" data-anchor-id="self-supervised-learning-learns-representations-via-pretext-tasks.">Self-Supervised Learning: Learns representations via pretext tasks.</h3>
-<p>Masked prediction (BERT), contrastive pretraining (SimCLR, MoCo)</p>
+<section id="self-supervised-learning-ssl" class="level3">
+<h3 class="anchored" data-anchor-id="self-supervised-learning-ssl">Self-Supervised Learning (SSL)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Generates its own supervisory signal from raw data by hiding parts of the input and training the model to predict the missing pieces (pretext tasks).</li>
+<li><strong>When to Use:</strong> Pretraining Foundation Models (LLMs, Vision Transformers) on massive internet-scale data before downstream fine-tuning.</li>
+<li><strong>When NOT to Use:</strong> Extreme compute/budget constraints, or simple tabular regression tasks where baseline ML models excel.</li>
+<li><strong>Primary Failure Mode:</strong> Representation collapse (the model outputs identical trivial embeddings for all inputs).</li>
+<li><strong>Go-To Tools:</strong> Hugging Face, OpenCLIP, PyTorch (SimCLR, MoCo, MAE, DINOv2).</li>
+</ul>
 </section>
-<section id="weakly-supervised-learning-uses-noisy-or-incomplete-labels." class="level3">
-<h3 class="anchored" data-anchor-id="weakly-supervised-learning-uses-noisy-or-incomplete-labels.">Weakly Supervised Learning: Uses noisy or incomplete labels.</h3>
-<p>Multi-label learning (MLL), one-class classification (OCC), positive-unlabeled learning (PUL)<br>
-Algorithms: Snorkel, anomaly detection, PU-SVM</p>
+<section id="weakly-supervised-learning" class="level3">
+<h3 class="anchored" data-anchor-id="weakly-supervised-learning">Weakly Supervised Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Trains models using noisy, programmatic, or higher-level heuristic labels rather than hand-annotated ground truth.</li>
+<li><strong>When to Use:</strong> You can write programmatic labeling functions (heuristics, regex, noisy rules) to label millions of records quickly.</li>
+<li><strong>When NOT to Use:</strong> Safety-critical applications (e.g., autonomous driving, medical dosage) requiring high precision guarantees.</li>
+<li><strong>Primary Failure Mode:</strong> The model overfits to the inherent bias and false positives of the heuristic rules.</li>
+<li><strong>Go-To Tools:</strong> Snorkel, Cleanlab, Rubrix/Argilla.</li>
+</ul>
 </section>
-<section id="reinforcement-learning-rl-learns-via-environment-rewards." class="level3">
-<h3 class="anchored" data-anchor-id="reinforcement-learning-rl-learns-via-environment-rewards.">Reinforcement Learning (RL): Learns via environment rewards.</h3>
-<p>Model-free (Q-learning, PPO, SAC), model-based<br>
-Hierarchical RL, multi-agent RL, inverse RL, imitation learning</p>
+<section id="multi-instance-learning-mil" class="level3">
+<h3 class="anchored" data-anchor-id="multi-instance-learning-mil">Multi-Instance Learning (MIL)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Labels are assigned to “bags” (groups) of instances; a bag is positive if at least <em>one</em> instance inside it is positive.</li>
+<li><strong>When to Use:</strong> Computational pathology (gigapixel Whole-Slide Images), long video tag detection, or chemical binding prediction.</li>
+<li><strong>When NOT to Use:</strong> You already have fine-grained, instance-level annotations.</li>
+<li><strong>Primary Failure Mode:</strong> Witness isolation failure—the model over-indexes on a single noisy patch and ignores broader context.</li>
+<li><strong>Go-To Tools:</strong> PyTorch (Attention-based MIL / ABMIL, TransMIL, CLAM).</li>
+</ul>
+</section>
+<section id="reinforcement-learning-rl" class="level3">
+<h3 class="anchored" data-anchor-id="reinforcement-learning-rl">Reinforcement Learning (RL)</h3>
+<ul>
+<li><strong>Mental Model:</strong> An agent learns optimal policy behavior by taking actions in an environment to maximize cumulative scalar rewards.</li>
+<li><strong>When to Use:</strong> Sequential decision-making problems with dynamic environments (robotics, gaming, LLM alignment via RLHF/RLAIF).</li>
+<li><strong>When NOT to Use:</strong> Static datasets where actions do not change future states, or where simulators do not exist.</li>
+<li><strong>Primary Failure Mode:</strong> Reward hacking (agent exploits simulator bugs for points without solving the task) and extreme sample inefficiency.</li>
+<li><strong>Go-To Tools:</strong> Ray RLlib, Stable-Baselines3, Gymnasium, TRL (Transformer Reinforcement Learning).</li>
+</ul>
 <hr>
 </section>
 </section>
-<section id="geometric-and-structural-learning" class="level2">
-<h2 class="anchored" data-anchor-id="geometric-and-structural-learning">Geometric and Structural Learning</h2>
-<p><strong>Methods for non-Euclidean or structured data (umbrella: Geometric Deep Learning).</strong></p>
-<section id="graph-based-learning-operates-on-graph-structures." class="level3">
-<h3 class="anchored" data-anchor-id="graph-based-learning-operates-on-graph-structures.">Graph-Based Learning: Operates on graph structures.</h3>
+<section id="geometric-structural-relational-learning" class="level2">
+<h2 class="anchored" data-anchor-id="geometric-structural-relational-learning">2. Geometric, Structural &amp; Relational Learning</h2>
+<p><strong>Methods for non-Euclidean spaces, graphs, manifolds, and structured output spaces.</strong></p>
+<section id="graph-based-learning-gnns" class="level3">
+<h3 class="anchored" data-anchor-id="graph-based-learning-gnns">Graph-Based Learning &amp; GNNs</h3>
 <ul>
-<li>Graph Neural Networks (GNNs): GCN, GAT, GraphSAGE, GIN, Graph Transformer<br>
-</li>
-<li>Message Passing Neural Networks (MPNNs)<br>
-</li>
-<li>Graph embedding, node classification, link prediction<br>
-</li>
-<li>Graph Representation Learning: Node2Vec, DeepWalk, GNN-based embeddings</li>
+<li><strong>Mental Model:</strong> Models entities (nodes) and their explicit pairwise relationships (edges) via message passing along graph topologies.</li>
+<li><strong>When to Use:</strong> Social network analysis, molecular property prediction, citation networks, and recommendation graphs.</li>
+<li><strong>When NOT to Use:</strong> Data consists of independent, identically distributed (IID) tabular rows or rigid Euclidean grids (use CNNs/Transformers).</li>
+<li><strong>Primary Failure Mode:</strong> Over-smoothing (deep GNN layers cause node features to converge to a uniform average).</li>
+<li><strong>Go-To Tools:</strong> PyTorch Geometric (PyG), Deep Graph Library (DGL), Spektral.</li>
 </ul>
 </section>
-<section id="manifold-learning-captures-data-on-continuous-manifolds." class="level3">
-<h3 class="anchored" data-anchor-id="manifold-learning-captures-data-on-continuous-manifolds.">Manifold Learning: Captures data on continuous manifolds.</h3>
-<p>Isomap, Locally Linear Embedding (LLE), Laplacian Eigenmaps, Diffusion Maps<br>
-UMAP for Dimensionality reduction.</p>
+<section id="knowledge-graphs-relational-learning" class="level3">
+<h3 class="anchored" data-anchor-id="knowledge-graphs-relational-learning">Knowledge Graphs &amp; Relational Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Encodes world facts as semantic triples <span class="math inline">\((Subject, Predicate, Object)\)</span> to perform logical reasoning, link prediction, and GraphRAG.</li>
+<li><strong>When to Use:</strong> Grounding LLMs in verifiable enterprise facts (GraphRAG), fraud detection, and multi-hop reasoning.</li>
+<li><strong>When NOT to Use:</strong> Continuous signal processing tasks (e.g., raw audio wave processing).</li>
+<li><strong>Primary Failure Mode:</strong> High maintenance overhead, schema/ontology drift, and sparse incomplete graphs.</li>
+<li><strong>Go-To Tools:</strong> Neo4j, LlamaIndex (GraphRAG), PyKEEN, AmpliGraph (TransE, RotatE).</li>
+</ul>
 </section>
-<section id="groupequivariant-networks-preserves-symmetries-e.g.-rotations." class="level3">
-<h3 class="anchored" data-anchor-id="groupequivariant-networks-preserves-symmetries-e.g.-rotations.">Group/Equivariant Networks: Preserves symmetries (e.g., rotations).</h3>
-<p>G-CNNs, SE(3)/E(3)-equivariant networks, steerable CNNs</p>
+<section id="manifold-learning" class="level3">
+<h3 class="anchored" data-anchor-id="manifold-learning">Manifold Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Assumes high-dimensional data lies on a lower-dimensional continuous manifold embedded within the high-dimensional space.</li>
+<li><strong>When to Use:</strong> Visualizing complex high-dimensional embeddings (e.g., single-cell RNA, word embeddings) in 2D/3D.</li>
+<li><strong>When NOT to Use:</strong> You require an exact, mathematically invertible mapping back to the original space.</li>
+<li><strong>Primary Failure Mode:</strong> Distorting global topology in favor of preserving local distances (or vice versa).</li>
+<li><strong>Go-To Tools:</strong> UMAP, t-SNE, Isomap, LLE (Scikit-learn).</li>
+</ul>
 </section>
-<section id="graph-signal-processing-analyzes-signals-on-graphs." class="level3">
-<h3 class="anchored" data-anchor-id="graph-signal-processing-analyzes-signals-on-graphs.">Graph Signal Processing: Analyzes signals on graphs.</h3>
-<p>Spectral methods, wavelet transforms on graphs</p>
+<section id="group-equivariant-networks" class="level3">
+<h3 class="anchored" data-anchor-id="group-equivariant-networks">Group &amp; Equivariant Networks</h3>
+<ul>
+<li><strong>Mental Model:</strong> Enforces mathematical symmetry constraints (e.g., rotational, translational, reflectional invariance) directly into network architectures.</li>
+<li><strong>When to Use:</strong> 3D molecular conformation, protein folding (AlphaFold), and 3D point-cloud processing where orientation shouldn’t change the physics.</li>
+<li><strong>When NOT to Use:</strong> Standard image classification where orientation matters (e.g., distinguishing a 6 from a 9).</li>
+<li><strong>Primary Failure Mode:</strong> High computational expense and complex tensor product implementations.</li>
+<li><strong>Go-To Tools:</strong> e3nn, Geometric3D, Escnn.</li>
+</ul>
+</section>
+<section id="graph-signal-processing-gsp" class="level3">
+<h3 class="anchored" data-anchor-id="graph-signal-processing-gsp">Graph Signal Processing (GSP)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Extends traditional harmonic analysis (Fourier transforms, filtering) from Euclidean domains to irregular graph domains.</li>
+<li><strong>When to Use:</strong> Analyzing sensor networks, brain connectomics, and power grid signals structured on graphs.</li>
+<li><strong>When NOT to Use:</strong> Standard time-series data with uniform sampling intervals.</li>
+<li><strong>Primary Failure Mode:</strong> Matrix decomposition bottlenecks on massive graphs (<span class="math inline">\(&gt;1M\)</span> nodes).</li>
+<li><strong>Go-To Tools:</strong> PyGSP, GraphSignal.</li>
+</ul>
 </section>
 <section id="structured-prediction" class="level3">
-<h3 class="anchored" data-anchor-id="structured-prediction">Structured Prediction:</h3>
-<p>Conditional Random Fields (CRFs), Structured SVM, Sequence labeling, parsing</p>
+<h3 class="anchored" data-anchor-id="structured-prediction">Structured Prediction</h3>
+<ul>
+<li><strong>Mental Model:</strong> Predicts structured objects (trees, sequences, graphs) rather than scalar labels, accounting for inter-dependencies between output components.</li>
+<li><strong>When to Use:</strong> Sequence labeling (NER), syntactic parsing, scene-graph generation, and image segmentation.</li>
+<li><strong>When NOT to Use:</strong> Independent multi-class prediction problems.</li>
+<li><strong>Primary Failure Mode:</strong> Exponential output space exploration during inference (requiring approximate decoding like Beam Search).</li>
+<li><strong>Go-To Tools:</strong> Conditional Random Fields (CRFs), Structured SVMs, PyTorch.</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="probabilistic-and-bayesian-approaches" class="level2">
-<h2 class="anchored" data-anchor-id="probabilistic-and-bayesian-approaches">Probabilistic and Bayesian Approaches</h2>
-<p><strong>Methods modeling uncertainty and probability distributions.</strong></p>
+<h2 class="anchored" data-anchor-id="probabilistic-and-bayesian-approaches">3. Probabilistic and Bayesian Approaches</h2>
+<p><strong>Methods for modeling uncertainty, prior beliefs, and exact/approximate probability distributions.</strong></p>
 <section id="probabilistic-graphical-models-pgms" class="level3">
-<h3 class="anchored" data-anchor-id="probabilistic-graphical-models-pgms">Probabilistic Graphical Models (PGMs):</h3>
-<p>Bayesian Networks (directed), Markov Random Fields (undirected), CRFs, HMMs</p>
-</section>
-<section id="bayesian-learning" class="level3">
-<h3 class="anchored" data-anchor-id="bayesian-learning">Bayesian Learning:</h3>
-<p>Bayesian Neural Networks (BNNs), Gaussian Processes (GPs)<br>
-Approximate inference: Variational Inference (VI), MCMC, Expectation-Maximization (EM)</p>
-</section>
-<section id="probabilistic-programming-automates-inference-workflows." class="level3">
-<h3 class="anchored" data-anchor-id="probabilistic-programming-automates-inference-workflows.">Probabilistic Programming: Automates inference workflows.</h3>
-<p>Tools: Stan, Pyro, Edward</p>
-</section>
-<section id="latent-variable-models" class="level3">
-<h3 class="anchored" data-anchor-id="latent-variable-models">Latent Variable Models:</h3>
-<p>Probabilistic Matrix Factorization, Factor Analysis</p>
-</section>
-</section>
-<section id="generative-and-energy-based-models" class="level2">
-<h2 class="anchored" data-anchor-id="generative-and-energy-based-models">Generative and Energy-Based Models</h2>
-<p><strong>Methods for data generation and likelihood modeling.</strong></p>
-<section id="generative-models" class="level3">
-<h3 class="anchored" data-anchor-id="generative-models">Generative Models:</h3>
+<h3 class="anchored" data-anchor-id="probabilistic-graphical-models-pgms">Probabilistic Graphical Models (PGMs)</h3>
 <ul>
-<li>Autoregressive (PixelRNN, Transformer decoders)<br>
-</li>
-<li>Variational Autoencoders (VAEs)</li>
-<li>Generative Adversarial Networks (GANs)</li>
-<li>Normalizing Flows, Diffusion/Score-Based Models</li>
+<li><strong>Mental Model:</strong> Expresses conditional independence structure between random variables using directed (Bayesian Networks) or undirected (Markov Random Fields) graphs.</li>
+<li><strong>When to Use:</strong> Medical diagnosis, fault trees, and domains where human experts must inspect conditional probability tables.</li>
+<li><strong>When NOT to Use:</strong> High-dimensional perception tasks (raw image or video classification).</li>
+<li><strong>Primary Failure Mode:</strong> Exact inference is NP-hard, forcing reliance on approximate inference methods.</li>
+<li><strong>Go-To Tools:</strong> pgmpy, BayesNet, Netica.</li>
 </ul>
 </section>
-<section id="energy-based-models-ebms" class="level3">
-<h3 class="anchored" data-anchor-id="energy-based-models-ebms">Energy-Based Models (EBMs):</h3>
-<p>Boltzmann Machines, Deep Belief Networks Score matching, energy-guided sampling</p>
+<section id="bayesian-learning-neural-networks" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-learning-neural-networks">Bayesian Learning &amp; Neural Networks</h3>
+<ul>
+<li><strong>Mental Model:</strong> Places probability distributions over model parameters (weights) to capture epistemic uncertainty alongside predictions.</li>
+<li><strong>When to Use:</strong> High-stakes decision making (drug discovery, autonomous driving, finance) where knowing <em>when the model is uncertain</em> is critical.</li>
+<li><strong>When NOT to Use:</strong> Low-latency real-time applications requiring sub-millisecond inference.</li>
+<li><strong>Primary Failure Mode:</strong> Compute overhead during inference (sampling across posterior distributions) and difficult prior selection.</li>
+<li><strong>Go-To Tools:</strong> PyMC, Pyro, TensorFlow Probability, GPyTorch.</li>
+</ul>
+</section>
+<section id="probabilistic-programming" class="level3">
+<h3 class="anchored" data-anchor-id="probabilistic-programming">Probabilistic Programming</h3>
+<ul>
+<li><strong>Mental Model:</strong> Allows developers to specify complex statistical models as code and automates inference workflows (MCMC, Variational Inference).</li>
+<li><strong>When to Use:</strong> Custom hierarchical modeling, causal discovery, and Bayesian statistical modeling.</li>
+<li><strong>When NOT to Use:</strong> Standard black-box deep learning tasks.</li>
+<li><strong>Primary Failure Mode:</strong> MCMC convergence failure or slow sampler performance on high-dimensional parameter spaces.</li>
+<li><strong>Go-To Tools:</strong> Stan, Pyro, PyMC, NumPyro.</li>
+</ul>
+</section>
+<section id="latent-variable-models-lvms" class="level3">
+<h3 class="anchored" data-anchor-id="latent-variable-models-lvms">Latent Variable Models (LVMs)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Explains observed variables through unobserved (latent) variables, inferring hidden factors that drive data generation.</li>
+<li><strong>When to Use:</strong> Matrix factorization for recommender systems, topic modeling (LDA), and factor analysis.</li>
+<li><strong>When NOT to Use:</strong> Simple direct supervised mapping where internal hidden state analysis isn’t needed.</li>
+<li><strong>Primary Failure Mode:</strong> Latent variable non-identifiability (multiple latent structures producing identical observed distributions).</li>
+<li><strong>Go-To Tools:</strong> Scikit-learn (NMF, LDA), PyTorch.</li>
+</ul>
 <hr>
 </section>
 </section>
-<section id="transfer-adaptation-and-data-efficient-learning" class="level2">
-<h2 class="anchored" data-anchor-id="transfer-adaptation-and-data-efficient-learning">Transfer, Adaptation, and Data-Efficient Learning</h2>
-<p><strong>Methods for reusing or adapting knowledge across tasks or domains.</strong></p>
-<section id="transfer-learning-pretrain-finetune." class="level3">
-<h3 class="anchored" data-anchor-id="transfer-learning-pretrain-finetune.">Transfer Learning: Pretrain → finetune.</h3>
-<p><strong>Domain adaptation (supervised/unsupervised)</strong></p>
-</section>
-<section id="multi-task-learning-shares-representations-across-tasks." class="level3">
-<h3 class="anchored" data-anchor-id="multi-task-learning-shares-representations-across-tasks.">Multi-Task Learning: Shares representations across tasks.</h3>
+<section id="generative-and-energy-based-models" class="level2">
+<h2 class="anchored" data-anchor-id="generative-and-energy-based-models">4. Generative and Energy-Based Models</h2>
+<p><strong>Methods for learning data distributions, sampling realistic synthetic instances, and scoring configurations.</strong></p>
+<section id="generative-models-diffusion-vaes-gans-autoregressive" class="level3">
+<h3 class="anchored" data-anchor-id="generative-models-diffusion-vaes-gans-autoregressive">Generative Models (Diffusion, VAEs, GANs, Autoregressive)</h3>
 <ul>
-<li>Meta-Learning: Learns how to learn new tasks.</li>
-<li>Few-shot, one-shot, zero-shot learning<br>
-Algorithms: MAML, Reptile</li>
+<li><strong>Mental Model:</strong> Learns the underlying data distribution <span class="math inline">\(P(X)\)</span> or <span class="math inline">\(P(X|Y)\)</span> to generate brand-new, realistic data instances.</li>
+<li><strong>When to Use:</strong> Image/Video generation, text synthesis (LLMs), molecular generation, audio synthesis.</li>
+<li><strong>When NOT to Use:</strong> Simple classification tasks where estimating density is an unnecessary intermediate step (Vapnik’s principle).</li>
+<li><strong>Primary Failure Mode:</strong> Mode collapse (GANs), posterior collapse (VAEs), or slow iterative sampling speed (Diffusion).</li>
+<li><strong>Go-To Tools:</strong> Hugging Face Diffusers, vLLM, PyTorch.</li>
 </ul>
 </section>
-<section id="continuallifelongincremental-learning-adapts-without-forgetting." class="level3">
-<h3 class="anchored" data-anchor-id="continuallifelongincremental-learning-adapts-without-forgetting.">Continual/Lifelong/Incremental Learning: Adapts without forgetting.</h3>
-<p>Regularization-based (EWC), rehearsal-based</p>
+<section id="energy-based-models-ebms" class="level3">
+<h3 class="anchored" data-anchor-id="energy-based-models-ebms">Energy-Based Models (EBMs)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Associates an unnormalized scalar energy value to every data configuration; plausible points get low energy, implausible points get high energy.</li>
+<li><strong>When to Use:</strong> Compositional generation, out-of-distribution detection, and flexible multimodal generation without normalized densities.</li>
+<li><strong>When NOT to Use:</strong> Settings requiring fast single-pass generation without iterative Langevin dynamics sampling.</li>
+<li><strong>Primary Failure Mode:</strong> Unstable training due to intractable partition functions requiring Markov Chain Monte Carlo (MCMC) approximations.</li>
+<li><strong>Go-To Tools:</strong> PyTorch (EBM frameworks).</li>
+</ul>
+<hr>
 </section>
-<section id="transductive-learning-infers-specific-unlabeled-instances." class="level3">
-<h3 class="anchored" data-anchor-id="transductive-learning-infers-specific-unlabeled-instances.">Transductive Learning: Infers specific unlabeled instances.</h3>
-<p>Graph-based transductive methods</p>
+</section>
+<section id="transfer-adaptation-and-parameter-efficient-learning" class="level2">
+<h2 class="anchored" data-anchor-id="transfer-adaptation-and-parameter-efficient-learning">5. Transfer, Adaptation, and Parameter-Efficient Learning</h2>
+<p><strong>Methods for transferring pre-existing knowledge, adapting across tasks, and resource-friendly fine-tuning.</strong></p>
+<section id="transfer-learning-domain-adaptation" class="level3">
+<h3 class="anchored" data-anchor-id="transfer-learning-domain-adaptation">Transfer Learning &amp; Domain Adaptation</h3>
+<ul>
+<li><strong>Mental Model:</strong> Takes features learned on a source domain (e.g., ImageNet, C4) and adapts them to a target domain with different distributions.</li>
+<li><strong>When to Use:</strong> Target dataset is small, but massive pretrained base models exist in a related domain.</li>
+<li><strong>When NOT to Use:</strong> The source and target domains share zero underlying structure (e.g., pretrained natural language model applied to raw EEG signals).</li>
+<li><strong>Primary Failure Mode:</strong> Negative transfer (source knowledge actively degrades performance on the target task).</li>
+<li><strong>Go-To Tools:</strong> Hugging Face, PyTorch Image Models (timm).</li>
+</ul>
+</section>
+<section id="meta-learning-few-shot-learning" class="level3">
+<h3 class="anchored" data-anchor-id="meta-learning-few-shot-learning">Meta-Learning &amp; Few-Shot Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> “Learns how to learn”—optimizes model parameters or architectures across a distribution of tasks so it can adapt to new tasks in 1–5 steps.</li>
+<li><strong>When to Use:</strong> Edge cases where new classes/tasks arrive continuously with only 1–5 examples per class.</li>
+<li><strong>When NOT to Use:</strong> Single static tasks with large amounts of training data available.</li>
+<li><strong>Primary Failure Mode:</strong> Meta-overfitting (generalizes well to seen training tasks, fails on unseen task distributions).</li>
+<li><strong>Go-To Tools:</strong> Learn2Learn, Higher (PyTorch).</li>
+</ul>
+</section>
+<section id="parameter-efficient-fine-tuning-peft" class="level3">
+<h3 class="anchored" data-anchor-id="parameter-efficient-fine-tuning-peft">Parameter-Efficient Fine-Tuning (PEFT)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Keeps base model parameters frozen and inserts tiny trainable rank-decomposition matrices or adapter modules.</li>
+<li><strong>When to Use:</strong> Fine-tuning massive modern foundation models (LLMs/Vision models) on limited consumer hardware GPU memory.</li>
+<li><strong>When NOT to Use:</strong> Pretraining models from scratch or fine-tuning tiny models where memory isn’t a bottleneck.</li>
+<li><strong>Primary Failure Mode:</strong> Adapter capacity bottlenecks (r-rank too small to absorb domain-specific domain nuance).</li>
+<li><strong>Go-To Tools:</strong> Hugging Face PEFT (LoRA, QLoRA, Prefix Tuning), Unsloth, Axolotl.</li>
+</ul>
+</section>
+<section id="continual-lifelong-learning" class="level3">
+<h3 class="anchored" data-anchor-id="continual-lifelong-learning">Continual / Lifelong Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Sequentially updates a model on streaming tasks while preserving previous task capabilities without full retraining.</li>
+<li><strong>When to Use:</strong> Production systems receiving continuous streaming domain updates where historical raw data cannot be stored (privacy/bandwidth).</li>
+<li><strong>When NOT to Use:</strong> Systems where periodic batch retraining from scratch on accumulated historical data is feasible.</li>
+<li><strong>Primary Failure Mode:</strong> Catastrophic forgetting (new task gradients completely erase weight configurations for old tasks).</li>
+<li><strong>Go-To Tools:</strong> Avalanche (PyTorch), Continual AI.</li>
+</ul>
+</section>
+<section id="transductive-learning" class="level3">
+<h3 class="anchored" data-anchor-id="transductive-learning">Transductive Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Makes predictions specifically for a known, fixed set of unlabeled test instances given at training time, without inducing a general rule.</li>
+<li><strong>When to Use:</strong> Semi-supervised graph node classification where all graph nodes (train and test) are fixed and present upfront.</li>
+<li><strong>When NOT to Use:</strong> Inductive settings where new unseen samples will arrive dynamically in production.</li>
+<li><strong>Primary Failure Mode:</strong> Complete inability to handle out-of-sample inference without re-running optimization.</li>
+<li><strong>Go-To Tools:</strong> Scikit-learn (Label Propagation), Graph Neural Networks (transductive split).</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="multi-modal-and-cross-domain-learning" class="level2">
-<h2 class="anchored" data-anchor-id="multi-modal-and-cross-domain-learning">Multi-Modal and Cross-Domain Learning</h2>
-<p><strong>Methods integrating diverse data types or domains.</strong></p>
-<section id="multi-modal-learning-combines-data-types-e.g.-text-images." class="level3">
-<h3 class="anchored" data-anchor-id="multi-modal-learning-combines-data-types-e.g.-text-images.">Multi-Modal Learning: Combines data types (e.g., text, images).</h3>
-<p>Models: CLIP, DALL-E, multimodal Transformers</p>
+<h2 class="anchored" data-anchor-id="multi-modal-and-cross-domain-learning">6. Multi-Modal and Cross-Domain Learning</h2>
+<p><strong>Methods for joining heterogeneous data modalities (text, vision, audio) or aligning disparate data domains.</strong></p>
+<section id="multi-modal-learning" class="level3">
+<h3 class="anchored" data-anchor-id="multi-modal-learning">Multi-Modal Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Projects disparate data modalities (e.g., text, images, audio, sensors) into a shared joint vector space.</li>
+<li><strong>When to Use:</strong> Cross-modal retrieval (image-to-text search), visual question answering, image generation from prompts.</li>
+<li><strong>When NOT to Use:</strong> Single-modality tasks where adding modalities introduces noise and unnecessary overhead.</li>
+<li><strong>Primary Failure Mode:</strong> Modality dominance (the model ignores weaker modalities and relies solely on the strongest one).</li>
+<li><strong>Go-To Tools:</strong> OpenCLIP, Hugging Face Multimodal, LLaVA.</li>
+</ul>
 </section>
-<section id="cross-domain-learning-adapts-across-different-data-distributions." class="level3">
-<h3 class="anchored" data-anchor-id="cross-domain-learning-adapts-across-different-data-distributions.">Cross-Domain Learning: Adapts across different data distributions.</h3>
-<p>Domain generalization, cross-modal alignment</p>
+<section id="cross-domain-learning" class="level3">
+<h3 class="anchored" data-anchor-id="cross-domain-learning">Cross-Domain Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Aligns domain feature representations so a model trained on source domain <span class="math inline">\(A\)</span> functions across target domain <span class="math inline">\(B\)</span> without target labels.</li>
+<li><strong>When to Use:</strong> Domain generalization (e.g., model trained on synthetic computer graphics deployed on real-world camera feeds).</li>
+<li><strong>When NOT to Use:</strong> Source and target data share identical distributions.</li>
+<li><strong>Primary Failure Mode:</strong> Domain misalignment (forcing alignment destroys discriminative features needed for the downstream task).</li>
+<li><strong>Go-To Tools:</strong> Domain-Adversarial Neural Networks (DANN), CORAL.</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="representation-metric-and-contrastive-learning" class="level2">
-<h2 class="anchored" data-anchor-id="representation-metric-and-contrastive-learning">Representation, Metric, and Contrastive Learning</h2>
-<p><strong>Methods for learning data embeddings or distances.</strong></p>
-<section id="representation-learning-extracts-general-purpose-features." class="level3">
-<h3 class="anchored" data-anchor-id="representation-learning-extracts-general-purpose-features.">Representation Learning: Extracts general-purpose features.</h3>
-<p>Autoencoders, word2vec, BERT-style models, Collaborative filtering in recommendation system</p>
+<h2 class="anchored" data-anchor-id="representation-metric-and-contrastive-learning">7. Representation, Metric, and Contrastive Learning</h2>
+<p><strong>Methods explicitly designed to learn structured feature spaces, distance metrics, and semantic embeddings.</strong></p>
+<section id="representation-learning" class="level3">
+<h3 class="anchored" data-anchor-id="representation-learning">Representation Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Transforms raw unstructured input data into compact, dense vector representations that make downstream tasks easier.</li>
+<li><strong>When to Use:</strong> Feature extraction for recommendation systems, semantic search, and clustering.</li>
+<li><strong>When NOT to Use:</strong> Interpretable decision tree tasks on low-dimensional tabular data.</li>
+<li><strong>Primary Failure Mode:</strong> Extracting task-irrelevant background noise into the representation vector.</li>
+<li><strong>Go-To Tools:</strong> Sentence-Transformers, Autoencoders, PyTorch.</li>
+</ul>
 </section>
-<section id="contrastive-learning-optimizes-similarity-based-objectives." class="level3">
-<h3 class="anchored" data-anchor-id="contrastive-learning-optimizes-similarity-based-objectives.">Contrastive Learning: Optimizes similarity-based objectives.</h3>
-<p>InfoNCE, SimCLR, MoCo</p>
+<section id="contrastive-learning" class="level3">
+<h3 class="anchored" data-anchor-id="contrastive-learning">Contrastive Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Trains embeddings by pulling positive (similar) pairs together in vector space while pushing negative (dissimilar) pairs apart.</li>
+<li><strong>When to Use:</strong> Unsupervised pretraining, image/text search indexing, and deduplication.</li>
+<li><strong>When NOT to Use:</strong> Small datasets with abundant task-specific supervision.</li>
+<li><strong>Primary Failure Mode:</strong> False negative toxicity (pushing apart two samples that are semantically identical due to random batch sampling).</li>
+<li><strong>Go-To Tools:</strong> SimCLR, MoCo, InfoNCE, Lightly.</li>
+</ul>
 </section>
-<section id="metric-learning-learns-distance-metrics." class="level3">
-<h3 class="anchored" data-anchor-id="metric-learning-learns-distance-metrics.">Metric Learning: Learns distance metrics.</h3>
-<p>Triplet loss, Siamese Networks, N-pair loss</p>
+<section id="metric-learning" class="level3">
+<h3 class="anchored" data-anchor-id="metric-learning">Metric Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Directly learns a distance function <span class="math inline">\(d(x_1, x_2)\)</span> over vector spaces such that semantic similarity matches distance metrics.</li>
+<li><strong>When to Use:</strong> Face recognition, signature verification, and few-shot classification.</li>
+<li><strong>When NOT to Use:</strong> Fixed, non-metric relational data.</li>
+<li><strong>Primary Failure Mode:</strong> Triplet mining bottlenecks (finding hard positives and hard negatives becomes computationally intensive).</li>
+<li><strong>Go-To Tools:</strong> PyTorch-Metric-Learning, Faiss.</li>
+</ul>
 </section>
-<section id="information-theoretic-methods-maximizes-mutual-information." class="level3">
-<h3 class="anchored" data-anchor-id="information-theoretic-methods-maximizes-mutual-information.">Information-Theoretic Methods: Maximizes mutual information.</h3>
-<p>InfoMax, Barlow Twins</p>
+<section id="information-theoretic-methods" class="level3">
+<h3 class="anchored" data-anchor-id="information-theoretic-methods">Information-Theoretic Methods</h3>
+<ul>
+<li><strong>Mental Model:</strong> Optimizes data representations by maximizing Mutual Information <span class="math inline">\(I(X; Z)\)</span> between inputs and latent codes while bounding information capacity.</li>
+<li><strong>When to Use:</strong> Disentangled representation learning, Information Bottleneck framework applications.</li>
+<li><strong>When NOT to Use:</strong> Applications where exact density bounds are difficult to estimate.</li>
+<li><strong>Primary Failure Mode:</strong> Mutual information estimation in high dimensions is notoriously noisy and unstable.</li>
+<li><strong>Go-To Tools:</strong> Barlow Twins, VicReg, MI estimators.</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="kernel-and-classical-statistical-learning" class="level2">
-<h2 class="anchored" data-anchor-id="kernel-and-classical-statistical-learning">Kernel and Classical Statistical Learning</h2>
-<p><strong>Traditional methods rooted in statistical theory.</strong></p>
-<section id="kernel-methods-maps-data-to-high-dimensional-spaces." class="level3">
-<h3 class="anchored" data-anchor-id="kernel-methods-maps-data-to-high-dimensional-spaces.">Kernel Methods: Maps data to high-dimensional spaces.</h3>
-<p>SVM, Kernel PCA, Kernel Ridge Regression, RKHS theory</p>
+<h2 class="anchored" data-anchor-id="kernel-and-classical-statistical-learning">8. Kernel and Classical Statistical Learning</h2>
+<p><strong>Traditional statistical frameworks rooted in functional analysis, VC dimension, and regularized empirical risk.</strong></p>
+<section id="kernel-methods" class="level3">
+<h3 class="anchored" data-anchor-id="kernel-methods">Kernel Methods</h3>
+<ul>
+<li><strong>Mental Model:</strong> Implicitly maps data into an infinite-dimensional inner-product Hilbert space using a kernel function <span class="math inline">\(K(x, x')\)</span>.</li>
+<li><strong>When to Use:</strong> Small-to-medium tabular datasets requiring strict non-linear decision boundaries with strong theoretical guarantees.</li>
+<li><strong>When NOT to Use:</strong> Large-scale datasets (<span class="math inline">\(&gt;100k\)</span> samples) due to <span class="math inline">\(O(N^2)\)</span> to <span class="math inline">\(O(N^3)\)</span> kernel matrix memory costs.</li>
+<li><strong>Primary Failure Mode:</strong> Scaling bottleneck; highly sensitive to kernel hyperparameter selection (e.g., RBF gamma).</li>
+<li><strong>Go-To Tools:</strong> Scikit-learn (SVM, Kernel Ridge, Kernel PCA), LIBSVM.</li>
+</ul>
 </section>
-<section id="statistical-learning-theory-analyzes-generalization." class="level3">
-<h3 class="anchored" data-anchor-id="statistical-learning-theory-analyzes-generalization.">Statistical Learning Theory: Analyzes generalization.</h3>
-<p>PAC learning, VC dimension, empirical risk minimization (ERM)</p>
+<section id="statistical-learning-theory" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-learning-theory">Statistical Learning Theory</h3>
+<ul>
+<li><strong>Mental Model:</strong> Analyzes generalization bounds, Probably Approximately Correct (PAC) learning framework, and Empirical Risk Minimization (ERM).</li>
+<li><strong>When to Use:</strong> Theoretical safety verification, bounding generalization error, and establishing formal guarantees.</li>
+<li><strong>When NOT to Use:</strong> Applied empirical engineering where empirical validation suffices.</li>
+<li><strong>Primary Failure Mode:</strong> Vacuous bounds (theoretical VC bounds are often far too loose for modern overparameterized deep networks).</li>
+<li><strong>Go-To Tools:</strong> Theoretical proofs, CVXPy.</li>
+</ul>
 </section>
 <section id="regularization-frameworks" class="level3">
-<h3 class="anchored" data-anchor-id="regularization-frameworks">Regularization Frameworks:</h3>
-<p>L1/L2 regularization, dropout</p>
+<h3 class="anchored" data-anchor-id="regularization-frameworks">Regularization Frameworks</h3>
+<ul>
+<li><strong>Mental Model:</strong> Penalizes model complexity (L1, L2, Dropout, Weight Decay) to constrain search spaces and prevent overfitting.</li>
+<li><strong>When to Use:</strong> Standard inclusion across almost all ML model training pipelines.</li>
+<li><strong>When NOT to Use:</strong> Underfitting models with insufficient capacity for the task.</li>
+<li><strong>Primary Failure Mode:</strong> Over-regularization (destroying model capacity and introducing high bias).</li>
+<li><strong>Go-To Tools:</strong> Built into PyTorch, Scikit-learn, XGBoost.</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="optimization-and-algorithmic-variants" class="level2">
-<h2 class="anchored" data-anchor-id="optimization-and-algorithmic-variants">Optimization and Algorithmic Variants</h2>
-<p><strong>Techniques for training models efficiently.</strong></p>
+<h2 class="anchored" data-anchor-id="optimization-and-algorithmic-variants">9. Optimization and Algorithmic Variants</h2>
+<p><strong>Iterative search techniques, meta-heuristics, and non-gradient optimization strategies.</strong></p>
 <section id="gradient-based-optimization" class="level3">
-<h3 class="anchored" data-anchor-id="gradient-based-optimization">Gradient-Based Optimization:</h3>
-<p>SGD, Adam, RMSprop, second-order methods (L-BFGS)</p>
+<h3 class="anchored" data-anchor-id="gradient-based-optimization">Gradient-Based Optimization</h3>
+<ul>
+<li><strong>Mental Model:</strong> Uses first- or second-order derivatives of loss functions to iteratively update parameters along steepest descent pathways.</li>
+<li><strong>When to Use:</strong> Differentiable continuous neural networks and deep learning models.</li>
+<li><strong>When NOT to Use:</strong> Non-differentiable step functions, discrete combinatorial search, or black-box objective functions.</li>
+<li><strong>Primary Failure Mode:</strong> Vanishing/exploding gradients, getting trapped in bad local minima or saddle points.</li>
+<li><strong>Go-To Tools:</strong> PyTorch (AdamW, SGD, L-BFGS), JAX (Optax).</li>
+</ul>
 </section>
 <section id="convex-vs-non-convex-optimization" class="level3">
-<h3 class="anchored" data-anchor-id="convex-vs-non-convex-optimization">Convex vs Non-Convex Optimization:</h3>
-<p>Proximal methods, ADMM</p>
+<h3 class="anchored" data-anchor-id="convex-vs-non-convex-optimization">Convex vs Non-Convex Optimization</h3>
+<ul>
+<li><strong>Mental Model:</strong> Convex problems guarantee that any local minimum is global; non-convex problems feature complex landscapes with many local minima.</li>
+<li><strong>When to Use:</strong> Convex: SVMs, Linear Regression, LASSO. Non-Convex: Deep Learning.</li>
+<li><strong>When NOT to Use:</strong> N/A (Dictated by problem formulation).</li>
+<li><strong>Primary Failure Mode:</strong> Assuming local convergence equals global optimality in non-convex settings.</li>
+<li><strong>Go-To Tools:</strong> CVXPY, SciPy Optimize.</li>
+</ul>
 </section>
-<section id="meta-optimization-optimizes-hyperparameters." class="level3">
-<h3 class="anchored" data-anchor-id="meta-optimization-optimizes-hyperparameters.">Meta-Optimization: Optimizes hyperparameters.</h3>
-<p>Bayesian Optimization, grid search</p>
+<section id="meta-optimization-hyperparameter-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="meta-optimization-hyperparameter-tuning">Meta-Optimization &amp; Hyperparameter Tuning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Automates the search for optimal training hyperparameters using Bayesian Optimization, Population-Based Training, or Bandits.</li>
+<li><strong>When to Use:</strong> Systematic model tuning before production deployment.</li>
+<li><strong>When NOT to Use:</strong> Early exploratory prototyping phases where default parameters suffice.</li>
+<li><strong>Primary Failure Mode:</strong> High compute waste evaluating unproductive search spaces.</li>
+<li><strong>Go-To Tools:</strong> Optuna, Ray Tune, Hyperopt.</li>
+</ul>
 </section>
-<section id="evolutionaryneuroevolution" class="level3">
-<h3 class="anchored" data-anchor-id="evolutionaryneuroevolution">Evolutionary/Neuroevolution:</h3>
-<p>Genetic algorithms, NEAT</p>
+<section id="evolutionary-neuroevolution" class="level3">
+<h3 class="anchored" data-anchor-id="evolutionary-neuroevolution">Evolutionary / Neuroevolution</h3>
+<ul>
+<li><strong>Mental Model:</strong> Evolves population candidates using mutation, crossover, and selection rules inspired by biological evolution.</li>
+<li><strong>When to Use:</strong> Non-differentiable environments, neural architecture search (NAS), and reinforcement learning without gradients.</li>
+<li><strong>When NOT to Use:</strong> Standard supervised problems where exact analytical gradients are easily computed.</li>
+<li><strong>Primary Failure Mode:</strong> Slow convergence rates compared to first-order gradient descent on high-dimensional parameter spaces.</li>
+<li><strong>Go-To Tools:</strong> DEAP, PyGaggle, Evotorch.</li>
+</ul>
 </section>
 <section id="swarm-intelligence" class="level3">
-<h3 class="anchored" data-anchor-id="swarm-intelligence">Swarm Intelligence:</h3>
-<p>Particle Swarm Optimization (PSO), Ant Colony Optimization</p>
+<h3 class="anchored" data-anchor-id="swarm-intelligence">Swarm Intelligence</h3>
+<ul>
+<li><strong>Mental Model:</strong> Coordinates decentralized agents (particles, ants) that interact locally to solve global optimization problems.</li>
+<li><strong>When to Use:</strong> Combinatorial routing problems (Traveling Salesperson), continuous black-box parameter optimization.</li>
+<li><strong>When NOT to Use:</strong> High-dimensional deep neural network weight optimization.</li>
+<li><strong>Primary Failure Mode:</strong> Premature convergence to suboptimal local clusters.</li>
+<li><strong>Go-To Tools:</strong> PySwarms, Scikit-opt.</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="robustness-safety-privacy-and-fairness" class="level2">
-<h2 class="anchored" data-anchor-id="robustness-safety-privacy-and-fairness">Robustness, Safety, Privacy, and Fairness</h2>
-<p><strong>Methods addressing ethical and operational reliability.</strong></p>
-<section id="adversarial-trainingrobustness" class="level3">
-<h3 class="anchored" data-anchor-id="adversarial-trainingrobustness">Adversarial Training/Robustness:</h3>
-<p>Adversarial examples, certified defenses</p>
+<h2 class="anchored" data-anchor-id="robustness-safety-privacy-and-fairness">10. Robustness, Safety, Privacy, and Fairness</h2>
+<p><strong>Methods ensuring trustworthiness, ethical compliance, security against attacks, and interpretability.</strong></p>
+<section id="adversarial-training-robustness" class="level3">
+<h3 class="anchored" data-anchor-id="adversarial-training-robustness">Adversarial Training &amp; Robustness</h3>
+<ul>
+<li><strong>Mental Model:</strong> Trains models on adversarially perturbed inputs (<span class="math inline">\(x + \epsilon\)</span>) to build immunity against deliberate security attacks.</li>
+<li><strong>When to Use:</strong> Security-critical systems (biometrics, autonomous vehicles, spam/malware filters).</li>
+<li><strong>When NOT to Use:</strong> Low-risk internal applications where compute overhead outweighs security risks.</li>
+<li><strong>Primary Failure Mode:</strong> Robustness-Accuracy trade-off (improving adversarial robustness often slightly reduces clean test accuracy).</li>
+<li><strong>Go-To Tools:</strong> Adversarial Robustness Toolbox (ART), CleverHans, Foolbox.</li>
+</ul>
 </section>
 <section id="causal-learning-and-inference" class="level3">
-<h3 class="anchored" data-anchor-id="causal-learning-and-inference">Causal Learning and Inference:</h3>
-<p>Structural Causal Models (SCMs), do-calculus, causal discovery</p>
+<h3 class="anchored" data-anchor-id="causal-learning-and-inference">Causal Learning and Inference</h3>
+<ul>
+<li><strong>Mental Model:</strong> Moves beyond statistical correlation (<span class="math inline">\(P(Y|X)\)</span>) to model structural cause-and-effect relationships via interventions (<span class="math inline">\(P(Y|do(X))\)</span>).</li>
+<li><strong>When to Use:</strong> Policy making, clinical trials, A/B testing evaluation, and root-cause failure analysis.</li>
+<li><strong>When NOT to Use:</strong> Pure prediction problems where environmental distributions are guaranteed to remain static.</li>
+<li><strong>Primary Failure Mode:</strong> Unobserved confounders violating structural assumptions and distorting causal estimates.</li>
+<li><strong>Go-To Tools:</strong> DoWhy, EconML, CausalML, CausalDiscovery.</li>
+</ul>
 </section>
-<section id="federateddistributed-learning" class="level3">
-<h3 class="anchored" data-anchor-id="federateddistributed-learning">Federated/Distributed Learning:</h3>
-<p>FedAvg, decentralized training</p>
+<section id="federated-distributed-learning" class="level3">
+<h3 class="anchored" data-anchor-id="federated-distributed-learning">Federated &amp; Distributed Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Trains a shared global model across decentralized devices (hospitals, mobile phones) holding local data without aggregating raw data centrally.</li>
+<li><strong>When to Use:</strong> Strict data privacy regulations (GDPR, HIPAA) preventing centralized data collection.</li>
+<li><strong>When NOT to Use:</strong> All data is already legally centralized in a secure cloud data lake.</li>
+<li><strong>Primary Failure Mode:</strong> High communication latency overhead and performance degradation on non-IID client data distributions.</li>
+<li><strong>Go-To Tools:</strong> Flower (flwr.dev), TensorFlow Federated, PySyft.</li>
+</ul>
 </section>
-<section id="privacy-preserving-ml" class="level3">
-<h3 class="anchored" data-anchor-id="privacy-preserving-ml">Privacy-Preserving ML:</h3>
-<p>Differential privacy, secure multi-party computation</p>
+<section id="privacy-preserving-ml-differential-privacy-smpc" class="level3">
+<h3 class="anchored" data-anchor-id="privacy-preserving-ml-differential-privacy-smpc">Privacy-Preserving ML (Differential Privacy &amp; SMPC)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Adds calibrated noise or encryption primitives to guarantee individual records cannot be reconstructed from trained models.</li>
+<li><strong>When to Use:</strong> Training models on sensitive medical, financial, or personal user data.</li>
+<li><strong>When NOT to Use:</strong> Public non-sensitive open-source datasets.</li>
+<li><strong>Primary Failure Mode:</strong> Privacy-Utility trade-off (adding privacy noise reduces overall downstream prediction accuracy).</li>
+<li><strong>Go-To Tools:</strong> Opacus (PyTorch DP), PySyft, Concrete-ML (Fully Homomorphic Encryption).</li>
+</ul>
 </section>
 <section id="fairness-aware-learning" class="level3">
-<h3 class="anchored" data-anchor-id="fairness-aware-learning">Fairness-Aware Learning:</h3>
-<p>Bias mitigation, demographic parity</p>
+<h3 class="anchored" data-anchor-id="fairness-aware-learning">Fairness-Aware Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Injects statistical constraints (Demographic Parity, Equalized Odds) into training to mitigate demographic bias.</li>
+<li><strong>When to Use:</strong> High-stakes human scoring systems (credit scoring, hiring algorithms, judicial risk assessments).</li>
+<li><strong>When NOT to Use:</strong> Pure physical perception tasks (e.g., satellite weather analysis).</li>
+<li><strong>Primary Failure Mode:</strong> Mitigation trade-offs (optimizing for one definition of fairness can violate another mathematical definition of fairness).</li>
+<li><strong>Go-To Tools:</strong> Fairlearn, AIF360 (IBM).</li>
+</ul>
 </section>
-<section id="interpretabilityexplainable-ai-xai" class="level3">
-<h3 class="anchored" data-anchor-id="interpretabilityexplainable-ai-xai">Interpretability/Explainable AI (XAI):</h3>
-<p>SHAP, LIME, attention visualization</p>
+<section id="explainable-ai-xai-mechanistic-interpretability" class="level3">
+<h3 class="anchored" data-anchor-id="explainable-ai-xai-mechanistic-interpretability">Explainable AI (XAI) &amp; Mechanistic Interpretability</h3>
+<ul>
+<li><strong>Mental Model:</strong> Post-hoc explanation tools (SHAP/LIME) score feature importance; Mechanistic Interpretability reverse-engineers neural circuits directly.</li>
+<li><strong>When to Use:</strong> Audit requirements, regulatory compliance, and understanding internal model reasoning.</li>
+<li><strong>When NOT to Use:</strong> Non-critical applications where latency and raw predictive accuracy are the only requirements.</li>
+<li><strong>Primary Failure Mode:</strong> Post-hoc feature attributions can be tricked or give plausible-sounding explanations for flawed predictions.</li>
+<li><strong>Go-To Tools:</strong> SHAP, Captum, TransformerLens (Mechanistic Interpretability).</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="llms-agentic-frameworks-symbolic-ml" class="level2">
+<h2 class="anchored" data-anchor-id="llms-agentic-frameworks-symbolic-ml">11. LLMs, Agentic Frameworks &amp; Symbolic ML</h2>
+<p><strong>Methods involving multi-step reasoning, external tool execution, and hybrid neural-symbolic systems.</strong></p>
+<section id="agentic-ai-tool-use" class="level3">
+<h3 class="anchored" data-anchor-id="agentic-ai-tool-use">Agentic AI &amp; Tool-Use</h3>
+<ul>
+<li><strong>Mental Model:</strong> Couples an LLM with external tools (APIs, web browsers, code interpreters) and an iterative reflection/planning loop.</li>
+<li><strong>When to Use:</strong> Complex multi-step workflows (autonomous coding, research synthesis, enterprise automation).</li>
+<li><strong>When NOT to Use:</strong> Simple single-turn text classification or deterministic tasks.</li>
+<li><strong>Primary Failure Mode:</strong> Infinite execution loops, tool parameter hallucination, and cascading errors in long chains.</li>
+<li><strong>Go-To Tools:</strong> LangChain, LlamaIndex, AutoGen, CrewAI, DSPy.</li>
+</ul>
+</section>
+<section id="neuro-symbolic-learning" class="level3">
+<h3 class="anchored" data-anchor-id="neuro-symbolic-learning">Neuro-Symbolic Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Combines neural network perceptual capabilities with formal symbolic logic rules to guarantee rule compliance.</li>
+<li><strong>When to Use:</strong> Safety-critical domains, automated theorem proving, and strict rule-based business compliance.</li>
+<li><strong>When NOT to Use:</strong> Standard unstructured perception tasks where formal logic rules cannot be written down.</li>
+<li><strong>Primary Failure Mode:</strong> The interface boundary between continuous gradient optimization and discrete symbolic logic is difficult to optimize.</li>
+<li><strong>Go-To Tools:</strong> DeepProbLog, Scallop, PyTorch.</li>
+</ul>
+</section>
+<section id="symbolic-regression" class="level3">
+<h3 class="anchored" data-anchor-id="symbolic-regression">Symbolic Regression</h3>
+<ul>
+<li><strong>Mental Model:</strong> Searches the space of mathematical expressions to find an explicit analytical equation <span class="math inline">\(y = f(x)\)</span> that fits data cleanly.</li>
+<li><strong>When to Use:</strong> Uncovering closed-form scientific formulas from experimental observational data.</li>
+<li><strong>When NOT to Use:</strong> High-dimensional image or text perception.</li>
+<li><strong>Primary Failure Mode:</strong> Exponential combinatorial search explosion over expression tree structures.</li>
+<li><strong>Go-To Tools:</strong> PySR, gplearn.</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="sparse-low-rank-and-signal-processing" class="level2">
-<h2 class="anchored" data-anchor-id="sparse-low-rank-and-signal-processing">Sparse, Low-Rank, and Signal Processing</h2>
-<p><strong>Methods for efficient data representation.</strong></p>
+<h2 class="anchored" data-anchor-id="sparse-low-rank-and-signal-processing">12. Sparse, Low-Rank, and Signal Processing</h2>
+<p><strong>Methods exploiting sparsity, low-rank structure, and parameter compression.</strong></p>
 <section id="sparse-learning" class="level3">
-<h3 class="anchored" data-anchor-id="sparse-learning">Sparse Learning:</h3>
-<p>LASSO, compressed sensing, LORA, Q-LORA</p>
+<h3 class="anchored" data-anchor-id="sparse-learning">Sparse Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Enforces zero-value parameter constraints (L1 regularization, pruning) to compress models and accelerate computation.</li>
+<li><strong>When to Use:</strong> Deploying models under strict memory/latency limits or identifying key sparse features.</li>
+<li><strong>When NOT to Use:</strong> Tasks where every input feature contributes a small, non-zero dense signal.</li>
+<li><strong>Primary Failure Mode:</strong> Pruning too heavily reduces model capacity and causes accuracy drop-offs.</li>
+<li><strong>Go-To Tools:</strong> Neural Magic (SparseML), PyTorch Pruning.</li>
+</ul>
 </section>
-<section id="dictionary-learningsparse-coding" class="level3">
-<h3 class="anchored" data-anchor-id="dictionary-learningsparse-coding">Dictionary Learning/Sparse Coding:</h3>
-<p>K-SVD, sparse autoencoders</p>
+<section id="dictionary-learning-sparse-coding" class="level3">
+<h3 class="anchored" data-anchor-id="dictionary-learning-sparse-coding">Dictionary Learning &amp; Sparse Coding</h3>
+<ul>
+<li><strong>Mental Model:</strong> Represents data vectors as linear combinations of a small number of atomic elements chosen from an overcomplete dictionary.</li>
+<li><strong>When to Use:</strong> Image denoising, signal reconstruction, compressed sensing.</li>
+<li><strong>When NOT to Use:</strong> Massive end-to-end deep learning visual representation tasks.</li>
+<li><strong>Primary Failure Mode:</strong> High computational cost of dictionary updates (e.g., K-SVD) on massive data volumes.</li>
+<li><strong>Go-To Tools:</strong> Scikit-learn (DictionaryLearning), SPAMS.</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="hardware-inspired-and-edge-learning" class="level2">
-<h2 class="anchored" data-anchor-id="hardware-inspired-and-edge-learning">Hardware-Inspired and Edge Learning</h2>
-<p><strong>Methods leveraging specialized hardware or constraints.</strong></p>
-<section id="edge-ml-learning-on-resource-constrained-devices." class="level3">
-<h3 class="anchored" data-anchor-id="edge-ml-learning-on-resource-constrained-devices.">Edge ML: Learning on resource-constrained devices.</h3>
-<p>Edge inference, edge training, model compression (pruning, quantization)</p>
+<h2 class="anchored" data-anchor-id="hardware-inspired-and-edge-learning">13. Hardware-Inspired and Edge Learning</h2>
+<p><strong>Methods tailored specifically for constrained hardware, spiking brain-like chips, or quantum processing units.</strong></p>
+<section id="edge-ml-model-compression" class="level3">
+<h3 class="anchored" data-anchor-id="edge-ml-model-compression">Edge ML &amp; Model Compression</h3>
+<ul>
+<li><strong>Mental Model:</strong> Optimizes models specifically for low-power edge hardware via quantization (INT8/INT4), pruning, and knowledge distillation.</li>
+<li><strong>When to Use:</strong> Running local AI models on smartphones, microcontrollers (MCU), and IoT devices.</li>
+<li><strong>When NOT to Use:</strong> Cloud server deployments with unconstrained GPU resources.</li>
+<li><strong>Primary Failure Mode:</strong> Quantization degradation (converting FP16 to INT4 damages precision on complex reasoning tasks).</li>
+<li><strong>Go-To Tools:</strong> TensorRT, ONNX Runtime, TFLite, GGML/llama.cpp.</li>
+</ul>
 </section>
-<section id="neuromorphic-learning-mimics-brain-like-computation." class="level3">
-<h3 class="anchored" data-anchor-id="neuromorphic-learning-mimics-brain-like-computation.">Neuromorphic Learning: Mimics brain-like computation.</h3>
-<p>Spiking Neural Networks (SNNs), event-driven processing</p>
+<section id="neuromorphic-learning-spiking-neural-networks---snns" class="level3">
+<h3 class="anchored" data-anchor-id="neuromorphic-learning-spiking-neural-networks---snns">Neuromorphic Learning (Spiking Neural Networks - SNNs)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Mimics biological brain dynamics using event-driven, time-dependent “spikes” to process information with ultra-low power consumption.</li>
+<li><strong>When to Use:</strong> Processing continuous event-based camera sensors (DVS) with milliwatt energy budgets.</li>
+<li><strong>When NOT to Use:</strong> Standard offline batch image or tabular processing.</li>
+<li><strong>Primary Failure Mode:</strong> Non-differentiable spike activation functions complicate standard backpropagation training.</li>
+<li><strong>Go-To Tools:</strong> sNNorch, Lava, BindsNET.</li>
+</ul>
 </section>
-<section id="quantum-ml-leverages-quantum-computing." class="level3">
-<h3 class="anchored" data-anchor-id="quantum-ml-leverages-quantum-computing.">Quantum ML: Leverages quantum computing.</h3>
-<p>Quantum kernel methods, variational quantum circuits</p>
+<section id="quantum-machine-learning-qml" class="level3">
+<h3 class="anchored" data-anchor-id="quantum-machine-learning-qml">Quantum Machine Learning (QML)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Maps data onto quantum states (qubits) and uses variational quantum circuits to execute calculations in Hilbert spaces.</li>
+<li><strong>When to Use:</strong> Quantum chemistry simulations, quantum materials discovery, and complex optimization.</li>
+<li><strong>When NOT to Use:</strong> General everyday data processing on classical compute infrastructure.</li>
+<li><strong>Primary Failure Mode:</strong> Barren plateaus (flat optimization gradients) and noisy intermediate-scale quantum (NISQ) hardware errors.</li>
+<li><strong>Go-To Tools:</strong> PennyLane, Qiskit, Cirq.</li>
+</ul>
 <hr>
 </section>
 </section>
-<section id="topological-and-symbolic-learning" class="level2">
-<h2 class="anchored" data-anchor-id="topological-and-symbolic-learning">Topological and Symbolic Learning</h2>
-<p><strong>Advanced methods for complex data or reasoning.</strong></p>
+<section id="topological-physical-and-scientific-ml" class="level2">
+<h2 class="anchored" data-anchor-id="topological-physical-and-scientific-ml">14. Topological, Physical, and Scientific ML</h2>
+<p><strong>Methods extracting topological invariants or embedding fundamental physical differential equations.</strong></p>
 <section id="topological-data-analysis-tda" class="level3">
-<h3 class="anchored" data-anchor-id="topological-data-analysis-tda">Topological Data Analysis (TDA):</h3>
-<p>Persistent homology, Mapper algorithm</p>
+<h3 class="anchored" data-anchor-id="topological-data-analysis-tda">Topological Data Analysis (TDA)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Measures topological shape features (loops, voids, connected components) that persist across multiple spatial scales.</li>
+<li><strong>When to Use:</strong> Analyzing complex biological shapes, structural genomic data, and geometric point-cloud structures.</li>
+<li><strong>When NOT to Use:</strong> Standard structured tabular data with no spatial/topological structure.</li>
+<li><strong>Primary Failure Mode:</strong> High computational complexity (<span class="math inline">\(O(N^3)\)</span> or worse) for persistent homology calculations on large point clouds.</li>
+<li><strong>Go-To Tools:</strong> Giotto-tda, Ripser, Gudhi.</li>
+</ul>
 </section>
-<section id="causal-representation-learning" class="level3">
-<h3 class="anchored" data-anchor-id="causal-representation-learning">Causal Representation Learning:</h3>
-<p>Disentangled representations with causal structure</p>
-</section>
-<section id="neuro-symbolic-learning" class="level3">
-<h3 class="anchored" data-anchor-id="neuro-symbolic-learning">Neuro-Symbolic Learning:</h3>
-<p>Inductive Logic Programming (ILP), hybrid neural-symbolic models</p>
-</section>
-<section id="symbolic-regression" class="level3">
-<h3 class="anchored" data-anchor-id="symbolic-regression">Symbolic Regression:</h3>
-<p>Genetic programming for equation discovery</p>
+<section id="physics-informed-ml-pinns-neural-operators" class="level3">
+<h3 class="anchored" data-anchor-id="physics-informed-ml-pinns-neural-operators">Physics-Informed ML (PINNs) &amp; Neural Operators</h3>
+<ul>
+<li><strong>Mental Model:</strong> Embeds partial differential equations (PDEs) directly into the loss function to ensure outputs obey conservation laws.</li>
+<li><strong>When to Use:</strong> Computational fluid dynamics, weather forecasting, heat transfer, and structural engineering.</li>
+<li><strong>When NOT to Use:</strong> Social science or financial data with no known differential physical laws.</li>
+<li><strong>Primary Failure Mode:</strong> Optimization difficulty balancing PDE residual losses with empirical data losses.</li>
+<li><strong>Go-To Tools:</strong> NVIDIA Modulus, DeepXDE, NeuralOperators.</li>
+</ul>
 <hr>
 </section>
 </section>
-<section id="societal-and-application-specific-paradigms" class="level2">
-<h2 class="anchored" data-anchor-id="societal-and-application-specific-paradigms">Societal and Application-Specific Paradigms</h2>
-<p><strong>Methods driven by societal impact or domain needs.</strong></p>
-<section id="ai-for-scientific-discovery" class="level3">
-<h3 class="anchored" data-anchor-id="ai-for-scientific-discovery">AI for Scientific Discovery:</h3>
-<p>Hypothesis generation (e.g., AlphaFold, materials discovery)</p>
+<section id="societal-operational-special-settings" class="level2">
+<h2 class="anchored" data-anchor-id="societal-operational-special-settings">15. Societal, Operational &amp; Special Settings</h2>
+<p><strong>Real-world execution modes, interactive loops, and alignment settings.</strong></p>
+<section id="value-alignment-moral-learning-rlhf-dpo" class="level3">
+<h3 class="anchored" data-anchor-id="value-alignment-moral-learning-rlhf-dpo">Value Alignment &amp; Moral Learning (RLHF / DPO)</h3>
+<ul>
+<li><strong>Mental Model:</strong> Aligns AI model behavior with human preferences, values, and safety boundaries using reward models or direct preference optimization.</li>
+<li><strong>When to Use:</strong> Post-training foundation models for public-facing chat, safety filtering, and helpful tone alignment.</li>
+<li><strong>When NOT to Use:</strong> Pure technical predictive tools where subjective preference plays no role.</li>
+<li><strong>Primary Failure Mode:</strong> Sycophancy (model tells users what they want to hear) and reward hacking.</li>
+<li><strong>Go-To Tools:</strong> TRL (Transformer Reinforcement Learning), Alignment-Handbook, Axolotl.</li>
+</ul>
 </section>
-<section id="value-alignmentmoral-learning" class="level3">
-<h3 class="anchored" data-anchor-id="value-alignmentmoral-learning">Value Alignment/Moral Learning:</h3>
-<p>RLHF, constitutional AI</p>
+<section id="human-in-the-loop-active-learning" class="level3">
+<h3 class="anchored" data-anchor-id="human-in-the-loop-active-learning">Human-in-the-Loop &amp; Active Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Interactively queries a human expert to annotate only the most uncertain or high-information data points.</li>
+<li><strong>When to Use:</strong> Labeling budgets are strictly capped and raw data is vast (e.g., active learning for rare defect detection).</li>
+<li><strong>When NOT to Use:</strong> Fully automated real-time systems where human response latency is unacceptable.</li>
+<li><strong>Primary Failure Mode:</strong> Sampling bias (active learning over-samples noisy outlier points instead of true boundaries).</li>
+<li><strong>Go-To Tools:</strong> MODAL, Label Studio, cleanlab.</li>
+</ul>
 </section>
-<section id="human-in-the-loop-learning" class="level3">
-<h3 class="anchored" data-anchor-id="human-in-the-loop-learning">Human-in-the-Loop Learning:</h3>
-<p>Interactive ML, human-AI collaboration</p>
-<hr>
-</section>
-</section>
-<section id="special-settings-and-practical-modes" class="level2">
-<h2 class="anchored" data-anchor-id="special-settings-and-practical-modes">Special Settings and Practical Modes</h2>
-<p><strong>Operational modes for learning systems.</strong></p>
-<section id="onlinestreaming-learning" class="level3">
-<h3 class="anchored" data-anchor-id="onlinestreaming-learning">Online/Streaming Learning:</h3>
-<p>Real-time updates, concept drift handling</p>
-</section>
-<section id="batchmini-batch-learning" class="level3">
-<h3 class="anchored" data-anchor-id="batchmini-batch-learning">Batch/Mini-Batch Learning:</h3>
-<p>Standard training on fixed datasets</p>
-</section>
-<section id="active-learning" class="level3">
-<h3 class="anchored" data-anchor-id="active-learning">Active Learning:</h3>
-<p>Uncertainty sampling, how much model is uncertain in its prediction</p>
-</section>
-<section id="curriculumself-paced-learning" class="level3">
-<h3 class="anchored" data-anchor-id="curriculumself-paced-learning">Curriculum/Self-Paced Learning:</h3>
-<p>Gradual task complexity</p>
+<section id="online-streaming-learning" class="level3">
+<h3 class="anchored" data-anchor-id="online-streaming-learning">Online &amp; Streaming Learning</h3>
+<ul>
+<li><strong>Mental Model:</strong> Incrementally updates model weights row-by-row on real-time data streams without storing history.</li>
+<li><strong>When to Use:</strong> High-frequency trading, real-time ad click-through rate prediction, handling concept drift.</li>
+<li><strong>When NOT to Use:</strong> Static offline datasets where batch processing is easily achievable.</li>
+<li><strong>Primary Failure Mode:</strong> Catastrophic drift if catastrophic unexpected noise Enters the streaming pipeline.</li>
+<li><strong>Go-To Tools:</strong> River (Python), Scikit-multiflow.</li>
+</ul>
 </section>
 <section id="ensemble-methods" class="level3">
-<h3 class="anchored" data-anchor-id="ensemble-methods">Ensemble Methods:</h3>
-<p>Bagging (Random Forests), boosting (XGBoost), stacking</p>
+<h3 class="anchored" data-anchor-id="ensemble-methods">Ensemble Methods</h3>
+<ul>
+<li><strong>Mental Model:</strong> Combines predictions from multiple weak base models (bagging, boosting, stacking) to produce a stronger ensemble prediction.</li>
+<li><strong>When to Use:</strong> Standard benchmark competitions, tabular datasets, and maximizing raw predictive accuracy.</li>
+<li><strong>When NOT to Use:</strong> Low-latency edge applications where running <span class="math inline">\(100\)</span> models simultaneously is impossible.</li>
+<li><strong>Primary Failure Mode:</strong> High compute latency, complex deployment maintenance, and loss of interpretability.</li>
+<li><strong>Go-To Tools:</strong> XGBoost, LightGBM, CatBoost, Scikit-learn (Voting/Stacking).</li>
+</ul>
 <hr>
 </section>
 </section>
-<section id="aliases-and-overlaps" class="level2">
-<h2 class="anchored" data-anchor-id="aliases-and-overlaps">Aliases and Overlaps</h2>
-<p>Geometric Deep Learning ≈ Graph/M Manifold/Equivariant Learning<br>
-Graph Neural Networks ≈ Message Passing Neural Networks<br>
-Contrastive Learning ≈ Metric/Representation Learning (similar objectives)<br>
-Domain Adaptation ⊂ Transfer Learning<br>
-Continual Learning ≈ Lifelong/Incremental Learning<br>
-Probabilistic Modeling ≈ Generative Modeling (likelihood focus)<br>
-Weak Supervision ≈ Noisy-Label Learning</p>
+<section id="cheat-sheet-core-paradigm-decision-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="cheat-sheet-core-paradigm-decision-matrix">Cheat Sheet: Core Paradigm Decision Matrix</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Paradigm</th>
+<th>Primary Input Requirement</th>
+<th>Core Objective</th>
+<th>Primary Failure Mode</th>
+<th>Example Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Supervised</strong></td>
+<td>Labeled <span class="math inline">\((X, Y)\)</span></td>
+<td>Predict <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span></td>
+<td>Overfitting training distribution</td>
+<td>Medical imaging diagnosis</td>
+</tr>
+<tr class="even">
+<td><strong>Unsupervised</strong></td>
+<td>Unlabeled <span class="math inline">\(X\)</span></td>
+<td>Find latent clusters/structure</td>
+<td>Arbitrary, uninterpretable clusters</td>
+<td>Customer segmentation</td>
+</tr>
+<tr class="odd">
+<td><strong>Self-Supervised</strong></td>
+<td>Raw Unlabeled Data</td>
+<td>Pretext task completion</td>
+<td>Representation collapse</td>
+<td>Pretraining Foundation LLMs</td>
+</tr>
+<tr class="even">
+<td><strong>Weakly Supervised</strong></td>
+<td>Programmatic Heuristics</td>
+<td>Learn despite noisy labels</td>
+<td>Learning heuristic rule biases</td>
+<td>Massive dataset auto-labeling</td>
+</tr>
+<tr class="odd">
+<td><strong>Multi-Instance</strong></td>
+<td>Bags of instances</td>
+<td>Bag-level classification</td>
+<td>Witness isolation failure</td>
+<td>Gigapixel Pathology slides</td>
+</tr>
+<tr class="even">
+<td><strong>Reinforcement</strong></td>
+<td>Environment + Reward</td>
+<td>Maximize cumulative reward</td>
+<td>Reward hacking / Sample inefficiency</td>
+<td>Game AI, Robotics, RLHF</td>
+</tr>
+<tr class="odd">
+<td><strong>Graph-Based</strong></td>
+<td>Nodes + Edges</td>
+<td>Topological message passing</td>
+<td>Over-smoothing deep layers</td>
+<td>Drug discovery, Social graphs</td>
+</tr>
+<tr class="even">
+<td><strong>PEFT / LoRA</strong></td>
+<td>Pretrained Model + Small <span class="math inline">\(Y\)</span></td>
+<td>Low-rank adapter updates</td>
+<td>Adapter capacity bottleneck</td>
+<td>Fine-tuning LLM on 1 GPU</td>
+</tr>
+<tr class="odd">
+<td><strong>PINNs</strong></td>
+<td>Empirical Data + Physical PDEs</td>
+<td>Minimize PDE residuals</td>
+<td>Loss balance optimization traps</td>
+<td>Fluid dynamics, Weather AI</td>
+</tr>
+<tr class="even">
+<td><strong>Federated</strong></td>
+<td>Decentralized Local Data</td>
+<td>Global training without sharing</td>
+<td>Network bottlenecks, non-IID data</td>
+<td>Mobile phone predictive text</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Aliases and Overlaps:</em></p>
+<ul>
+<li><strong>Geometric Deep Learning</strong> <span class="math inline">\(\approx\)</span> Graph / Manifold / Equivariant Networks</li>
+<li><strong>Contrastive Learning</strong> <span class="math inline">\(\subset\)</span> Representation &amp; Metric Learning</li>
+<li><strong>Domain Adaptation</strong> <span class="math inline">\(\subset\)</span> Transfer Learning</li>
+<li><strong>Continual Learning</strong> <span class="math inline">\(\approx\)</span> Lifelong / Incremental Learning</li>
+<li><strong>Weak Supervision</strong> <span class="math inline">\(\supset\)</span> Multi-Instance Learning &amp; Noisy-Label Learning</li>
+<li><strong>PEFT</strong> <span class="math inline">\(\subset\)</span> Adaptation &amp; Parameter-Efficiency</li>
+</ul>
 <hr>
 
 
@@ -1256,7 +1765,7 @@ Weak Supervision ≈ Noisy-Label Learning</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Machine Learning/different_types_learning.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Machine Learning/different_types_learning.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

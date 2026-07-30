@@ -3,7 +3,7 @@ title: "Dating, Dining, and Doomscrolling: The Algorithms Behind Modern Choice"
 author: "Aman Pandey"
 date: "09/15/2025"
 editor: visual
-categories: [deep-learning, attention]
+categories: [deep-learning, recommendation]
 description: "Overview of Recommendation system - Workshop for Pycon India 2025"
 image: images/pycon_2025_logo.png
 ---
@@ -24,30 +24,30 @@ We’ll also discuss how users can hack these systems to personalize their feeds
 
 ### **1. Introduction (10 mins)**
 
--   **Welcome and Overview**
+- **Welcome and Overview**
 
-    -   Introduction to the workshop: What are recommendation systems and why do they matter?
+  - Introduction to the workshop: What are recommendation systems and why do they matter?
 
-    -   Real-world examples:
+  - Real-world examples:
 
-        -   Dating apps (e.g., Tinder)
-        -   Content feeds (e.g., Instagram)
-        -   Food recommendations (e.g., Zomato)
+    - Dating apps (e.g., Tinder)
+    - Content feeds (e.g., Instagram)
+    - Food recommendations (e.g., Zomato)
 
-    -   **Goals of the workshop**:
+  - **Goals of the workshop**:
 
-        -   Learn how RecSys work
-        -   Dive into their challenges
-        -   Understand their ethical implications
+    - Learn how RecSys work
+    - Dive into their challenges
+    - Understand their ethical implications
 
--   **Audience Poll / Engagement**
+- **Audience Poll / Engagement**
 
-    -   Quick questions to gauge familiarity with RecSys
+  - Quick questions to gauge familiarity with RecSys
 
-    -   Brief survey:
+  - Brief survey:
 
-        -   Who uses these systems?
-        -   Who’s familiar with the tech behind them?
+    - Who uses these systems?
+    - Who’s familiar with the tech behind them?
 
 ------------------------------------------------------------------------
 
@@ -55,52 +55,52 @@ We’ll also discuss how users can hack these systems to personalize their feeds
 
 **Goal**: Give a strong conceptual grounding before diving into implementation.
 
--   **Types of Training Data**
+- **Types of Training Data**
 
-    -   Explicit Feedback: Ratings, thumbs-up/down
-    -   Implicit Feedback: Clicks, dwell time, views, purchases
+  - Explicit Feedback: Ratings, thumbs-up/down
+  - Implicit Feedback: Clicks, dwell time, views, purchases
 
--   **Interaction Types**
+- **Interaction Types**
 
-    -   Positive-only vs. Positive & Negative Feedback
+  - Positive-only vs. Positive & Negative Feedback
 
--   **System Categories by Use-Case**
+- **System Categories by Use-Case**
 
-    -   General-purpose, Context-aware, Sequential, Knowledge-based RecSys
+  - General-purpose, Context-aware, Sequential, Knowledge-based RecSys
 
--   **Core Approaches**
+- **Core Approaches**
 
-    -   Collaborative Filtering (User-based vs. Item-based)
-    -   Content-Based Filtering
-    -   Hybrid Models
+  - Collaborative Filtering (User-based vs. Item-based)
+  - Content-Based Filtering
+  - Hybrid Models
 
--   **Application Examples**
+- **Application Examples**
 
-    -   Netflix → Hybrid
-    -   Amazon → Item-based CF
-    -   Tinder → Context-aware
-    -   Spotify → Sequential
-    -   Zomato → Content + CF
-    -   Pratilipi → Long-tail engagement via diversity-aware models
+  - Netflix → Hybrid
+  - Amazon → Item-based CF
+  - Tinder → Context-aware
+  - Spotify → Sequential
+  - Zomato → Content + CF
+  - Pratilipi → Long-tail engagement via diversity-aware models
 
--   **Recommendation Pipeline**
+- **Recommendation Pipeline**
 
-    -   Retrieval Stage: Candidate generation
-    -   Ranking Stage: Sorting by relevance
-    -   Exploration vs. Exploitation
+  - Retrieval Stage: Candidate generation
+  - Ranking Stage: Sorting by relevance
+  - Exploration vs. Exploitation
 
--   **Ranking Methods**
+- **Ranking Methods**
 
-    -   Pointwise / Pairwise / Listwise
+  - Pointwise / Pairwise / Listwise
 
--   **Metrics that Matter**
+- **Metrics that Matter**
 
-    -   Offline Metrics: Precision\@K, Recall, MAP, NDCG
+  - Offline Metrics: Precision\@K, Recall, MAP, NDCG
 
-    -   Business Goal Alignment:
+  - Business Goal Alignment:
 
-        -   YouTube → Watch Time
-        -   Tinder → Match Rate
+    - YouTube → Watch Time
+    - Tinder → Match Rate
 
 ------------------------------------------------------------------------
 
@@ -108,16 +108,16 @@ We’ll also discuss how users can hack these systems to personalize their feeds
 
 **Goal**: Implement and understand the inner workings of a real model.
 
--   **Exercise 1: Building a Two-Tower Model (30 mins)**
+- **Exercise 1: Building a Two-Tower Model (30 mins)**
 
-    -   Use PyTorch to build a simple two-tower architecture
-    -   Demonstrate user-item embedding and dot-product similarity
-    -   Step-by-step: Data loading → Model → Loss → Training
+  - Use PyTorch to build a simple two-tower architecture
+  - Demonstrate user-item embedding and dot-product similarity
+  - Step-by-step: Data loading → Model → Loss → Training
 
--   **Exercise 2: Evaluating Your Model (10 mins)**
+- **Exercise 2: Evaluating Your Model (10 mins)**
 
-    -   Use standard metrics: Precision, Recall, MAP
-    -   Compare online metrics vs. offline metrics
+  - Use standard metrics: Precision, Recall, MAP
+  - Compare online metrics vs. offline metrics
 
 ------------------------------------------------------------------------
 
@@ -129,25 +129,25 @@ We’ll also discuss how users can hack these systems to personalize their feeds
 
 #### **Real-World Problems**
 
--   **Bias in Training Data**: Echo chambers, skewed preferences
--   **Cold Start**: New users/items with little interaction data
--   **Scalability**: Latency and compute at scale
+- **Bias in Training Data**: Echo chambers, skewed preferences
+- **Cold Start**: New users/items with little interaction data
+- **Scalability**: Latency and compute at scale
 
 #### **Ethical Challenges**
 
--   **Algorithmic Bias & Fairness**: Impact on sensitive attributes
+- **Algorithmic Bias & Fairness**: Impact on sensitive attributes
 
--   **Diversity vs. Personalization**: Avoiding homogenized content
+- **Diversity vs. Personalization**: Avoiding homogenized content
 
--   **Debiasing Techniques**:
+- **Debiasing Techniques**:
 
-    -   **Exposure Bias**: Overexposure to certain items
-    -   **Popularity Bias**: Trend dominance
-    -   **Selection Bias**: Skewed relevance due to interaction patterns
+  - **Exposure Bias**: Overexposure to certain items
+  - **Popularity Bias**: Trend dominance
+  - **Selection Bias**: Skewed relevance due to interaction patterns
 
 #### **Case Study: Pratilipi**
 
--   How an Indian storytelling platform balances fairness, diversity, and engagement
+- How an Indian storytelling platform balances fairness, diversity, and engagement
 
 ------------------------------------------------------------------------
 
@@ -155,40 +155,40 @@ We’ll also discuss how users can hack these systems to personalize their feeds
 
 **Mini Lab**: Use your model to explore bias, diversity, and fairness.
 
--   Apply:
+- Apply:
 
-    -   Diversity boosting
-    -   Popularity debiasing
-    -   Freshness filters
+  - Diversity boosting
+  - Popularity debiasing
+  - Freshness filters
 
--   **Re-evaluate**:
+- **Re-evaluate**:
 
-    -   Compare fairness, diversity, and relevance metrics before and after
+  - Compare fairness, diversity, and relevance metrics before and after
 
--   **Group Reflection**:
+- **Group Reflection**:
 
-    -   Discuss improvements, regressions, and trade-offs
+  - Discuss improvements, regressions, and trade-offs
 
 ------------------------------------------------------------------------
 
 ### **6. Gaming the System: How Users Can Personalize Their Feeds (10 mins)**
 
--   How users can influence their recommendation feed (e.g., YouTube, Spotify)
--   Implications of over-personalization (filter bubbles, doomscrolling)
--   Tips for better and diverse recommendations
+- How users can influence their recommendation feed (e.g., YouTube, Spotify)
+- Implications of over-personalization (filter bubbles, doomscrolling)
+- Tips for better and diverse recommendations
 
 ------------------------------------------------------------------------
 
 ### **7. Conclusion & Q&A (20 mins)**
 
--   **Wrap-Up**
+- **Wrap-Up**
 
--   **Q&A**: Open floor for questions on theory, implementation, or ethics
+- **Q&A**: Open floor for questions on theory, implementation, or ethics
 
--   **Additional Resources**:
+- **Additional Resources**:
 
-    -   GitHub repo with code, datasets, and readings
-    -   Encourage continued learning and experimentation
+  - GitHub repo with code, datasets, and readings
+  - Encourage continued learning and experimentation
 
 Here is the presentation I used in the talk:
 

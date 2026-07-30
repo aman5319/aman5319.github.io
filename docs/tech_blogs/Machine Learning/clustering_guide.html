@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aman Pandey">
+<meta name="dcterms.date" content="2026-03-12">
+<meta name="description" content="A dive into how to choose a clustering algorithm for your problems">
+
+<title>Choosing a Clustering Algorithm – Aman Pandey</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e4ec7b4cb2f8bfad278928edd38b8fe3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-35ccf83f4182f6d33c037eaf6dfa4147.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e4ec7b4cb2f8bfad278928edd38b8fe3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Choosing a Clustering Algorithm – Aman Pandey">
+<meta property="og:description" content="A dive into how to choose a clustering algorithm for your problems">
+<meta property="og:image" content="https://aman5319.github.io/tech_blogs/Machine Learning/images/cluster.png">
+<meta property="og:site_name" content="Aman Pandey">
+<meta property="og:image:height" content="1300">
+<meta property="og:image:width" content="2100">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Aman Pandey</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../tech_blogs"> 
+<span class="menu-text">Tech Blogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../non_tech_blogs"> 
+<span class="menu-text">Non Tech Blogs</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Choosing a Clustering Algorithm</h1>
+                  <div>
+        <div class="description">
+          A dive into how to choose a clustering algorithm for your problems
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">machine-learning</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aman Pandey </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 12, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#choosing-a-clustering-algorithm-a-scikit-learn-only-decision-guide" id="toc-choosing-a-clustering-algorithm-a-scikit-learn-only-decision-guide" class="nav-link active" data-scroll-target="#choosing-a-clustering-algorithm-a-scikit-learn-only-decision-guide">Choosing a Clustering Algorithm: A scikit-learn-Only Decision Guide</a>
+  <ul class="collapse">
+  <li><a href="#the-running-example" id="toc-the-running-example" class="nav-link" data-scroll-target="#the-running-example">The running example</a></li>
+  <li><a href="#the-12-algorithms-in-scope" id="toc-the-12-algorithms-in-scope" class="nav-link" data-scroll-target="#the-12-algorithms-in-scope">The 12 algorithms in scope</a></li>
+  <li><a href="#the-15-decision-patterns-ordered-by-importance" id="toc-the-15-decision-patterns-ordered-by-importance" class="nav-link" data-scroll-target="#the-15-decision-patterns-ordered-by-importance">The 15 decision patterns, ordered by importance</a>
+  <ul class="collapse">
+  <li><a href="#do-you-know-the-number-of-clusters-k-upfront" id="toc-do-you-know-the-number-of-clusters-k-upfront" class="nav-link" data-scroll-target="#do-you-know-the-number-of-clusters-k-upfront">1. Do you know the number of clusters (k) upfront?</a></li>
+  <li><a href="#what-shape-are-your-clusters-convex-or-arbitrary" id="toc-what-shape-are-your-clusters-convex-or-arbitrary" class="nav-link" data-scroll-target="#what-shape-are-your-clusters-convex-or-arbitrary">2. What shape are your clusters: convex or arbitrary?</a></li>
+  <li><a href="#do-outliers-need-to-stay-unclustered-or-must-every-point-get-a-label" id="toc-do-outliers-need-to-stay-unclustered-or-must-every-point-get-a-label" class="nav-link" data-scroll-target="#do-outliers-need-to-stay-unclustered-or-must-every-point-get-a-label">3. Do outliers need to stay unclustered, or must every point get a label?</a></li>
+  <li><a href="#is-cluster-density-roughly-uniform-or-does-it-vary-a-lot" id="toc-is-cluster-density-roughly-uniform-or-does-it-vary-a-lot" class="nav-link" data-scroll-target="#is-cluster-density-roughly-uniform-or-does-it-vary-a-lot">4. Is cluster density roughly uniform, or does it vary a lot?</a></li>
+  <li><a href="#what-counts-as-a-real-cluster-minimum-viable-cluster-size" id="toc-what-counts-as-a-real-cluster-minimum-viable-cluster-size" class="nav-link" data-scroll-target="#what-counts-as-a-real-cluster-minimum-viable-cluster-size">5. What counts as a real cluster? (minimum viable cluster size)</a></li>
+  <li><a href="#how-big-is-the-dataset-and-does-that-rule-anything-out" id="toc-how-big-is-the-dataset-and-does-that-rule-anything-out" class="nav-link" data-scroll-target="#how-big-is-the-dataset-and-does-that-rule-anything-out">6. How big is the dataset, and does that rule anything out?</a></li>
+  <li><a href="#do-you-need-one-flat-partition-or-a-full-hierarchy" id="toc-do-you-need-one-flat-partition-or-a-full-hierarchy" class="nav-link" data-scroll-target="#do-you-need-one-flat-partition-or-a-full-hierarchy">7. Do you need one flat partition, or a full hierarchy?</a></li>
+  <li><a href="#do-you-need-hard-labels-or-softprobabilistic-ones" id="toc-do-you-need-hard-labels-or-softprobabilistic-ones" class="nav-link" data-scroll-target="#do-you-need-hard-labels-or-softprobabilistic-ones">8. Do you need hard labels, or soft/probabilistic ones?</a></li>
+  <li><a href="#is-the-data-a-fixed-batch-or-does-it-keep-arriving" id="toc-is-the-data-a-fixed-batch-or-does-it-keep-arriving" class="nav-link" data-scroll-target="#is-the-data-a-fixed-batch-or-does-it-keep-arriving">9. Is the data a fixed batch, or does it keep arriving?</a></li>
+  <li><a href="#do-you-need-to-keep-clusters-fresh-as-new-data-keeps-arriving" id="toc-do-you-need-to-keep-clusters-fresh-as-new-data-keeps-arriving" class="nav-link" data-scroll-target="#do-you-need-to-keep-clusters-fresh-as-new-data-keeps-arriving">10. Do you need to keep clusters fresh as new data keeps arriving?</a></li>
+  <li><a href="#whats-the-dimensionality-of-your-feature-space" id="toc-whats-the-dimensionality-of-your-feature-space" class="nav-link" data-scroll-target="#whats-the-dimensionality-of-your-feature-space">11. What’s the dimensionality of your feature space?</a></li>
+  <li><a href="#whats-your-underlying-data-type-and-does-that-change-the-metric" id="toc-whats-your-underlying-data-type-and-does-that-change-the-metric" class="nav-link" data-scroll-target="#whats-your-underlying-data-type-and-does-that-change-the-metric">12. What’s your underlying data type, and does that change the metric?</a></li>
+  <li><a href="#do-you-need-a-custom-distance-metric-or-is-euclidean-fine" id="toc-do-you-need-a-custom-distance-metric-or-is-euclidean-fine" class="nav-link" data-scroll-target="#do-you-need-a-custom-distance-metric-or-is-euclidean-fine">13. Do you need a custom distance metric, or is Euclidean fine?</a></li>
+  <li><a href="#do-you-need-the-same-result-on-every-run" id="toc-do-you-need-the-same-result-on-every-run" class="nav-link" data-scroll-target="#do-you-need-the-same-result-on-every-run">14. Do you need the same result on every run?</a></li>
+  <li><a href="#do-you-need-to-explain-the-result-to-a-non-technical-stakeholder" id="toc-do-you-need-to-explain-the-result-to-a-non-technical-stakeholder" class="nav-link" data-scroll-target="#do-you-need-to-explain-the-result-to-a-non-technical-stakeholder">15. Do you need to explain the result to a non-technical stakeholder?</a></li>
+  </ul></li>
+  <li><a href="#common-distance-metrics-and-how-to-decide" id="toc-common-distance-metrics-and-how-to-decide" class="nav-link" data-scroll-target="#common-distance-metrics-and-how-to-decide">Common distance metrics, and how to decide</a></li>
+  <li><a href="#quick-reference-pattern-algorithm" id="toc-quick-reference-pattern-algorithm" class="nav-link" data-scroll-target="#quick-reference-pattern-algorithm">Quick reference: pattern → algorithm</a></li>
+  <li><a href="#the-full-catalog-by-family-sklearn-only" id="toc-the-full-catalog-by-family-sklearn-only" class="nav-link" data-scroll-target="#the-full-catalog-by-family-sklearn-only">The full catalog, by family (sklearn only)</a>
+  <ul class="collapse">
+  <li><a href="#centroid-based" id="toc-centroid-based" class="nav-link" data-scroll-target="#centroid-based">Centroid-based</a></li>
+  <li><a href="#density-based" id="toc-density-based" class="nav-link" data-scroll-target="#density-based">Density-based</a></li>
+  <li><a href="#hierarchical" id="toc-hierarchical" class="nav-link" data-scroll-target="#hierarchical">Hierarchical</a></li>
+  <li><a href="#probabilistic" id="toc-probabilistic" class="nav-link" data-scroll-target="#probabilistic">Probabilistic</a></li>
+  <li><a href="#graph-based" id="toc-graph-based" class="nav-link" data-scroll-target="#graph-based">Graph-based</a></li>
+  </ul></li>
+  <li><a href="#practical-tips-that-matter-more-than-the-algorithm-choice" id="toc-practical-tips-that-matter-more-than-the-algorithm-choice" class="nav-link" data-scroll-target="#practical-tips-that-matter-more-than-the-algorithm-choice">Practical tips that matter more than the algorithm choice</a></li>
+  <li><a href="#after-the-clustering-naming-each-cluster" id="toc-after-the-clustering-naming-each-cluster" class="nav-link" data-scroll-target="#after-the-clustering-naming-each-cluster">After the clustering: naming each cluster</a></li>
+  <li><a href="#one-paragraph-version" id="toc-one-paragraph-version" class="nav-link" data-scroll-target="#one-paragraph-version">One-paragraph version</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Machine Learning/clustering_guide.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+
+<section id="choosing-a-clustering-algorithm-a-scikit-learn-only-decision-guide" class="level1">
+<h1>Choosing a Clustering Algorithm: A scikit-learn-Only Decision Guide</h1>
+<p>scikit-learn’s own <a href="https://scikit-learn.org/stable/modules/clustering.html">clustering page</a> is the right reference to build this on: it’s the one place that’s actually maintained, benchmarked, and consistent. The problem isn’t the page itself; it’s that it presents 12 algorithms side by side with no order of operations. This guide fixes that: same 12 algorithms, but organized as a sequence of questions instead of a flat table.</p>
+<section id="the-running-example" class="level2">
+<h2 class="anchored" data-anchor-id="the-running-example">The running example</h2>
+<p>Say you’ve run topic extraction over a large pile of documents and ended up with, e.g., 40,000 raw topic phrases, many of them near-duplicates in meaning: “password reset,” “forgot my password,” “reset login credentials.” You embed each phrase with a sentence embedding model:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>embeddings <span class="op">=</span> model.encode(topic_phrases)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(embeddings.shape)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (40000, 128)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>40,000 rows, 128 columns. Now you want to cluster these embeddings so every group of near-duplicate phrases collapses into one canonical topic name: “Password Reset,” “Billing Dispute,” and so on.</p>
+<p>That single <code>.shape</code> call already tells you two things before you’ve picked anything: 40K samples rules out the algorithms that don’t scale past a few thousand points, and 128 features is enough to make raw Euclidean distance start behaving oddly (more on that below). We’ll come back to this scenario for every pattern below.</p>
+</section>
+<section id="the-12-algorithms-in-scope" class="level2">
+<h2 class="anchored" data-anchor-id="the-12-algorithms-in-scope">The 12 algorithms in scope</h2>
+<p>Everything in this guide is one of these, nothing else. If you’ve seen a clustering algorithm mentioned elsewhere that isn’t on this list, it’s not in scikit-learn’s <code>cluster</code> module (or <code>mixture</code>, for Gaussian Mixture).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Algorithm</th>
+<th>sklearn class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>K-Means</td>
+<td><code>cluster.KMeans</code></td>
+</tr>
+<tr class="even">
+<td>Mini-Batch K-Means</td>
+<td><code>cluster.MiniBatchKMeans</code></td>
+</tr>
+<tr class="odd">
+<td>Bisecting K-Means</td>
+<td><code>cluster.BisectingKMeans</code></td>
+</tr>
+<tr class="even">
+<td>Affinity Propagation</td>
+<td><code>cluster.AffinityPropagation</code></td>
+</tr>
+<tr class="odd">
+<td>Mean Shift</td>
+<td><code>cluster.MeanShift</code></td>
+</tr>
+<tr class="even">
+<td>Spectral Clustering</td>
+<td><code>cluster.SpectralClustering</code></td>
+</tr>
+<tr class="odd">
+<td>Agglomerative Clustering (Ward/complete/average/single)</td>
+<td><code>cluster.AgglomerativeClustering</code></td>
+</tr>
+<tr class="even">
+<td>DBSCAN</td>
+<td><code>cluster.DBSCAN</code></td>
+</tr>
+<tr class="odd">
+<td>HDBSCAN</td>
+<td><code>cluster.HDBSCAN</code></td>
+</tr>
+<tr class="even">
+<td>OPTICS</td>
+<td><code>cluster.OPTICS</code></td>
+</tr>
+<tr class="odd">
+<td>BIRCH</td>
+<td><code>cluster.Birch</code></td>
+</tr>
+<tr class="even">
+<td>Gaussian Mixture Model</td>
+<td><code>mixture.GaussianMixture</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note: “Ward hierarchical clustering” isn’t a separate class; it’s <code>AgglomerativeClustering</code> with <code>linkage='ward'</code>. sklearn’s own comparison table lists it as its own row because the linkage choice changes behavior that much, but it’s one estimator with a parameter, not two algorithms.</p>
+</section>
+<section id="the-15-decision-patterns-ordered-by-importance" class="level2">
+<h2 class="anchored" data-anchor-id="the-15-decision-patterns-ordered-by-importance">The 15 decision patterns, ordered by importance</h2>
+<p>Ordered so that the questions which eliminate whole families of algorithms come first, and the questions that are more about practical deployment fit come last.</p>
+<section id="do-you-know-the-number-of-clusters-k-upfront" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-know-the-number-of-clusters-k-upfront">1. Do you know the number of clusters (k) upfront?</h3>
+<p>The single biggest fork. <code>KMeans</code>, <code>MiniBatchKMeans</code>, <code>BisectingKMeans</code>, <code>SpectralClustering</code>, and <code>GaussianMixture</code> all require <code>n_clusters</code> as a parameter. <code>DBSCAN</code>, <code>HDBSCAN</code>, <code>OPTICS</code>, <code>MeanShift</code>, and <code>AffinityPropagation</code> discover the count from the data.</p>
+<p><strong>Intuition:</strong> In the topic-phrase example, you almost never know upfront how many canonical topics exist in 40,000 raw phrases, since that’s usually the whole point of running the clustering. This alone pushes you toward <code>HDBSCAN</code> or <code>OPTICS</code> over <code>KMeans</code>, before you’ve even thought about anything else.</p>
+</section>
+<section id="what-shape-are-your-clusters-convex-or-arbitrary" class="level3">
+<h3 class="anchored" data-anchor-id="what-shape-are-your-clusters-convex-or-arbitrary">2. What shape are your clusters: convex or arbitrary?</h3>
+<p><code>KMeans</code>, <code>MiniBatchKMeans</code>, <code>BisectingKMeans</code>, and <code>GaussianMixture</code> (with default covariance) assume roughly spherical, similarly-sized clusters. <code>DBSCAN</code>, <code>HDBSCAN</code>, <code>OPTICS</code>, <code>SpectralClustering</code>, and <code>AgglomerativeClustering</code> can follow arbitrary shapes.</p>
+<p><strong>Intuition:</strong> Semantically similar phrases in embedding space don’t form neat spheres: “password reset” and “account recovery” might sit in a long, curved region of the embedding space rather than a tight ball. Forcing <code>KMeans</code> onto that shape will cut clusters in the wrong place, even with the right k.</p>
+</section>
+<section id="do-outliers-need-to-stay-unclustered-or-must-every-point-get-a-label" class="level3">
+<h3 class="anchored" data-anchor-id="do-outliers-need-to-stay-unclustered-or-must-every-point-get-a-label">3. Do outliers need to stay unclustered, or must every point get a label?</h3>
+<p><code>DBSCAN</code>, <code>HDBSCAN</code>, and <code>OPTICS</code> explicitly label sparse points as noise (<code>-1</code>) instead of forcing them into the nearest cluster. <code>KMeans</code>, <code>GaussianMixture</code>, <code>AgglomerativeClustering</code>, <code>SpectralClustering</code>, <code>BIRCH</code>, and <code>BisectingKMeans</code> assign every point somewhere, no exceptions.</p>
+<p><strong>Intuition:</strong> Some of those 40,000 phrases will be genuinely one-off: garbled extraction, or a topic that appears exactly once. You don’t want those forced into “Password Reset” just because it’s the nearest centroid; that pollutes the canonical name for everyone else in the cluster. This is a real vote for density-based methods.</p>
+</section>
+<section id="is-cluster-density-roughly-uniform-or-does-it-vary-a-lot" class="level3">
+<h3 class="anchored" data-anchor-id="is-cluster-density-roughly-uniform-or-does-it-vary-a-lot">4. Is cluster density roughly uniform, or does it vary a lot?</h3>
+<p>Plain <code>DBSCAN</code> assumes one global density threshold (<code>eps</code>) and struggles when some clusters are dense and others are sparse. <code>HDBSCAN</code> was built specifically to handle varying density without you having to pick a single <code>eps</code>.</p>
+<p><strong>Intuition:</strong> “Password Reset” might have hundreds of near-duplicate phrasings (very dense), while “Refund for Duplicate Charge” might have three (sparse). A single <code>eps</code> that works for one will merge or shatter the other. This is usually the deciding factor between <code>DBSCAN</code> and <code>HDBSCAN</code> in practice, and <code>HDBSCAN</code> wins more often than not for text-embedding tasks like this.</p>
+</section>
+<section id="what-counts-as-a-real-cluster-minimum-viable-cluster-size" class="level3">
+<h3 class="anchored" data-anchor-id="what-counts-as-a-real-cluster-minimum-viable-cluster-size">5. What counts as a real cluster? (minimum viable cluster size)</h3>
+<p>Every density-based method here has some notion of a minimum group size before it counts as a cluster at all: <code>HDBSCAN</code> and <code>OPTICS</code> take <code>min_cluster_size</code>, <code>DBSCAN</code> takes <code>min_samples</code>. This isn’t only a technical dial, it’s a business decision about how much evidence you need before you’re willing to give a group a name.</p>
+<p><strong>Intuition:</strong> A canonical topic backed by three phrases is probably real; a “cluster” made of one stray phrase is more likely a parsing artifact than an actual topic. Deciding “groups under N phrases get folded into a Misc bucket instead of getting their own name” is worth doing on purpose, tied directly to <code>min_cluster_size</code>, rather than accepting whatever the default gives you and being surprised later by a canonical topic named after a typo.</p>
+</section>
+<section id="how-big-is-the-dataset-and-does-that-rule-anything-out" class="level3">
+<h3 class="anchored" data-anchor-id="how-big-is-the-dataset-and-does-that-rule-anything-out">6. How big is the dataset, and does that rule anything out?</h3>
+<ul>
+<li><code>AffinityPropagation</code>: O(n²) time and memory, realistically capped at a few thousand points.</li>
+<li>Plain <code>AgglomerativeClustering</code> without a connectivity constraint: also expensive at scale, though sklearn implements it efficiently for moderate n.</li>
+<li><code>SpectralClustering</code>: needs an eigendecomposition of an n×n matrix, fine for small/medium n, but painful past that.</li>
+<li><code>KMeans</code>, <code>MiniBatchKMeans</code>, <code>BisectingKMeans</code>, <code>BIRCH</code>, <code>DBSCAN</code>, <code>HDBSCAN</code>: built to handle large n; <code>MiniBatchKMeans</code> and <code>BIRCH</code> are the ones explicitly designed for very large datasets.</li>
+</ul>
+<p><strong>Intuition:</strong> 40,000 points immediately rules out <code>AffinityPropagation</code> as a serious option: that’s already millions of pairwise comparisons before you’ve clustered anything. <code>HDBSCAN</code> and <code>MiniBatchKMeans</code> are both comfortable here; <code>SpectralClustering</code> is borderline and would need the affinity matrix built carefully (sparse, k-NN graph) to stay feasible.</p>
+</section>
+<section id="do-you-need-one-flat-partition-or-a-full-hierarchy" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-need-one-flat-partition-or-a-full-hierarchy">7. Do you need one flat partition, or a full hierarchy?</h3>
+<p><code>AgglomerativeClustering</code> gives you a dendrogram you can cut at any level. <code>BisectingKMeans</code> produces a rough hierarchy as a side effect of how it splits. <code>BIRCH</code> builds an internal tree too, though it’s mainly used for data reduction rather than for reading off multiple hierarchy levels. Everything else (<code>KMeans</code>, <code>DBSCAN</code>, <code>SpectralClustering</code>, <code>GaussianMixture</code>, <code>AffinityPropagation</code>) gives you one flat answer.</p>
+<p><strong>Intuition:</strong> You might eventually want “Account Access Issues” as a broad category with “Password Reset” and “2FA Problems” nested underneath it. If that’s a real requirement (not just nice-to-have), <code>AgglomerativeClustering</code> is worth the extra cost even at 40K points; if a flat list of canonical topics is genuinely enough, don’t pay for a hierarchy you won’t use.</p>
+</section>
+<section id="do-you-need-hard-labels-or-softprobabilistic-ones" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-need-hard-labels-or-softprobabilistic-ones">8. Do you need hard labels, or soft/probabilistic ones?</h3>
+<p><code>GaussianMixture</code> gives every point a probability of belonging to each cluster. Every other algorithm on this list gives a single hard label.</p>
+<p><strong>Intuition:</strong> A phrase like “can’t log in after resetting my password” genuinely straddles two canonical topics. If you want to say “70% Password Reset, 30% Login Issues” instead of forcing a single bucket, <code>GaussianMixture</code> is the only option here, but note it also assumes roughly elliptical clusters, so you’re trading shape flexibility for the soft labels.</p>
+</section>
+<section id="is-the-data-a-fixed-batch-or-does-it-keep-arriving" class="level3">
+<h3 class="anchored" data-anchor-id="is-the-data-a-fixed-batch-or-does-it-keep-arriving">9. Is the data a fixed batch, or does it keep arriving?</h3>
+<p><code>MiniBatchKMeans</code> and <code>BIRCH</code> (via <code>partial_fit</code>) are built to update incrementally as new data shows up. The rest expect the full dataset up front and require a full re-fit to incorporate new points.</p>
+<p><strong>Intuition:</strong> If new support tickets keep landing daily and you want topic clusters to update without reclustering all 40,000+ phrases from scratch every night, that pushes hard toward <code>MiniBatchKMeans</code>. <code>HDBSCAN</code>’s clustering quality has to be weighed against the fact that it doesn’t have a natural incremental-update path in sklearn.</p>
+</section>
+<section id="do-you-need-to-keep-clusters-fresh-as-new-data-keeps-arriving" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-need-to-keep-clusters-fresh-as-new-data-keeps-arriving">10. Do you need to keep clusters fresh as new data keeps arriving?</h3>
+<p>This is a different question from pattern 9. Pattern 9 asks whether a single model can be <em>updated</em> incrementally. This one asks what happens to your <em>existing clusters</em> over weeks and months, as the data drifts and genuinely new groups show up that didn’t exist when you first fit the model.</p>
+<p>Two related facts matter here. First, sklearn’s own documentation splits every algorithm into <strong>inductive</strong> (fit once, then <code>.predict()</code> labels a brand-new point without touching the training data again) or <strong>transductive</strong> (only has labels for the exact points it was fit on). <code>KMeans</code>, <code>MiniBatchKMeans</code>, <code>BisectingKMeans</code>, <code>MeanShift</code>, <code>AffinityPropagation</code>, <code>BIRCH</code>, and <code>GaussianMixture</code> are inductive. <code>DBSCAN</code>, <code>HDBSCAN</code>, <code>OPTICS</code>, <code>AgglomerativeClustering</code>, and <code>SpectralClustering</code> are transductive: giving a genuinely new point a label means either a full refit or a manual workaround, such as assigning it to the nearest existing cluster by distance.</p>
+<p>Second, even an inductive model goes stale on its own. Assigning new points to old centroids doesn’t discover new clusters that didn’t exist before, and it doesn’t notice that an old cluster has drifted or quietly split into two. A pattern that holds up in practice:</p>
+<ul>
+<li>Use an inductive method’s <code>.predict()</code> for cheap, real-time assignment of new points to existing clusters between refits.</li>
+<li>On a schedule that matches your drift rate (nightly, weekly, whatever fits), refit from scratch on the accumulated data, including a density-based pass like <code>HDBSCAN</code>, to check whether genuinely distinct new groups have emerged that the inductive model would otherwise have silently absorbed into an existing cluster.</li>
+<li>Reconcile the new cluster set against the old one by matching new centroids to old ones (nearest-centroid matching, or the Hungarian algorithm for an optimal one-to-one match), so “Password Reset” keeps meaning the same thing across refreshes instead of quietly becoming cluster #7 one week and cluster #12 the next.</li>
+<li>Route brand-new clusters that don’t match anything old to a human for naming, rather than assuming the pipeline should name them on its own.</li>
+</ul>
+<p><strong>Intuition:</strong> If new tickets keep landing daily, real-time <code>.predict()</code> with <code>MiniBatchKMeans</code> keeps things responsive, but only a periodic full re-cluster will catch the day a genuinely new topic (say, a product launch generating a wave of identical complaints) actually shows up as its own group, instead of getting smeared across whichever existing cluster happens to be closest.</p>
+<blockquote class="blockquote">
+<p>#### River</p>
+</blockquote>
+<pre><code>&gt;To continuously find new topics as they come in, we can use the package [river](https://github.com/online-ml/river). It contains several clustering models that can create new clusters as new data comes in.</code></pre>
+</section>
+<section id="whats-the-dimensionality-of-your-feature-space" class="level3">
+<h3 class="anchored" data-anchor-id="whats-the-dimensionality-of-your-feature-space">11. What’s the dimensionality of your feature space?</h3>
+<p>Distance and density both get less meaningful as dimensions increase (the curse of dimensionality). <code>BIRCH</code> in particular is known to scale poorly once you’re past roughly 20 features; sklearn’s own docs recommend switching to <code>MiniBatchKMeans</code> at that point. Density-based methods (<code>DBSCAN</code>, <code>HDBSCAN</code>, <code>OPTICS</code>) also get shakier in very high dimensions because “density” stops being a clean concept.</p>
+<p><strong>Intuition:</strong> 128 dimensions is already past BIRCH’s comfort zone: that alone removes it from contention for this scenario. It’s not yet catastrophic for <code>HDBSCAN</code>, but if you’d embedded at 768 or 1536 dimensions (common for larger embedding models), running PCA or UMAP down to 20-50 dimensions before clustering would likely help more than switching algorithms.</p>
+</section>
+<section id="whats-your-underlying-data-type-and-does-that-change-the-metric" class="level3">
+<h3 class="anchored" data-anchor-id="whats-your-underlying-data-type-and-does-that-change-the-metric">12. What’s your underlying data type, and does that change the metric?</h3>
+<p>All 12 sklearn algorithms here expect numeric feature vectors or a precomputed distance/affinity matrix. There’s no dedicated categorical-clustering class in sklearn’s cluster module; mixed or categorical data has to be numerically encoded first, or passed in as a precomputed distance matrix to one of the algorithms that accepts it.</p>
+<p><strong>Intuition:</strong> Text embeddings are numeric by construction, so this pattern mostly resolves itself here. The real decision it forces is the <em>metric</em> (next pattern), not the algorithm family.</p>
+</section>
+<section id="do-you-need-a-custom-distance-metric-or-is-euclidean-fine" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-need-a-custom-distance-metric-or-is-euclidean-fine">13. Do you need a custom distance metric, or is Euclidean fine?</h3>
+<p><code>KMeans</code>, <code>MiniBatchKMeans</code>, and <code>BisectingKMeans</code> are built around Euclidean distance (they optimize toward a mean). <code>AgglomerativeClustering</code>, <code>DBSCAN</code>, <code>OPTICS</code>, <code>SpectralClustering</code>, and <code>AffinityPropagation</code> all accept a custom metric or a precomputed distance/affinity matrix.</p>
+<p><strong>Intuition:</strong> Text embeddings are usually compared with cosine similarity, not raw Euclidean distance. You can sidestep this for <code>KMeans</code> by L2-normalizing the embeddings first (which makes Euclidean distance rank-equivalent to cosine), or you can just use an algorithm that takes cosine distance natively. See the dedicated section below for how to choose a metric in general.</p>
+</section>
+<section id="do-you-need-the-same-result-on-every-run" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-need-the-same-result-on-every-run">14. Do you need the same result on every run?</h3>
+<p><code>KMeans</code>, <code>MiniBatchKMeans</code>, and <code>GaussianMixture</code> depend on random initialization; different seeds can give different results unless you fix <code>random_state</code>. <code>DBSCAN</code>, <code>HDBSCAN</code>, <code>OPTICS</code>, and <code>AgglomerativeClustering</code> are deterministic given the same parameters (DBSCAN has minor, well-documented order-dependence at cluster borders, but it’s not seed-driven).</p>
+<p><strong>Intuition:</strong> If “Password Reset” needs to mean the same cluster every time you rerun the pipeline, say because downstream dashboards reference it by ID, reproducibility stops being a nice-to-have. Worth fixing <code>random_state</code> regardless of which algorithm you land on, and worth weighting deterministic methods slightly higher if this matters a lot.</p>
+</section>
+<section id="do-you-need-to-explain-the-result-to-a-non-technical-stakeholder" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-need-to-explain-the-result-to-a-non-technical-stakeholder">15. Do you need to explain the result to a non-technical stakeholder?</h3>
+<p>Centroid-based methods (<code>KMeans</code>, <code>MiniBatchKMeans</code>, <code>BisectingKMeans</code>) are the easiest to explain: “this phrase is closest to the centroid of cluster 3.” <code>AgglomerativeClustering</code> is a close second since a dendrogram is intuitive to walk through. Density- and graph-based methods (<code>HDBSCAN</code>, <code>SpectralClustering</code>, <code>AffinityPropagation</code>) are harder to justify in a business review because there’s no single simple “distance to X” story.</p>
+<p><strong>Intuition:</strong> If you’re handing “Password Reset” clusters to a support-ops team who will ask “why did ticket #4821 end up in this bucket,” a centroid or a dendrogram gives you a one-line answer. <code>HDBSCAN</code>’s density-based logic is real and often more accurate, but it’s a harder story to tell in a meeting.</p>
+</section>
+</section>
+<section id="common-distance-metrics-and-how-to-decide" class="level2">
+<h2 class="anchored" data-anchor-id="common-distance-metrics-and-how-to-decide">Common distance metrics, and how to decide</h2>
+<p>Here are the ones that actually show up in production, with the kind of dataset each one gets used on rather than a textbook definition.</p>
+<ul>
+<li><strong>Euclidean (L2)</strong>: straight-line distance. Real use: color quantization in image compression, where K-Means clusters the RGB values of every pixel to reduce a photo to a fixed palette; also clustering standardized sensor or measurement data where raw magnitude carries meaning.</li>
+<li><strong>Manhattan / Cityblock (L1)</strong>: sum of absolute coordinate differences. Real use: clustering grid-constrained movement data, like warehouse robot paths, where actual travel distance runs along axes rather than diagonally; also a common choice for sparse, high-dimensional count data (word counts, event counts), since it’s less dominated by a handful of large values than Euclidean is.</li>
+<li><strong>Cosine distance</strong>: angle between two vectors, ignoring length. Real use: clustering sentence or document embeddings, exactly the running example here, and clustering user taste vectors in recommendation systems, e.g.&nbsp;grouping listeners by the relative mix of genres they play rather than by total listening volume.</li>
+<li><strong>Haversine (great-circle) distance</strong>: real use: clustering GPS coordinates, such as grouping ride-share pickup requests, delivery addresses, or retail store locations by geographic proximity. Plain Euclidean distance on raw latitude/longitude is misleading here, since a degree of longitude covers a different physical distance depending on latitude; Haversine (or projecting to a flat coordinate system first) accounts for that.</li>
+<li><strong>Jaccard distance</strong>: overlap between two sets, ignoring order and count. Real use: clustering users by the sets of products they’ve purchased or pages they’ve visited (market-basket-style clustering), and near-duplicate document detection using sets of word shingles.</li>
+<li><strong>Hamming distance</strong>: number of differing positions between two equal-length sequences. Real use: clustering binary or one-hot encoded categorical profiles, and grouping hashed fingerprints produced by locality-sensitive hashing.</li>
+<li><strong>Precomputed / custom</strong>: any distance you can compute yourself (Mahalanobis for correlated numeric features, e.g.&nbsp;clustering financial transactions where amount and frequency move together, or edit distance for clustering raw strings like product SKUs or misspelled search queries) can be handed to most of these algorithms as a full n×n distance matrix via <code>metric='precomputed'</code>. This is the escape hatch when none of the named metrics fit.</li>
+</ul>
+<p><strong>How to decide, quickly:</strong> 1. Is your data an embedding (text, image, audio)? Cosine, almost by default. 2. Is your data geographic coordinates? Haversine, or project to a flat coordinate system first. 3. Is your data binary, one-hot, or a set of items (purchases, tags, pages visited)? Jaccard for sets, Hamming for fixed-length codes. 4. Are your features on very different scales or units? Standardize first regardless of metric; Euclidean is then usually fine. 5. Do a few extreme values risk dominating the distance calculation? Manhattan over Euclidean. 6. None of the above fit? Compute a domain-specific distance yourself and pass it in as <code>metric='precomputed'</code>.</p>
+<p><strong>Back to the running example:</strong> text embeddings point straight at cosine. <code>KMeans</code>, <code>MiniBatchKMeans</code>, and Ward linkage all optimize around a literal mean, which only lines up with cosine distance once you L2-normalize every embedding vector first: after normalizing, ranking points by Euclidean distance gives the same order as ranking by cosine distance, which is why this is the standard workaround. If you’d rather not normalize, <code>AgglomerativeClustering</code> (average or complete linkage), <code>DBSCAN</code>, and <code>OPTICS</code> can take <code>metric='cosine'</code> directly, though it’s worth checking each class’s current docs, since a few of these use tree-based backends internally that sometimes require <code>metric='precomputed'</code> instead of naming the metric directly.</p>
+</section>
+<section id="quick-reference-pattern-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference-pattern-algorithm">Quick reference: pattern → algorithm</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Points toward</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Don’t know k</td>
+<td>HDBSCAN, OPTICS, DBSCAN, MeanShift, AffinityPropagation</td>
+</tr>
+<tr class="even">
+<td>Convex, similar-size clusters</td>
+<td>KMeans, MiniBatchKMeans, BisectingKMeans, GaussianMixture</td>
+</tr>
+<tr class="odd">
+<td>Arbitrary/non-convex shape</td>
+<td>DBSCAN, HDBSCAN, OPTICS, SpectralClustering, AgglomerativeClustering</td>
+</tr>
+<tr class="even">
+<td>Outliers must stay unclustered</td>
+<td>DBSCAN, HDBSCAN, OPTICS</td>
+</tr>
+<tr class="odd">
+<td>Need to set a minimum group size before naming a cluster</td>
+<td>HDBSCAN/OPTICS (<code>min_cluster_size</code>), DBSCAN (<code>min_samples</code>)</td>
+</tr>
+<tr class="even">
+<td>Density varies across clusters</td>
+<td>HDBSCAN (not plain DBSCAN)</td>
+</tr>
+<tr class="odd">
+<td>Very large n</td>
+<td>MiniBatchKMeans, BIRCH (if features under ~20), HDBSCAN</td>
+</tr>
+<tr class="even">
+<td>Small n only</td>
+<td>AffinityPropagation, SpectralClustering, plain AgglomerativeClustering</td>
+</tr>
+<tr class="odd">
+<td>Need full hierarchy</td>
+<td>AgglomerativeClustering, BisectingKMeans</td>
+</tr>
+<tr class="even">
+<td>Need soft/probabilistic labels</td>
+<td>GaussianMixture</td>
+</tr>
+<tr class="odd">
+<td>Streaming / incremental updates to one model</td>
+<td>MiniBatchKMeans, BIRCH</td>
+</tr>
+<tr class="even">
+<td>Need to label brand-new points without a full refit</td>
+<td>Inductive only: KMeans, MiniBatchKMeans, BisectingKMeans, MeanShift, AffinityPropagation, BIRCH, GaussianMixture</td>
+</tr>
+<tr class="odd">
+<td>High-dimensional raw features (over 20)</td>
+<td>Avoid BIRCH; reduce dims first or use MiniBatchKMeans / SpectralClustering</td>
+</tr>
+<tr class="even">
+<td>Need non-Euclidean or precomputed distance</td>
+<td>AgglomerativeClustering, DBSCAN, OPTICS, SpectralClustering, AffinityPropagation</td>
+</tr>
+<tr class="odd">
+<td>Need reproducible results every run</td>
+<td>AgglomerativeClustering, DBSCAN/HDBSCAN, OPTICS</td>
+</tr>
+<tr class="even">
+<td>Need to explain results simply</td>
+<td>KMeans, MiniBatchKMeans, BisectingKMeans, AgglomerativeClustering</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-full-catalog-by-family-sklearn-only" class="level2">
+<h2 class="anchored" data-anchor-id="the-full-catalog-by-family-sklearn-only">The full catalog, by family (sklearn only)</h2>
+<section id="centroid-based" class="level3">
+<h3 class="anchored" data-anchor-id="centroid-based">Centroid-based</h3>
+<ul>
+<li><strong>K-Means</strong> (<code>cluster.KMeans</code>): assigns points to the nearest of k centroids, then updates centroids iteratively. Fast and simple, assumes spherical, similar-sized clusters.</li>
+<li><strong>Mini-Batch K-Means</strong> (<code>cluster.MiniBatchKMeans</code>): K-Means run on small random batches instead of the full dataset each iteration. Built for large or streaming data, at a small cost to accuracy.</li>
+<li><strong>Bisecting K-Means</strong> (<code>cluster.BisectingKMeans</code>): repeatedly splits one cluster into two using K-Means until k clusters exist. Produces a rough hierarchy and tends to give more even cluster sizes than plain K-Means.</li>
+</ul>
+</section>
+<section id="density-based" class="level3">
+<h3 class="anchored" data-anchor-id="density-based">Density-based</h3>
+<ul>
+<li><strong>DBSCAN</strong> (<code>cluster.DBSCAN</code>): groups points that are densely packed together and marks sparse points as noise. No k required, but assumes roughly uniform density and needs <code>eps</code>/<code>min_samples</code> tuned.</li>
+<li><strong>HDBSCAN</strong> (<code>cluster.HDBSCAN</code>): extends DBSCAN to handle clusters of varying density, without needing a single global <code>eps</code>. Generally the more robust default over plain DBSCAN.</li>
+<li><strong>OPTICS</strong> (<code>cluster.OPTICS</code>): builds a reachability ordering instead of committing to one density threshold, so you can extract clusters at multiple density levels from a single run.</li>
+<li><strong>Mean Shift</strong> (<code>cluster.MeanShift</code>): shifts candidate centroids toward the nearest mode (density peak) until convergence. No k required, but not scalable to large n and sensitive to the bandwidth parameter.</li>
+</ul>
+</section>
+<section id="hierarchical" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical">Hierarchical</h3>
+<ul>
+<li><p><strong>Agglomerative Clustering</strong> (<code>cluster.AgglomerativeClustering</code>): starts with every point as its own cluster and repeatedly merges the closest pair, bottom-up, until one cluster remains; you then cut the resulting dendrogram at whatever level gives you the k (or distance threshold) you want. What “closest” means is entirely defined by the <strong>linkage</strong> you pick, and that choice changes behavior as much as switching algorithms would:</p>
+<ul>
+<li><strong>Ward</strong>: merges whichever pair increases total within-cluster variance the least (the same objective KMeans optimizes, but reached hierarchically). Euclidean-only. Produces the most even, compact, spherical-ish clusters of the four; the natural default for numeric data with roughly globular structure.</li>
+<li><strong>Complete (maximum) linkage</strong>: cluster-to-cluster distance is the <em>farthest</em> pair of points between them. Produces tight, compact clusters and avoids “chaining,” but one distant outlier in either cluster can block a merge that should otherwise happen.</li>
+<li><strong>Average linkage</strong>: cluster-to-cluster distance is the <em>mean</em> of all cross-cluster pairwise distances. A middle ground between complete and single, and the one that plays nicest with non-Euclidean metrics (cosine, Manhattan, precomputed); usually the right pick whenever Ward isn’t an option.</li>
+<li><strong>Single linkage</strong>: cluster-to-cluster distance is the <em>closest</em> pair of points between them. Can trace out long, thin, non-convex shapes the other three would never find, but is notorious for “chaining”: a handful of connecting points can fuse two clusters that should have stayed separate, especially with noisy data.</li>
+</ul>
+<p><strong>Quick pick:</strong> Euclidean data, want compact and evenly-sized groups → Ward. Non-Euclidean metric (e.g., cosine on embeddings), still want compact groups → Average. Genuinely elongated or chain-like structure, and the data is clean → Single. Want compact clusters but Ward’s variance criterion doesn’t apply to your metric → Complete.</p></li>
+<li><p><strong>BIRCH</strong> (<code>cluster.Birch</code>): builds a compact tree summary of the data first, then clusters the summary. Designed for large datasets, but scales poorly past roughly 20 features.</p></li>
+</ul>
+</section>
+<section id="probabilistic" class="level3">
+<h3 class="anchored" data-anchor-id="probabilistic">Probabilistic</h3>
+<ul>
+<li><strong>Gaussian Mixture Model</strong> (<code>mixture.GaussianMixture</code>): fits a mixture of Gaussians via Expectation-Maximization, giving soft, probabilistic cluster assignments. Requires k (or a model-selection step to choose it) and assumes elliptical clusters.</li>
+</ul>
+</section>
+<section id="graph-based" class="level3">
+<h3 class="anchored" data-anchor-id="graph-based">Graph-based</h3>
+<ul>
+<li><strong>Spectral Clustering</strong> (<code>cluster.SpectralClustering</code>): builds a similarity graph, then clusters the eigenvectors of its Laplacian. Handles non-convex shapes well; requires k and doesn’t scale past small/medium n.</li>
+<li><strong>Affinity Propagation</strong> (<code>cluster.AffinityPropagation</code>): passes messages between points until a subset emerges as cluster exemplars. No k required, but O(n²) cost limits it to small datasets.</li>
+</ul>
+</section>
+</section>
+<section id="practical-tips-that-matter-more-than-the-algorithm-choice" class="level2">
+<h2 class="anchored" data-anchor-id="practical-tips-that-matter-more-than-the-algorithm-choice">Practical tips that matter more than the algorithm choice</h2>
+<ul>
+<li><strong>Scale your features</strong> before using any distance-based method (KMeans, DBSCAN, Agglomerative). For embeddings specifically, L2-normalizing rows is usually the right move if you intend cosine-like comparisons.</li>
+<li><strong>Validate with more than one metric</strong>: silhouette score, Davies-Bouldin, and a 2D projection (PCA/UMAP) each catch different failure modes.</li>
+<li><strong>Try KMeans first as a cheap baseline</strong>, even if you’re fairly sure it isn’t the final answer; it’s fast and gives you something to sanity-check fancier methods against.</li>
+<li><strong>For HDBSCAN/DBSCAN, tune <code>min_samples</code>/<code>eps</code> using a k-distance plot</strong> rather than guessing: sklearn’s own DBSCAN docs point to this as the standard approach.</li>
+<li><strong>Check <code>n_features</code> before reaching for BIRCH.</strong> Past ~20 dimensions, sklearn’s own guidance is to prefer MiniBatchKMeans.</li>
+</ul>
+</section>
+<section id="after-the-clustering-naming-each-cluster" class="level2">
+<h2 class="anchored" data-anchor-id="after-the-clustering-naming-each-cluster">After the clustering: naming each cluster</h2>
+<p>Clustering only gets you groups. Turning each group into one usable name is a separate step, and it’s the actual deliverable in the running example. Three common approaches, roughly in increasing order of cost and quality:</p>
+<ul>
+<li><strong>Nearest-to-center phrase</strong>: pick whichever real phrase sits closest to the cluster’s centroid (or medoid, for algorithms without a true centroid) and use it as the name directly. Cheap and always grounded in something a person actually wrote, but that phrase can be an oddly specific stand-in for the group (“reset my acct pw plz” standing in for “Password Reset”).</li>
+<li><strong>Top terms</strong>: extract the most frequent or highest-TF-IDF-weighted words across all members of the cluster and stitch them into a label. More representative of the group as a whole, but can produce label soup (“reset password login account forgot”) rather than a clean name.</li>
+<li><strong>LLM summarization</strong>: pass a sample of the cluster’s members to a language model and ask for one short canonical name. Produces the most readable names, but can hallucinate a label that doesn’t quite match what’s actually in the cluster, especially for noisy or mixed clusters, so it’s worth spot-checking a sample against the members before trusting it at scale.</li>
+</ul>
+<p>A reasonable default: nearest-to-center or top-terms for a first pass, with LLM summarization reserved for clusters that clear the minimum viable size from pattern 5, since that’s where getting the name right actually matters.</p>
+</section>
+<section id="one-paragraph-version" class="level2">
+<h2 class="anchored" data-anchor-id="one-paragraph-version">One-paragraph version</h2>
+<p>For the 40K-topic-phrase scenario: you don’t know k, clusters vary in density, and you want outliers left out; that combination points straight at <strong>HDBSCAN</strong>. If you needed incremental updates as new tickets arrive instead, you’d trade some cluster-shape flexibility for <strong>MiniBatchKMeans</strong>. If stakeholders needed a simple “why is this here” answer and near-spherical topic groups were good enough, <strong>KMeans</strong> would be the pragmatic choice even though it’s not the best technical fit. That’s the real shape of this decision: not “which of the 12 is best,” but “which two or three fit this specific combination of constraints, and which constraint are you willing to trade off.”</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/aman5319\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "aman5319/aman5319.github.io";
+    script.dataset.repoId = "R_kgDOJ44pkw";
+    script.dataset.category = "Q&amp;A";
+    script.dataset.categoryId = "DIC_kwDOJ44pk84CXwVt";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Blog made with 💜 and <a href="https://quarto.org/">Quarto</a>, by Aman Pandey. License: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/aman5319/aman5319.github.io/edit/main/tech_blogs/Machine Learning/clustering_guide.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/aman5319/aman5319.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:amanpandey@mailfence.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
